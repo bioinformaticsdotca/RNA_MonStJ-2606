@@ -22,7 +22,7 @@ Welcome to the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canad
 
 ## Pre-work
 
-<!--[You can find your pre-work here.](LINK TO PREWORK)-->
+[You can find your pre-work here.](LINK TO PREWORK)
 
 ## Class Photo
 
