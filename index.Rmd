@@ -1,5 +1,5 @@
 --- 
-title: "(2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL 2026"
+title: "(2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL"
 author: "Faculty: Virginie Calderon, Lourdes Peña-Castillo"
 date: "June 17-19, 2026"
 site: bookdown::bookdown_site
@@ -8,7 +8,7 @@ bibliography: [book.bib, packages.bib]
 url: https://bioinformaticsdotca.github.io/RNA_MontStJ-2606/ 
 cover-image: img/bioinformatics_logo.png
 description: |
-  Workshop website for the 2026 (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop
+  Workshop website for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop
 link-citations: yes
 github-repo: bioinformaticsdotca/RNA_MontStJ-2606
 favicon: img/favicon.ico
@@ -18,7 +18,7 @@ favicon: img/favicon.ico
 
 # Workshop Info
 
-Welcome to the 2026 (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop webpage!  
+Welcome to the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop webpage!  
 
 ## Pre-work
 
