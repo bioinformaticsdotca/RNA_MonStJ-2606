@@ -35,6 +35,16 @@ Dr. Peña-Castillo is a Professor at the Departments of Biology and Computer Sci
 #### Sophie Mockly (Montréal)
 
 
+
+>
+Postdoctoral Fellow <br>
+IRCM <br>
+Montréal, QC, Canada
+>
+
+Sophie Mockly is a Postdoctoral Fellow at the Montreal Clinical Research Institute (IRCM), where her research focuses on non-coding RNAs using a combination of wet-lab and dry-lab approaches. She obtained her PhD in Molecular Biology from the University of Montpellier (France), developing expertise in transcriptome analysis, small RNA-seq, and sequence conservation analysis for miRNA target prediction. In late 2022, she started a Postdoctoral Fellowship at the IRCM, where she uses short-read and long-read sequencing to study the lncRNAs and their role in cancer.
+
+
 #### Sophie Ehresmann (Montréal)
 
 #### Yvonne He (St John's)
@@ -51,6 +61,15 @@ Yvonne He is a PhD candidate in the Department of Biology at Memorial University
 
 #### Paniz Taghipour (St John's)
 
+
+
+>
+MSc Student <br>
+Memorial University of Newfoundland <br>
+St. John’s, NL, Canada
+>
+
+Paniz Taghipour is an MSc student in Bioinformatics at Memorial University of Newfoundland. Her research focuses on machine learning approaches for microbiome data analysis, including the evaluation of different data representations and classification methods for microbiome-based sample classification. 
 
 
 ## Facilitators
