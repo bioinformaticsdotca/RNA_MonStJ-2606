@@ -1,6 +1,10 @@
-# Module 2
+# Module 2: RNA-seq alignment concepts and file formats
+
 
 ## Lecture
+
+<iframe src="https://docs.google.com/presentation/d/1Wf2LYn5fYTqdT1szFpkyDHmPZ8W0b5jq/preview" width="640" height="480" allow="autoplay"></iframe>  
+
 
 
 ## Lab
