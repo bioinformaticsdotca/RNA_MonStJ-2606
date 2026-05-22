@@ -28,102 +28,25 @@
 * [Introduction to IGV lecture](https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cbw/2025/full/RNASeq_Module2_IGV_Tutorial_Brief.pdf)
 * [Alignment QC mini lecture](https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cbw/2025/mini/RNASeq_MiniLecture_02_04_alignmentQC.pdf)
 
-Use Fastp to trim sequence adapter from the read FASTQ files and also perform basic data quality cleanup. The output of this step will be trimmed and filtered FASTQ files for each data set.
 
-Refer to the Fastp project and manual for a more detailed explanation:
-
-* [https://github.com/OpenGene/fastp](https://github.com/OpenGene/fastp)
-
-Fastp basic usage:
-```bash
-    fastp -i in.R1.fq.gz -I in.R2.fq.gz -o out.R1.fq.gz -O out.R2.fq.gz
-```
-The `-i` and `-I` parameters specify input R1 and R2 data files (raw data)
-The `-o` and `-O` parameters specify output R1 and R2 data files (trimmed and quality filtered) 
-Extra options specified below:
-
-* '-l 25' the minimum read length allowed after trimming is 25bp
-* '--adapter_fasta' the path to the adapter FASTA file containing adapter sequences to trim
-* '--trim_front1 13' trim a fixed number (13 in this case) of bases off the left end of read1
-* '--trim_front2 13' trim a fixed number (13 in this case) of bases off the left end of read2
-* '--json' the path to store a log file in JSON file format 
-* '--html' the path to store a web report file
-* '2>' use to store the information that would be printed to the screen into a file instead
-
-### Read trimming with Fastp
-First, set up some directories for output
-
-```bash
-echo $RNA_DATA_TRIM_DIR
-mkdir -p $RNA_DATA_TRIM_DIR
-
-```
-
-Download necessary Illumina adapter sequence files.
-
-```bash
-echo $RNA_REFS_DIR
-mkdir -p $RNA_REFS_DIR
-cd $RNA_REFS_DIR
-wget http://genomedata.org/rnaseq-tutorial/illumina_multiplex.fa
-
-```
-
-Use fastp to remove illumina adapter sequences (if any), trim the first 13 bases of each read, and perform default read quality filtering to remove reads that are too short, have too many low quality bases or have too many N's.
-
-```bash
-cd $RNA_HOME
-
-export S1=UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22
-fastp -i $RNA_DATA_DIR/$S1.read1.fastq.gz -I $RNA_DATA_DIR/$S1.read2.fastq.gz -o $RNA_DATA_TRIM_DIR/$S1.read1.fastq.gz -O $RNA_DATA_TRIM_DIR/$S1.read2.fastq.gz -l 25 --adapter_fasta $RNA_REFS_DIR/illumina_multiplex.fa --trim_front1 13 --trim_front2 13 --json $RNA_DATA_TRIM_DIR/$S1.fastp.json --html $RNA_DATA_TRIM_DIR/$S1.fastp.html 2>$RNA_DATA_TRIM_DIR/$S1.fastp.log
-
-export S2=UHR_Rep2_ERCC-Mix1_Build37-ErccTranscripts-chr22
-fastp -i $RNA_DATA_DIR/$S2.read1.fastq.gz -I $RNA_DATA_DIR/$S2.read2.fastq.gz -o $RNA_DATA_TRIM_DIR/$S2.read1.fastq.gz -O $RNA_DATA_TRIM_DIR/$S2.read2.fastq.gz -l 25 --adapter_fasta $RNA_REFS_DIR/illumina_multiplex.fa --trim_front1 13 --trim_front2 13 --json $RNA_DATA_TRIM_DIR/$S2.fastp.json --html $RNA_DATA_TRIM_DIR/$S2.fastp.html 2>$RNA_DATA_TRIM_DIR/$S2.fastp.log
-
-export S3=UHR_Rep3_ERCC-Mix1_Build37-ErccTranscripts-chr22
-fastp -i $RNA_DATA_DIR/$S3.read1.fastq.gz -I $RNA_DATA_DIR/$S3.read2.fastq.gz -o $RNA_DATA_TRIM_DIR/$S3.read1.fastq.gz -O $RNA_DATA_TRIM_DIR/$S3.read2.fastq.gz -l 25 --adapter_fasta $RNA_REFS_DIR/illumina_multiplex.fa --trim_front1 13 --trim_front2 13 --json $RNA_DATA_TRIM_DIR/$S3.fastp.json --html $RNA_DATA_TRIM_DIR/$S3.fastp.html 2>$RNA_DATA_TRIM_DIR/$S3.fastp.log
-
-export S4=HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22
-fastp -i $RNA_DATA_DIR/$S4.read1.fastq.gz -I $RNA_DATA_DIR/$S4.read2.fastq.gz -o $RNA_DATA_TRIM_DIR/$S4.read1.fastq.gz -O $RNA_DATA_TRIM_DIR/$S4.read2.fastq.gz -l 25 --adapter_fasta $RNA_REFS_DIR/illumina_multiplex.fa --trim_front1 13 --trim_front2 13 --json $RNA_DATA_TRIM_DIR/$S4.fastp.json --html $RNA_DATA_TRIM_DIR/$S4.fastp.html 2>$RNA_DATA_TRIM_DIR/$S4.fastp.log
-
-export S5=HBR_Rep2_ERCC-Mix2_Build37-ErccTranscripts-chr22
-fastp -i $RNA_DATA_DIR/$S5.read1.fastq.gz -I $RNA_DATA_DIR/$S5.read2.fastq.gz -o $RNA_DATA_TRIM_DIR/$S5.read1.fastq.gz -O $RNA_DATA_TRIM_DIR/$S5.read2.fastq.gz -l 25 --adapter_fasta $RNA_REFS_DIR/illumina_multiplex.fa --trim_front1 13 --trim_front2 13 --json $RNA_DATA_TRIM_DIR/$S5.fastp.json --html $RNA_DATA_TRIM_DIR/$S5.fastp.html 2>$RNA_DATA_TRIM_DIR/$S5.fastp.log
-
-export S6=HBR_Rep3_ERCC-Mix2_Build37-ErccTranscripts-chr22
-fastp -i $RNA_DATA_DIR/$S6.read1.fastq.gz -I $RNA_DATA_DIR/$S6.read2.fastq.gz -o $RNA_DATA_TRIM_DIR/$S6.read1.fastq.gz -O $RNA_DATA_TRIM_DIR/$S6.read2.fastq.gz -l 25 --adapter_fasta $RNA_REFS_DIR/illumina_multiplex.fa --trim_front1 13 --trim_front2 13 --json $RNA_DATA_TRIM_DIR/$S6.fastp.json --html $RNA_DATA_TRIM_DIR/$S6.fastp.html 2>$RNA_DATA_TRIM_DIR/$S6.fastp.log
-
-```
-
-### Use FastQC and multiqc to compare the impact of trimming
-
-Optional exercise: Compare the FastQC reports for fastq files before and after trimming. All fastqc reports can be generated on the commandline.
-
-```bash
-cd $RNA_DATA_TRIM_DIR
-fastqc *.fastq.gz
-
-multiqc ./
-
-```
-
-The resulting html reports can be viewed by navigating to:
-
-* http://**YOUR_PUBLIC_IPv4_ADDRESS**/rnaseq/data/
-* http://**YOUR_PUBLIC_IPv4_ADDRESS**/rnaseq/data/trimmed/
-
-### Clean up
-
-Move the fastqc and fastp results into sub-directories to keep things tidy
-
-```bash
-cd $RNA_DATA_TRIM_DIR
-mkdir fastqc
-mv *_fastqc* fastqc
-mkdir fastp
-mv *fastp.* fastp
-```
 ### STAR alignment
-Perform alignments with STAR to the genome and transcriptome.
+
+**Prepare genome for alignment**
+
+If not done previously, prepare the genome for PE100:
+
+```bash
+cd $RNA_REFS_DIR
+STAR --runMode genomeGenerate \
+     --genomeDir ./star_index \
+     --genomeFastaFiles chr22_with_ERCC92.fa \
+     --sjdbGTFfile chr22_with_ERCC92.gtf \
+     --sjdbOverhang 99
+```
+
+**STAR Alignment**
+
+Perform alignments with STAR to the genome.
 
 First, begin by making the appropriate output directory for our alignment results.
 
@@ -134,6 +57,38 @@ cd $RNA_ALIGN_DIR
 ```
 The output of this step will be a BAM file for each sample.
 
+Export samples name in environment variable to make a loop:
+
+```bash
+SAMPLES=(
+UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22
+UHR_Rep2_ERCC-Mix1_Build37-ErccTranscripts-chr22
+UHR_Rep3_ERCC-Mix1_Build37-ErccTranscripts-chr22
+HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22
+HBR_Rep2_ERCC-Mix2_Build37-ErccTranscripts-chr22
+HBR_Rep3_ERCC-Mix2_Build37-ErccTranscripts-chr22
+)
+```
+
+Loop for the mapping:
+
+```bash
+for S in ${SAMPLES[@]}
+do
+  echo "Aligning $S"
+
+  STAR \
+    --runThreadN 8 \
+    --genomeDir $STAR_INDEX \
+    --readFilesIn \
+      $RNA_DATA_TRIM_DIR/${S}.read1.fastq.gz \
+      $RNA_DATA_TRIM_DIR/${S}.read2.fastq.gz \
+    --readFilesCommand zcat \
+    --outFileNamePrefix $RNA_ALIGN_DIR/${S}. \
+    --outSAMtype BAM SortedByCoordinate \
+	> $RNA_ALIGN_DIR/${S}.STAR.log 2>&1
+done
+```
 
 Refer to STAR manual for a more detailed explanation:
 
@@ -147,7 +102,8 @@ STAR
 --genomeDir /path/to/genomeDir
 --readFilesIn /path/to/read1 [/path/to/read2 ]
 ```
-**STAR Alignment Summary**
+
+**Summary**
 STAR generates a summary of the alignments in a .log file for each sample. 
 Notice the number of total reads, reads aligned and various metrics regarding how the reads aligned to the reference.
 To help alignment QC, multiQC can be used to aggregate the alignemnt statistics.
@@ -160,7 +116,10 @@ multiqc ./
 To allow visualization with IGV, BAM files need to be index with samtools
 
 ```bash
-samtools index *bam
+for bam in *.Aligned.sortedByCoord.out.bam
+do
+  samtools index "$bam"
+done
 ```
 
 
