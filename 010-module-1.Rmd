@@ -12,6 +12,49 @@
 
 ## Lab
 
+### Dataset
+
+Objectives: In this assignment, we will be using a subset of the GSE114360 dataset, which consists of 6 RNA sequence files on the SGC-7901 gastric cancer cell line, (3 transfected with tcons_00001221 shRNA, and 3 control shRNA), and determine the number of differentially expressed genes.
+
+Experimental information and other things to keep in mind:
+
+
+The libraries are prepared as paired-end reads.  
+The samples were sequenced on an **Illumina HiSeq 4000** platform, with reads of **150 bp** in length.  
+
+👉 [GSE114360](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA471072)
+
+- 3 samples transfected with target shRNA  
+- 3 samples with control shRNA  
+
+Libraries were prepared using standard Illumina protocols.
+
+For this exercise, we use a subset of the data (**first 1,000,000 reads per pair**).
+
+---
+
+The files are named based on their SRR id's:
+- SRR7155055 = transfected sample 1
+- SRR7155056 = transfected sample 2
+- SRR7155057 = transfected sample 3
+- SRR7155058 = control sample 1
+- SRR7155059 = control sample 2
+- SRR7155060 = control sample 3
+
+
+### Pipeline
+
+![Pipeline RNA-seq](rnaseq_pipeline.png)
+
+
+
+### Sequencing quality control with FastQC
+
+
+
+
+### Read trimming with Fastp
+
 Use Fastp to trim sequence adapter from the read FASTQ files and also perform basic data quality cleanup. The output of this step will be trimmed and filtered FASTQ files for each data set.
 
 Refer to the Fastp project and manual for a more detailed explanation:
@@ -34,13 +77,11 @@ Extra options specified below:
 * '--html' the path to store a web report file
 * '2>' use to store the information that would be printed to the screen into a file instead
 
-### Read trimming with Fastp
 First, set up some directories for output
 
 ```bash
 echo $RNA_DATA_TRIM_DIR
 mkdir -p $RNA_DATA_TRIM_DIR
-
 ```
 
 Download necessary Illumina adapter sequence files.
