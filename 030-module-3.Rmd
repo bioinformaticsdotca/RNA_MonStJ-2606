@@ -4,3 +4,24 @@
 
 
 ## Lab
+
+source: [https://rnabio.org/module-03-expression/0003/03/03/Differential_Expression-DESeq2/] (https://rnabio.org/module-03-expression/0003/03/03/Differential_Expression-DESeq2/)
+
+Differential Expression mini lecture
+If you would like a brief refresher on differential expression analysis, please refer to the [mini lecture] (https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cshl/2025/mini/RNASeq_MiniLecture_03_03_DifferentialExpression.pdf).
+
+
+**DESeq2 DE Analysis**
+
+In this tutorial you will:
+
+Make use of the raw counts you generated previously using STAR.
+
+DESeq2 is a bioconductor package designed specifically for differential expression of count-based RNA-seq data
+
+Setup
+Here we start from within an R session, relevant packages should already be installed so we will load the libraries, set working directories and read in the raw read counts data. Two pieces of information are required to perform analysis with DESeq2. A matrix of raw counts, such as was generated previously while running STAR previously in this course. This is important as DESeq2 normalizes the data, correcting for differences in library size using using this type of data. DESeq2 also requires the experimental design which can be supplied as a data.frame, detailing the samples and conditions.
+
+To obtain more relevant results, we will start from the real dataset quantification: [https://www.ncbi.nlm.nih.gov/geo/download/?type=rnaseq_counts&acc=GSE114360&format=file&file=GSE114360_raw_counts_GRCh38.p13_NCBI.tsv.gz] [https://www.ncbi.nlm.nih.gov/geo/download/?type=rnaseq_counts&acc=GSE114360&format=file&file=GSE114360_raw_counts_GRCh38.p13_NCBI.tsv.gz]
+
+
