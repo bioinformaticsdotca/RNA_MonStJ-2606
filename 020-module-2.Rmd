@@ -140,8 +140,6 @@ multiqc ./
 ```
 
 
-
-
 To allow visualization with IGV, BAM files need to be index with samtools
 
 ```bash
@@ -149,6 +147,83 @@ for bam in *.Aligned.sortedByCoord.out.bam
 do
   samtools index "$bam"
 done
+```
+
+### Pseudo-alignement with Kallisto
+
+source: [https://rnabio.org/module-04-kallisto/0004/02/01/Alignment_Free_Kallisto/] (https://rnabio.org/module-04-kallisto/0004/02/01/Alignment_Free_Kallisto/)
+
+Mini lecture : [https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cshl/2025/mini/RNASeq_MiniLecture_04_01_AlignmentFreeKallisto.pdf] (https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cshl/2025/mini/RNASeq_MiniLecture_04_01_AlignmentFreeKallisto.pdf)
+
+**Reference transcriptome**
+
+To allow us to compare Kallisto results to expression results from STAR, we will create a custom Fasta file that corresponds to the transcripts we used for the STAR analysis. How can we obtain these transcript sequences in Fasta format?
+
+We can use BedTools to create a transcripts fastq file from a transcript GTF file. This approach is convenient because it will also include the sequences for the ERCC spike in controls, allowing us to generate Kallisto abundance estimates for those features as well. Use bedtools getfasta to create an Ensembl+ERCC92 transcripts fasta file as follows.
+
+```bash
+cd $RNA_HOME/refs
+
+# Convert GTF to genePred
+gtfToGenePred chr22_with_ERCC92.gtf chr22_with_ERCC92.genePred
+
+# Convert genePred to BED12
+genePredToBed chr22_with_ERCC92.genePred chr22_with_ERCC92.bed12
+
+bedtools getfasta -fi chr22_with_ERCC92.fa -bed chr22_with_ERCC92.bed12 -s -split -name -fo chr22_ERCC92_transcripts.fa
+
+# to see an explanation of the options used in this command:
+bedtools getfasta
+```
+
+Use less to view the file chr22_ERCC92_transcripts.fa. Note that this file has messy transcript names. Use the following hairball Perl one-liner to tidy up the header line for each fasta sequence. This Perl expression looks complex but it is really just looking for header lines the FASTA file that match one of two patterns (those that have names like ERCC… and those that have regular Ensembl transcript names). To learn more about this kind of string matching/parsing, you can refer to the [Perl regular expression documentation] (https://perldoc.perl.org/perlre).
+
+**Build a Kallisto transcriptome index**
+
+Remember that Kallisto does not perform alignment or use a reference genome sequence. Instead it performs pseudoalignment to determine the compatibility of reads with targets (transcript sequences in this case). However, similar to alignment algorithms like Tophat or STAR, Kallisto requires an index to assess this compatibility efficiently and quickly.
+
+```bash
+cd $RNA_HOME/refs
+mkdir kallisto
+cd kallisto
+kallisto index --index=chr22_ERCC92_transcripts_kallisto_index ../chr22_ERCC92_transcripts.clean.fa
+```
+
+**Generate abundance estimates for all samples using Kallisto**
+
+```bash
+
+echo $RNA_DATA_DIR
+
+cd $RNA_HOME/expression/
+mkdir kallisto
+cd kallisto
+
+kallisto quant --rf-stranded --index=$RNA_HOME/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index --output-dir=UHR_Rep1_ERCC-Mix1 --threads=4 --plaintext $RNA_DATA_DIR/UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22.read1.fastq.gz $RNA_DATA_DIR/UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22.read2.fastq.gz
+kallisto quant --rf-stranded --index=$RNA_HOME/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index --output-dir=UHR_Rep2_ERCC-Mix1 --threads=4 --plaintext $RNA_DATA_DIR/UHR_Rep2_ERCC-Mix1_Build37-ErccTranscripts-chr22.read1.fastq.gz $RNA_DATA_DIR/UHR_Rep2_ERCC-Mix1_Build37-ErccTranscripts-chr22.read2.fastq.gz
+kallisto quant --rf-stranded --index=$RNA_HOME/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index --output-dir=UHR_Rep3_ERCC-Mix1 --threads=4 --plaintext $RNA_DATA_DIR/UHR_Rep3_ERCC-Mix1_Build37-ErccTranscripts-chr22.read1.fastq.gz $RNA_DATA_DIR/UHR_Rep3_ERCC-Mix1_Build37-ErccTranscripts-chr22.read2.fastq.gz
+
+kallisto quant --rf-stranded --index=$RNA_HOME/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index --output-dir=HBR_Rep1_ERCC-Mix2 --threads=4 --plaintext $RNA_DATA_DIR/HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.read1.fastq.gz $RNA_DATA_DIR/HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.read2.fastq.gz
+kallisto quant --rf-stranded --index=$RNA_HOME/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index --output-dir=HBR_Rep2_ERCC-Mix2 --threads=4 --plaintext $RNA_DATA_DIR/HBR_Rep2_ERCC-Mix2_Build37-ErccTranscripts-chr22.read1.fastq.gz $RNA_DATA_DIR/HBR_Rep2_ERCC-Mix2_Build37-ErccTranscripts-chr22.read2.fastq.gz
+kallisto quant --rf-stranded --index=$RNA_HOME/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index --output-dir=HBR_Rep3_ERCC-Mix2 --threads=4 --plaintext $RNA_DATA_DIR/HBR_Rep3_ERCC-Mix2_Build37-ErccTranscripts-chr22.read1.fastq.gz $RNA_DATA_DIR/HBR_Rep3_ERCC-Mix2_Build37-ErccTranscripts-chr22.read2.fastq.gz
+```
+
+Create a single TSV file that has the TPM abundance estimates for all six samples.
+
+```bash
+cd $RNA_HOME/expression/kallisto
+paste */abundance.tsv | cut -f 1,2,5,10,15,20,25,30 > transcript_tpms_all_samples.tsv
+ls -1 */abundance.tsv | perl -ne 'chomp $_; if ($_ =~ /(\S+)\/abundance\.tsv/){print "\t$1"}' | perl -ne 'print "target_id\tlength$_\n"' > header.tsv
+cat header.tsv transcript_tpms_all_samples.tsv | grep -v "tpm" > transcript_tpms_all_samples.tsv2
+mv transcript_tpms_all_samples.tsv2 transcript_tpms_all_samples.tsv
+rm -f header.tsv
+```
+
+Take a look at the final kallisto result file we created:
+
+```bash
+head transcript_tpms_all_samples.tsv
+tail transcript_tpms_all_samples.tsv
 ```
 
 
