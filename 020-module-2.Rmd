@@ -186,7 +186,7 @@ Remember that Kallisto does not perform alignment or use a reference genome sequ
 cd $RNA_HOME/refs
 mkdir kallisto
 cd kallisto
-kallisto index --index=chr22_ERCC92_transcripts_kallisto_index ../chr22_ERCC92_transcripts.clean.fa
+kallisto index --index=chr22_ERCC92_transcripts_kallisto_index ../chr22_ERCC92_transcripts.fa
 ```
 
 **Generate abundance estimates for all samples using Kallisto**
@@ -195,7 +195,7 @@ kallisto index --index=chr22_ERCC92_transcripts_kallisto_index ../chr22_ERCC92_t
 
 echo $RNA_DATA_DIR
 
-cd $RNA_HOME/expression/
+cd $RNA_HOME
 mkdir kallisto
 cd kallisto
 
@@ -211,7 +211,7 @@ kallisto quant --rf-stranded --index=$RNA_HOME/refs/kallisto/chr22_ERCC92_transc
 Create a single TSV file that has the TPM abundance estimates for all six samples.
 
 ```bash
-cd $RNA_HOME/expression/kallisto
+cd $RNA_HOME/kallisto
 paste */abundance.tsv | cut -f 1,2,5,10,15,20,25,30 > transcript_tpms_all_samples.tsv
 ls -1 */abundance.tsv | perl -ne 'chomp $_; if ($_ =~ /(\S+)\/abundance\.tsv/){print "\t$1"}' | perl -ne 'print "target_id\tlength$_\n"' > header.tsv
 cat header.tsv transcript_tpms_all_samples.tsv | grep -v "tpm" > transcript_tpms_all_samples.tsv2
