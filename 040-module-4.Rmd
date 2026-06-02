@@ -7,3 +7,204 @@
 ## Lab
 
 
+In this tutorial you will perform functional enrichment analysis using:
+
+1. gProfiler
+2. clusterProfiler
+
+**Required packages**
+
+```{r setup, message=FALSE, warning=FALSE}
+library(data.table)
+library(ggplot2)
+library(gprofiler2)
+library(clusterProfiler)
+library(org.Hs.eg.db)
+library(enrichplot)
+library(dplyr)
+```
+
+
+```{r , message=FALSE, warning=FALSE,echo=FALSE}
+library(DESeq2)
+url <- "https://www.ncbi.nlm.nih.gov/geo/download/?type=rnaseq_counts&acc=GSE114360&format=file&file=GSE114360_raw_counts_GRCh38.p13_NCBI.tsv.gz"
+
+raw_counts <- fread(url)
+
+# convert the data.table to matrix format
+raw_counts = as.matrix(raw_counts)
+class(raw_counts)
+
+# set the gene ID values to be the row names for the matrix
+rownames(raw_counts) = raw_counts[, "GeneID"]
+
+# now that the gene IDs are the row names, remove the redundant column that contains them
+raw_counts = raw_counts[, colnames(raw_counts) != "GeneID"]
+
+# convert the count values from strings (with spaces) to integers, because originally the gene column contained characters, the entire matrix was set to character
+class(raw_counts) = "integer"
+
+# view the first few lines of the gene count matrix
+#head(raw_counts)
+
+# create a simple one column dataframe to start
+metaData <- data.frame("Condition" = c("UHR", "UHR", "UHR", "HBR", "HBR", "HBR"))
+
+# convert the "Condition" column to a factor data type
+# the arbitrary order of these factors will determine the direction of log2 fold-changes for the genes (i.e. up or down regulated)
+metaData$Condition = factor(metaData$Condition, levels = c("HBR", "UHR"))
+
+# set the row names of the metaData dataframe to be the names of our sample replicates from the read counts matrix
+rownames(metaData) = colnames(raw_counts)
+
+# view the metadata dataframe
+#head(metaData)
+
+# check that names of htseq count columns match the names of the meta data rows
+# use the "all" function which tests whether an entire logical vector is TRUE
+all(rownames(metaData) == colnames(raw_counts))
+
+dds = DESeqDataSetFromMatrix(countData = raw_counts, colData = metaData, design = ~Condition)
+
+# run the DESeq2 analysis on the "dds" object
+dds = DESeq(dds)
+
+# view the first 5 lines of the DE results
+res = results(dds)
+
+#define DEGs
+deg=subset(res,res$padj<0.01)
+
+```
+
+
+**Enrichment analysis with gProfiler**
+
+Documentation available : [gProfiler](https://biit.cs.ut.ee/gprofiler/gost)
+
+```{r , message=FALSE, warning=FALSE}
+gost.res = gost(rownames(deg),
+                 organism = "hsapiens",
+                 significant = TRUE,
+                 measure_underrepresentation=F,
+                 user_threshold = 0.05,
+                 correction_method = "fdr",
+                 evcodes = T)
+```
+
+
+Manhattan plot for all the results
+
+```{r , message=FALSE, warning=FALSE}
+
+gostres = gost.res$result
+# filter results to reduce to less specialized or general terms with at least 2 genes from our list
+gostres_filt = gostres[gostres$term_size > 15 & gostres$term_size < 2000 & gostres$intersection_size > 2,]
+
+#trasnform score with log10, higher is better
+gostres_filt$log10=-1 * log10(gostres_filt$p_value)
+
+#order results by decreasing score value
+gostres_filt=gostres_filt[order(gostres_filt$log10,decreasing=F),]
+
+#Manhattan plot
+gostplot(gost.res)
+
+```
+
+
+
+
+**Barplot results for each database**
+
+```{r , message=FALSE, warning=FALSE}
+
+
+# barplots for top 10 KEGG pathways
+res_table = gostres_filt[gostres_filt$source=="KEGG",][1:10, ]
+ 
+#modify margins for long terms name
+par(mar = c(5, 20, 4, 2))
+
+barplot(
+  res_table$log10,
+  horiz = TRUE,
+  names.arg = res_table$term_name,
+  col = "steelblue",
+  xlab = "-log10(padj)",
+  xlim = c(0, ceiling(max(res_table$log10))),
+  main = "Top 10 enriched terms",
+  las = 1,      # horizontal labels
+  cex.names = 0.8  # text size
+)
+
+```
+
+
+**Gene Ontology Enrichment with clusterProfiler**
+
+clusterProfiler requires Entrez Gene IDs.
+
+
+- GO Biological Process Enrichment
+
+```{r}
+ego_bp = enrichGO(
+  gene          = rownames(deg),
+  OrgDb         = org.Hs.eg.db,
+  keyType       = "ENTREZID",
+  ont           = "BP",
+  pAdjustMethod = "BH",
+  pvalueCutoff  = 0.05,
+  qvalueCutoff  = 0.05,
+  readable      = TRUE
+)
+
+head(as.data.frame(ego_bp))
+```
+
+- Visualize GO Results
+
+```{r fig.width=10, fig.height=6}
+barplot(
+  ego_bp,
+  showCategory = 15
+)
+```
+
+```{r fig.width=10, fig.height=8}
+dotplot(
+  ego_bp,
+  showCategory = 20
+)
+```
+
+- KEGG Pathway Enrichment
+
+```{r}
+ekegg = enrichKEGG(
+  gene = rownames(deg),
+  organism = "hsa",
+  pvalueCutoff = 0.05
+)
+
+head(as.data.frame(ekegg))
+```
+
+- Visualize KEGG Results
+
+```{r fig.width=10, fig.height=6}
+barplot(
+  ekegg,
+  showCategory = 15
+)
+```
+
+```{r fig.width=10, fig.height=8}
+dotplot(
+  ekegg,
+  showCategory = 20
+)
+```
+
+

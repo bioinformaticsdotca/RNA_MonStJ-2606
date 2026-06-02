@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Data and Compute Setup | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL</title>
+  <title>KEGG Pathway Enrichment | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL</title>
   <meta name="description" content="Workshop website for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Data and Compute Setup | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL" />
+  <meta property="og:title" content="KEGG Pathway Enrichment | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://bioinformaticsdotca.github.io/RNA_MontStJ-2606/img/bioinformatics_logo.png" />
   <meta property="og:description" content="Workshop website for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop" />
   <meta name="github-repo" content="bioinformaticsdotca/RNA_MontStJ-2606" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Data and Compute Setup | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL" />
+  <meta name="twitter:title" content="KEGG Pathway Enrichment | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL" />
   
   <meta name="twitter:description" content="Workshop website for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop" />
   <meta name="twitter:image" content="https://bioinformaticsdotca.github.io/RNA_MontStJ-2606/img/bioinformatics_logo.png" />
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-<link rel="prev" href="meet-your-faculty.html"/>
-<link rel="next" href="module-1.html"/>
+<link rel="prev" href="gene-ontology-enrichment-with-clusterprofiler.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -227,6 +227,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="module-4-pseudo-alignment-and-enrichment-analysis.html"><a href="module-4-pseudo-alignment-and-enrichment-analysis.html#lecture-3"><i class="fa fa-check"></i>Lecture</a></li>
 <li class="chapter" data-level="" data-path="module-4-pseudo-alignment-and-enrichment-analysis.html"><a href="module-4-pseudo-alignment-and-enrichment-analysis.html#lab-3"><i class="fa fa-check"></i>Lab</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="enrichment-analysis-with-gprofiler.html"><a href="enrichment-analysis-with-gprofiler.html"><i class="fa fa-check"></i>Enrichment analysis with gProfiler</a></li>
+<li class="chapter" data-level="" data-path="gene-ontology-enrichment-with-clusterprofiler.html"><a href="gene-ontology-enrichment-with-clusterprofiler.html"><i class="fa fa-check"></i>Gene Ontology Enrichment with clusterProfiler</a>
+<ul>
+<li class="chapter" data-level="" data-path="gene-ontology-enrichment-with-clusterprofiler.html"><a href="gene-ontology-enrichment-with-clusterprofiler.html#go-biological-process-enrichment"><i class="fa fa-check"></i>GO Biological Process Enrichment</a></li>
+<li class="chapter" data-level="" data-path="gene-ontology-enrichment-with-clusterprofiler.html"><a href="gene-ontology-enrichment-with-clusterprofiler.html#visualize-go-results"><i class="fa fa-check"></i>Visualize GO Results</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="kegg-pathway-enrichment.html"><a href="kegg-pathway-enrichment.html"><i class="fa fa-check"></i>KEGG Pathway Enrichment</a>
+<ul>
+<li class="chapter" data-level="" data-path="kegg-pathway-enrichment.html"><a href="kegg-pathway-enrichment.html#visualize-kegg-results"><i class="fa fa-check"></i>Visualize KEGG Results</a></li>
+</ul></li>
 <li class="divider"></li>
 <h1 id="sponsors">Sponsors</h1>
 <center>
@@ -260,28 +270,73 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-and-compute-setup" class="section level1 hasAnchor">
-<h1>Data and Compute Setup<a href="data-and-compute-setup.html#data-and-compute-setup" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="course-data-downloads" class="section level4 hasAnchor">
-<h4>Course data downloads<a href="data-and-compute-setup.html#course-data-downloads" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Coming soon!</p>
-</div>
-<div id="compute-setup" class="section level4 hasAnchor">
-<h4>Compute setup<a href="data-and-compute-setup.html#compute-setup" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Coming soon!</p>
+<div id="kegg-pathway-enrichment" class="section level1 hasAnchor">
+<h1>KEGG Pathway Enrichment<a href="kegg-pathway-enrichment.html#kegg-pathway-enrichment" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="kegg-pathway-enrichment.html#cb35-1" tabindex="-1"></a>ekegg <span class="ot">=</span> <span class="fu">enrichKEGG</span>(</span>
+<span id="cb35-2"><a href="kegg-pathway-enrichment.html#cb35-2" tabindex="-1"></a>  <span class="at">gene =</span> <span class="fu">rownames</span>(deg),</span>
+<span id="cb35-3"><a href="kegg-pathway-enrichment.html#cb35-3" tabindex="-1"></a>  <span class="at">organism =</span> <span class="st">&quot;hsa&quot;</span>,</span>
+<span id="cb35-4"><a href="kegg-pathway-enrichment.html#cb35-4" tabindex="-1"></a>  <span class="at">pvalueCutoff =</span> <span class="fl">0.05</span></span>
+<span id="cb35-5"><a href="kegg-pathway-enrichment.html#cb35-5" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## Reading KEGG annotation online: &quot;https://rest.kegg.jp/link/hsa/pathway&quot;...</code></pre>
+<pre><code>## Reading KEGG annotation online: &quot;https://rest.kegg.jp/list/pathway/hsa&quot;...</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="kegg-pathway-enrichment.html#cb38-1" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as.data.frame</span>(ekegg))</span></code></pre></div>
+<pre><code>##                    category                     subcategory       ID
+## hsa01230         Metabolism        Global and overview maps hsa01230
+## hsa04820 Cellular Processes                   Cell motility hsa04820
+## hsa04510 Cellular Processes Cellular community - eukaryotes hsa04510
+## hsa04518               &lt;NA&gt;                            &lt;NA&gt; hsa04518
+## hsa04210 Cellular Processes           Cell growth and death hsa04210
+## hsa05205     Human Diseases                Cancer: overview hsa05205
+##                           Description GeneRatio  BgRatio RichFactor
+## hsa01230  Biosynthesis of amino acids    16/267  75/9395 0.21333333
+## hsa04820 Cytoskeleton in muscle cells    22/267 233/9395 0.09442060
+## hsa04510               Focal adhesion    20/267 203/9395 0.09852217
+## hsa04518           Integrin signaling    15/267 154/9395 0.09740260
+## hsa04210                    Apoptosis    14/267 137/9395 0.10218978
+## hsa05205      Proteoglycans in cancer    17/267 204/9395 0.08333333
+##          FoldEnrichment   zScore       pvalue     p.adjust       qvalue
+## hsa01230       7.506617 9.675446 2.200409e-10 6.601226e-08 5.836873e-08
+## hsa04820       3.322403 6.139224 7.231968e-07 1.084795e-04 9.591873e-05
+## hsa04510       3.466726 6.076548 1.207826e-06 1.207826e-04 1.067973e-04
+## hsa04518       3.427331 5.194252 3.072714e-05 1.988539e-03 1.758287e-03
+## hsa04210       3.595779 5.234347 3.314232e-05 1.988539e-03 1.758287e-03
+## hsa05205       2.932272 4.771941 6.839704e-05 3.419852e-03 3.023869e-03
+##                                                                                                           geneID
+## hsa01230                   2023/1491/26227/3417/7086/27430/5723/440/29968/445/2026/5315/84706/102724560/875/5230
+## hsa04820 2023/271/476/481/2335/1286/3693/483/3673/1729/1289/7431/2026/5318/3678/1634/2200/3728/3691/71/6385/2192
+## hsa04510       3725/824/2335/1286/2317/3693/3673/1729/2534/3910/5154/4233/2889/3678/5829/3480/91807/9564/3691/71
+## hsa04518                                3987/2335/1286/2317/3693/3673/3910/5154/4233/3678/5829/2200/3480/3691/71
+## hsa04210                                         842/3725/4170/824/7277/3710/1508/1509/823/8722/1649/71/5366/468
+## hsa05205                       2335/7474/3693/3673/3710/4233/4609/960/7480/1975/3678/1634/5829/3480/71/6385/7078
+##          Count
+## hsa01230    16
+## hsa04820    22
+## hsa04510    20
+## hsa04518    15
+## hsa04210    14
+## hsa05205    17</code></pre>
+<div id="visualize-kegg-results" class="section level2 hasAnchor">
+<h2>Visualize KEGG Results<a href="kegg-pathway-enrichment.html#visualize-kegg-results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="kegg-pathway-enrichment.html#cb40-1" tabindex="-1"></a><span class="fu">barplot</span>(</span>
+<span id="cb40-2"><a href="kegg-pathway-enrichment.html#cb40-2" tabindex="-1"></a>  ekegg,</span>
+<span id="cb40-3"><a href="kegg-pathway-enrichment.html#cb40-3" tabindex="-1"></a>  <span class="at">showCategory =</span> <span class="dv">15</span></span>
+<span id="cb40-4"><a href="kegg-pathway-enrichment.html#cb40-4" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="960" /></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="kegg-pathway-enrichment.html#cb41-1" tabindex="-1"></a><span class="fu">dotplot</span>(</span>
+<span id="cb41-2"><a href="kegg-pathway-enrichment.html#cb41-2" tabindex="-1"></a>  ekegg,</span>
+<span id="cb41-3"><a href="kegg-pathway-enrichment.html#cb41-3" tabindex="-1"></a>  <span class="at">showCategory =</span> <span class="dv">20</span></span>
+<span id="cb41-4"><a href="kegg-pathway-enrichment.html#cb41-4" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="960" /></p>
 
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="meet-your-faculty.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="module-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="gene-ontology-enrichment-with-clusterprofiler.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -312,7 +367,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/bioinformaticsdotca/RNA_MontStJ-2606/blob/main/002-computing.Rmd",
+    "link": "https://github.com/bioinformaticsdotca/RNA_MontStJ-2606/blob/main/040-module-4.Rmd",
     "text": "Edit"
   },
   "history": {
