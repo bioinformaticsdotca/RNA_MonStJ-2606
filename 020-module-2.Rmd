@@ -139,17 +139,16 @@ Run the following command art the root of your project, so multiqc can screen fo
 multiqc ./
 ```
 
+**IGV visualization**
 
-To allow visualization with IGV, BAM files need to be index with samtools
+To facilitate IGV visualization, BAM files can be merged by condition. BAM files also need to be index with samtools.
 
 ```bash
-for bam in *.Aligned.sortedByCoord.out.bam
-do
-  samtools index "$bam"
-done
+samtools merge -o HBR.bam HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam HBR_Rep2_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam HBR_Rep3_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam
+samtools index HBR.bam
+samtools merge -o UHR.bam  UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam UHR_Rep2_ERCC-Mix1_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam UHR_Rep3_ERCC-Mix1_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam 
+samtools index UHR.bam
 ```
-
-**IGV visualization**
 
 Now that our BAM files have been indexed with samtools we can load them and explore the RNA-seq alignments using the Integrative Genomics Viewer (IGV).
 
@@ -160,11 +159,11 @@ Start IGV on your computer/laptop. You can load the necessary files in IGV direc
 Make sure you select the appropriate reference genome build in IGV (top left corner of IGV): in this case hg38.
 
 AWS links to bam files
-HBR Rep1 star alignment: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam
-HBR Rep1 Bam index: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam.bai
+HBR Rep1 star alignment: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/HBR.bam
+HBR Rep1 Bam index: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/HBR.bai
 
-UHR Rep1 star alignment: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam
-UHR Rep1 Bam index: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam.bai
+UHR Rep1 star alignment: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/UHR.bam
+UHR Rep1 Bam index: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/UHR.bai
 
 You may wish to customize the track names as you load them in to keep them straight. Do this by right-clicking on the alignment track and choosing ‘Rename Track’.
 
@@ -180,7 +179,8 @@ Try to find a variant position in the RNAseq data:
 HINT: DDX17 is a highly expressed gene with several variants in its 3 prime UTR. Click on Refseq track -> expanded to better see gene positions.
 Other highly expressed genes you might explore are: NUP50, CYB5R3, and EIF3L (all have at least one transcribed variant).
 
-
+IGV visualization example (DDX17 3 prime region)
+![IGV screenshot](img/IGV_screenshot.png)
 
 
 
