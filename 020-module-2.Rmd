@@ -149,6 +149,41 @@ do
 done
 ```
 
+**IGV visualization**
+
+Now that our BAM files have been indexed with samtools we can load them and explore the RNA-seq alignments using the Integrative Genomics Viewer (IGV).
+
+The exercise below assumes that you have IGV installed on your local computer. If you are unable to get IGV to run locally you may also consider a web based version of IGV that runs in your browser. The interface of the IGV Web App is different from the local install, and is missing a few features, but is conceptually very similar. To access it simply visit: [IGV Web App] (https://igv.org/app/).
+
+Start IGV on your computer/laptop. You can load the necessary files in IGV directly from your web accessible amazon workspace (see below) using ‘File’ -> ‘Load from URL’.
+
+Make sure you select the appropriate reference genome build in IGV (top left corner of IGV): in this case hg38.
+
+AWS links to bam files
+HBR Rep1 star alignment: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam
+HBR Rep1 Bam index: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam.bai
+
+UHR Rep1 star alignment: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam
+UHR Rep1 Bam index: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam.bai
+
+You may wish to customize the track names as you load them in to keep them straight. Do this by right-clicking on the alignment track and choosing ‘Rename Track’.
+
+Go to an example gene locus on chr22:
+
+- e.g. EIF3L, NDUFA6, and RBX1 have nice coverage
+- e.g. SULT4A1 and GTSE1 are differentially expressed. Are they up-regulated or down-regulated in the brain (HBR) compared to cancer cell lines (UHR)?
+- Mouse over some reads. What detail can you learn about each read and its alignment to the reference genome.
+
+Exercise
+Try to find a variant position in the RNAseq data:
+
+HINT: DDX17 is a highly expressed gene with several variants in its 3 prime UTR. Click on Refseq track -> expanded to better see gene positions.
+Other highly expressed genes you might explore are: NUP50, CYB5R3, and EIF3L (all have at least one transcribed variant).
+
+
+
+
+
 ### Pseudo-alignement with Kallisto
 
 source: [https://rnabio.org/module-04-kallisto/0004/02/01/Alignment_Free_Kallisto/] (https://rnabio.org/module-04-kallisto/0004/02/01/Alignment_Free_Kallisto/)
