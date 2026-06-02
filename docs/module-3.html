@@ -259,16 +259,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="lab-2" class="section level2 hasAnchor">
 <h2>Lab<a href="module-3.html#lab-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>source: [<a href="https://rnabio.org/module-03-expression/0003/03/03/Differential_Expression-DESeq2/" class="uri">https://rnabio.org/module-03-expression/0003/03/03/Differential_Expression-DESeq2/</a>] (<a href="https://rnabio.org/module-03-expression/0003/03/03/Differential_Expression-DESeq2/" class="uri">https://rnabio.org/module-03-expression/0003/03/03/Differential_Expression-DESeq2/</a>)</p>
-<p>Differential Expression mini lecture
-If you would like a brief refresher on differential expression analysis, please refer to the [mini lecture] (<a href="https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cshl/2025/mini/RNASeq_MiniLecture_03_03_DifferentialExpression.pdf" class="uri">https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cshl/2025/mini/RNASeq_MiniLecture_03_03_DifferentialExpression.pdf</a>).</p>
+<p><strong>source: </strong> <a href="https://rnabio.org/module-03-expression/0003/03/03/Differential_Expression-DESeq2/">Differential_Expression-DESeq2</a></p>
+<p><strong>Differential Expression mini lecture</strong></p>
+<p>If you would like a brief refresher on differential expression analysis, please refer to the <a href="https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cshl/2025/mini/RNASeq_MiniLecture_03_03_DifferentialExpression.pdf">mini lecture</a>.</p>
 <p><strong>DESeq2 DE Analysis</strong></p>
 <p>In this tutorial you will:</p>
 <p>Make use of the raw counts you generated previously using STAR.</p>
 <p>DESeq2 is a bioconductor package designed specifically for differential expression of count-based RNA-seq data</p>
 <p>Setup
 Here we start from within an R session, relevant packages should already be installed so we will load the libraries, set working directories and read in the raw read counts data. Two pieces of information are required to perform analysis with DESeq2. A matrix of raw counts, such as was generated previously while running STAR previously in this course. This is important as DESeq2 normalizes the data, correcting for differences in library size using using this type of data. DESeq2 also requires the experimental design which can be supplied as a data.frame, detailing the samples and conditions.</p>
-<p>To obtain more relevant results, we will start from the real dataset quantification: [<a href="https://www.ncbi.nlm.nih.gov/geo/download/?type=rnaseq_counts&amp;acc=GSE114360&amp;format=file&amp;file=GSE114360_raw_counts_GRCh38.p13_NCBI.tsv.gz" class="uri">https://www.ncbi.nlm.nih.gov/geo/download/?type=rnaseq_counts&amp;acc=GSE114360&amp;format=file&amp;file=GSE114360_raw_counts_GRCh38.p13_NCBI.tsv.gz</a>] [<a href="https://www.ncbi.nlm.nih.gov/geo/download/?type=rnaseq_counts&amp;acc=GSE114360&amp;format=file&amp;file=GSE114360_raw_counts_GRCh38.p13_NCBI.tsv.gz" class="uri">https://www.ncbi.nlm.nih.gov/geo/download/?type=rnaseq_counts&amp;acc=GSE114360&amp;format=file&amp;file=GSE114360_raw_counts_GRCh38.p13_NCBI.tsv.gz</a>]</p>
+<p>To obtain more relevant results, we will start from the real dataset quantification: <a href="https://www.ncbi.nlm.nih.gov/geo/download/?type=rnaseq_counts&amp;acc=GSE114360&amp;format=file&amp;file=GSE114360_raw_counts_GRCh38.p13_NCBI.tsv.gz">GSE114360_raw_counts_GRCh38.p13_NCBI.tsv.gz</a></p>
 
 </div>
 </div>

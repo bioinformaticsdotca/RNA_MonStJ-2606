@@ -34,6 +34,7 @@ For this exercise, we use a subset of the data (**first 1,000,000 reads per pair
 ---
 
 The files are named based on their SRR id's:
+
 - SRR7155055 = transfected sample 1
 - SRR7155056 = transfected sample 2
 - SRR7155057 = transfected sample 3
@@ -59,7 +60,7 @@ Use Fastp to trim sequence adapter from the read FASTQ files and also perform ba
 
 Refer to the Fastp project and manual for a more detailed explanation:
 
-* [https://github.com/OpenGene/fastp](https://github.com/OpenGene/fastp)
+* [fastp](https://github.com/OpenGene/fastp)
 
 Fastp basic usage:
 ```bash

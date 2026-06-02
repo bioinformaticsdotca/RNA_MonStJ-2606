@@ -278,13 +278,15 @@ The samples were sequenced on an <strong>Illumina HiSeq 4000</strong> platform, 
 <p>Libraries were prepared using standard Illumina protocols.</p>
 <p>For this exercise, we use a subset of the data (<strong>first 1,000,000 reads per pair</strong>).</p>
 <hr />
-<p>The files are named based on their SRR id’s:
-- SRR7155055 = transfected sample 1
-- SRR7155056 = transfected sample 2
-- SRR7155057 = transfected sample 3
-- SRR7155058 = control sample 1
-- SRR7155059 = control sample 2
-- SRR7155060 = control sample 3</p>
+<p>The files are named based on their SRR id’s:</p>
+<ul>
+<li>SRR7155055 = transfected sample 1</li>
+<li>SRR7155056 = transfected sample 2</li>
+<li>SRR7155057 = transfected sample 3</li>
+<li>SRR7155058 = control sample 1</li>
+<li>SRR7155059 = control sample 2</li>
+<li>SRR7155060 = control sample 3</li>
+</ul>
 </div>
 <div id="pipeline" class="section level3 hasAnchor">
 <h3>Pipeline<a href="module-1.html#pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -301,7 +303,7 @@ The samples were sequenced on an <strong>Illumina HiSeq 4000</strong> platform, 
 <p>Use Fastp to trim sequence adapter from the read FASTQ files and also perform basic data quality cleanup. The output of this step will be trimmed and filtered FASTQ files for each data set.</p>
 <p>Refer to the Fastp project and manual for a more detailed explanation:</p>
 <ul>
-<li><a href="https://github.com/OpenGene/fastp">https://github.com/OpenGene/fastp</a></li>
+<li><a href="https://github.com/OpenGene/fastp">fastp</a></li>
 </ul>
 <p>Fastp basic usage:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="module-1.html#cb1-1" tabindex="-1"></a>    <span class="ex">fastp</span> <span class="at">-i</span> in.R1.fq.gz <span class="at">-I</span> in.R2.fq.gz <span class="at">-o</span> out.R1.fq.gz <span class="at">-O</span> out.R2.fq.gz</span></code></pre></div>

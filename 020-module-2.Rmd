@@ -122,7 +122,7 @@ done
 
 Refer to STAR manual for a more detailed explanation:
 
-* [https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf](https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf)
+* [STARmanual.pdf](https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf)
 
 The basic options to run a mapping job are as follows:
 
@@ -152,18 +152,21 @@ samtools index UHR.bam
 
 Now that our BAM files have been indexed with samtools we can load them and explore the RNA-seq alignments using the Integrative Genomics Viewer (IGV).
 
-The exercise below assumes that you have IGV installed on your local computer. If you are unable to get IGV to run locally you may also consider a web based version of IGV that runs in your browser. The interface of the IGV Web App is different from the local install, and is missing a few features, but is conceptually very similar. To access it simply visit: [IGV Web App] (https://igv.org/app/).
+The exercise below assumes that you have IGV installed on your local computer. If you are unable to get IGV to run locally you may also consider a web based version of IGV that runs in your browser. The interface of the IGV Web App is different from the local install, and is missing a few features, but is conceptually very similar. 
+
+To access it simply visit: [IGV Web App](https://igv.org/app/).
 
 Start IGV on your computer/laptop. You can load the necessary files in IGV directly from your web accessible amazon workspace (see below) using ‘File’ -> ‘Load from URL’.
 
 Make sure you select the appropriate reference genome build in IGV (top left corner of IGV): in this case hg38.
 
-AWS links to bam files
-HBR Rep1 star alignment: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/HBR.bam
-HBR Rep1 Bam index: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/HBR.bai
+AWS links to bam files: 
 
-UHR Rep1 star alignment: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/UHR.bam
-UHR Rep1 Bam index: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/UHR.bai
+* HBR Rep1 star alignment: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/HBR.bam
+* HBR Rep1 Bam index: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/HBR.bai
+
+* UHR Rep1 star alignment: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/UHR.bam
+* UHR Rep1 Bam index: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/UHR.bai
 
 You may wish to customize the track names as you load them in to keep them straight. Do this by right-clicking on the alignment track and choosing ‘Rename Track’.
 
@@ -173,10 +176,11 @@ Go to an example gene locus on chr22:
 - e.g. SULT4A1 and GTSE1 are differentially expressed. Are they up-regulated or down-regulated in the brain (HBR) compared to cancer cell lines (UHR)?
 - Mouse over some reads. What detail can you learn about each read and its alignment to the reference genome.
 
-Exercise
+**Exercise**
+
 Try to find a variant position in the RNAseq data:
 
-HINT: DDX17 is a highly expressed gene with several variants in its 3 prime UTR. Click on Refseq track -> expanded to better see gene positions.
+* HINT: DDX17 is a highly expressed gene with several variants in its 3 prime UTR. Click on Refseq track -> expanded to better see gene positions.
 Other highly expressed genes you might explore are: NUP50, CYB5R3, and EIF3L (all have at least one transcribed variant).
 
 IGV visualization example (DDX17 3 prime region)
@@ -186,9 +190,9 @@ IGV visualization example (DDX17 3 prime region)
 
 ### Pseudo-alignement with Kallisto
 
-source: [https://rnabio.org/module-04-kallisto/0004/02/01/Alignment_Free_Kallisto/] (https://rnabio.org/module-04-kallisto/0004/02/01/Alignment_Free_Kallisto/)
+source: [Kallisto/](https://rnabio.org/module-04-kallisto/0004/02/01/Alignment_Free_Kallisto/)
 
-Mini lecture : [https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cshl/2025/mini/RNASeq_MiniLecture_04_01_AlignmentFreeKallisto.pdf] (https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cshl/2025/mini/RNASeq_MiniLecture_04_01_AlignmentFreeKallisto.pdf)
+Mini lecture : [Kallisto.pdf](https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cshl/2025/mini/RNASeq_MiniLecture_04_01_AlignmentFreeKallisto.pdf)
 
 **Reference transcriptome**
 
@@ -211,7 +215,7 @@ bedtools getfasta -fi chr22_with_ERCC92.fa -bed chr22_with_ERCC92.bed12 -s -spli
 bedtools getfasta
 ```
 
-Use less to view the file chr22_ERCC92_transcripts.fa. Note that this file has messy transcript names. Use the following hairball Perl one-liner to tidy up the header line for each fasta sequence. This Perl expression looks complex but it is really just looking for header lines the FASTA file that match one of two patterns (those that have names like ERCC… and those that have regular Ensembl transcript names). To learn more about this kind of string matching/parsing, you can refer to the [Perl regular expression documentation] (https://perldoc.perl.org/perlre).
+Use less to view the file chr22_ERCC92_transcripts.fa. Note that this file has messy transcript names. Use the following hairball Perl one-liner to tidy up the header line for each fasta sequence. This Perl expression looks complex but it is really just looking for header lines the FASTA file that match one of two patterns (those that have names like ERCC… and those that have regular Ensembl transcript names). To learn more about this kind of string matching/parsing, you can refer to the [Perl regular expression documentation](https://perldoc.perl.org/perlre).
 
 **Build a Kallisto transcriptome index**
 
