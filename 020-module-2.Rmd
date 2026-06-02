@@ -184,7 +184,7 @@ Try to find a variant position in the RNAseq data:
 Other highly expressed genes you might explore are: NUP50, CYB5R3, and EIF3L (all have at least one transcribed variant).
 
 IGV visualization example (DDX17 3 prime region)
-![IGV screenshot](img/IGV_screenshot.png)
+![IGV screenshot](img/IGV_snapshot.png)
 
 
 
