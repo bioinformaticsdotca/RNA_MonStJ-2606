@@ -146,6 +146,7 @@ multiqc ./
 To facilitate IGV visualization, BAM files can be merged by condition. BAM files also need to be index with samtools.
 
 ```bash
+cd $RNA_ALIGN_DIR
 samtools merge -o HBR.bam HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam HBR_Rep2_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam HBR_Rep3_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam
 samtools index HBR.bam
 samtools merge -o UHR.bam  UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam UHR_Rep2_ERCC-Mix1_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam UHR_Rep3_ERCC-Mix1_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam 
@@ -234,11 +235,9 @@ kallisto index --index=chr22_ERCC92_transcripts_kallisto_index ../chr22_ERCC92_t
 
 ```bash
 
-echo $RNA_DATA_DIR
-
-cd $RNA_HOME
-mkdir kallisto
-cd kallisto
+echo $RNA_PSEUDOALIGN_DIR
+mkdir $RNA_PSEUDOALIGN_DIR
+cd $RNA_PSEUDOALIGN_DIR
 
 kallisto quant --rf-stranded --index=$RNA_HOME/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index --output-dir=UHR_Rep1_ERCC-Mix1 --threads=4 --plaintext $RNA_DATA_DIR/UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22.read1.fastq.gz $RNA_DATA_DIR/UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22.read2.fastq.gz
 kallisto quant --rf-stranded --index=$RNA_HOME/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index --output-dir=UHR_Rep2_ERCC-Mix1 --threads=4 --plaintext $RNA_DATA_DIR/UHR_Rep2_ERCC-Mix1_Build37-ErccTranscripts-chr22.read1.fastq.gz $RNA_DATA_DIR/UHR_Rep2_ERCC-Mix1_Build37-ErccTranscripts-chr22.read2.fastq.gz
@@ -252,7 +251,7 @@ kallisto quant --rf-stranded --index=$RNA_HOME/refs/kallisto/chr22_ERCC92_transc
 Create a single TSV file that has the TPM abundance estimates for all six samples.
 
 ```bash
-cd $RNA_HOME/kallisto
+cd $RNA_PSEUDOALIGN_DIR
 paste */abundance.tsv | cut -f 1,2,5,10,15,20,25,30 > transcript_tpms_all_samples.tsv
 ls -1 */abundance.tsv | perl -ne 'chomp $_; if ($_ =~ /(\S+)\/abundance\.tsv/){print "\t$1"}' | perl -ne 'print "target_id\tlength$_\n"' > header.tsv
 cat header.tsv transcript_tpms_all_samples.tsv | grep -v "tpm" > transcript_tpms_all_samples.tsv2
