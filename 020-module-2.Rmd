@@ -20,6 +20,8 @@
 * Basic manipulation of BAMs
 * Visualization of RNA-seq alignments in IGV
 * Alignment QC Assessment
+* Pseudo-alignment
+
 
 ### Lectures from previous workshop
 * [Introduction to alignment mini lecture](https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cbw/2025/mini/RNASeq_MiniLecture_02_01_Alignment.pdf)
