@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Create Pathway List | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL</title>
+  <meta name="description" content="Workshop website for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop" />
+  <meta name="generator" content="bookdown 0.46.4 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Create Pathway List | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://bioinformaticsdotca.github.io/RNA_MontStJ-2606/img/bioinformatics_logo.png" />
+  <meta property="og:description" content="Workshop website for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop" />
+  <meta name="github-repo" content="bioinformaticsdotca/RNA_MontStJ-2606" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Create Pathway List | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL" />
+  
+  <meta name="twitter:description" content="Workshop website for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop" />
+  <meta name="twitter:image" content="https://bioinformaticsdotca.github.io/RNA_MontStJ-2606/img/bioinformatics_logo.png" />
+
+<meta name="author" content="Faculty: Virginie Calderon, Lourdes Peña-Castillo" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="run-gsea-with-gene-sets-from-msigdb.html"/>
+<link rel="next" href="run-fgsea.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.12.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "(2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL",
+  "description": "The complete set of tutorials, slides, and practical exercises for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL 2026 Canadian Bioinformatics Workshop, hosted on GitHub Pages.",
+  "url": "https://bioinformaticsdotca.github.io/RNA_MontStJ-2606",
+  "learningResourceType": ["tutorial", "slides", "exercise"],
+  "inLanguage": "en",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "provider": {
+    "@type": "Organization",
+    "name": "Bioinformatics.ca",
+    "url": "https://bioinformatics.ca"
+  },
+  "keywords": "",
+  "isPartOf": {
+    "@type": "Course",
+    "@id": "https://bioinformatics.ca/workshops-all/2026-rna-seq-analysis-montreal-qc/"
+  }
+}
+</script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<a href="https://bioinformaticsdotca.github.io/">
+ <img src="img/bioinformatics_logo.png" width="90%" alt="bioinformatics.ca logo" style="display:block; margin-left:auto; margin-right:auto; margin-top:15px;">
+ </a>
+<li><center><strong><a href="./"><br>(2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL<br><br></a></strong></center></li>
+<a href="./">
+ <img src="img/RNA-icon.png" width="70%" alt="(2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL logo" style="display:block; margin-left:auto; margin-right:auto; ">
+ </a>
+<br>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Workshop Info</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pre-work"><i class="fa fa-check"></i>Pre-work</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#class-photo"><i class="fa fa-check"></i>Class Photo</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i>Schedule</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="meet-your-faculty.html"><a href="meet-your-faculty.html"><i class="fa fa-check"></i>Meet Your Faculty</a>
+<ul>
+<li class="chapter" data-level="" data-path="meet-your-faculty.html"><a href="meet-your-faculty.html#instructors"><i class="fa fa-check"></i>Instructors</a></li>
+<li class="chapter" data-level="" data-path="meet-your-faculty.html"><a href="meet-your-faculty.html#teaching-assistants"><i class="fa fa-check"></i>Teaching Assistants</a></li>
+<li class="chapter" data-level="" data-path="meet-your-faculty.html"><a href="meet-your-faculty.html#facilitators"><i class="fa fa-check"></i>Facilitators</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-and-compute-setup.html"><a href="data-and-compute-setup.html"><i class="fa fa-check"></i>Data and Compute Setup</a></li>
+<li class="part"><span><b>II Modules</b></span></li>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html"><i class="fa fa-check"></i>Module 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html#lecture"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html#lab"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html#dataset"><i class="fa fa-check"></i>Dataset</a></li>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html#pipeline"><i class="fa fa-check"></i>Pipeline</a></li>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html#sequencing-quality-control-with-fastqc"><i class="fa fa-check"></i>Sequencing quality control with FastQC</a></li>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html#read-trimming-with-fastp"><i class="fa fa-check"></i>Read trimming with Fastp</a></li>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html#use-fastqc-and-multiqc-to-compare-the-impact-of-trimming"><i class="fa fa-check"></i>Use FastQC and multiqc to compare the impact of trimming</a></li>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html#clean-up"><i class="fa fa-check"></i>Clean up</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html"><i class="fa fa-check"></i>Module 2: RNA-seq alignment concepts and file formats</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#lecture-1"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#lab-1"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#key-concepts"><i class="fa fa-check"></i>Key concepts</a></li>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#module-2---learning-objectives"><i class="fa fa-check"></i>Module 2 - Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#lectures-from-previous-workshop"><i class="fa fa-check"></i>Lectures from previous workshop</a></li>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#star-alignment"><i class="fa fa-check"></i>STAR alignment</a></li>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#pseudo-alignement-with-kallisto"><i class="fa fa-check"></i>Pseudo-alignement with Kallisto</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-3.html"><a href="module-3.html"><i class="fa fa-check"></i>Module 3</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-3.html"><a href="module-3.html#lecture-2"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-3.html"><a href="module-3.html#lab-2"><i class="fa fa-check"></i>Lab</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-4-pseudo-alignment-and-enrichment-analysis.html"><a href="module-4-pseudo-alignment-and-enrichment-analysis.html"><i class="fa fa-check"></i>Module 4: Pseudo-alignment and enrichment analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-4-pseudo-alignment-and-enrichment-analysis.html"><a href="module-4-pseudo-alignment-and-enrichment-analysis.html#lecture-3"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-4-pseudo-alignment-and-enrichment-analysis.html"><a href="module-4-pseudo-alignment-and-enrichment-analysis.html#lab-3"><i class="fa fa-check"></i>Lab</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualize-ranking-distribution.html"><a href="visualize-ranking-distribution.html"><i class="fa fa-check"></i>Visualize Ranking Distribution</a></li>
+<li class="chapter" data-level="" data-path="run-gsea-with-gene-sets-from-msigdb.html"><a href="run-gsea-with-gene-sets-from-msigdb.html"><i class="fa fa-check"></i>Run GSEA with Gene Sets from MSigDB</a></li>
+<li class="chapter" data-level="" data-path="create-pathway-list.html"><a href="create-pathway-list.html"><i class="fa fa-check"></i>Create Pathway List</a></li>
+<li class="chapter" data-level="" data-path="run-fgsea.html"><a href="run-fgsea.html"><i class="fa fa-check"></i>Run fgsea</a></li>
+<li class="chapter" data-level="" data-path="explore-results.html"><a href="explore-results.html"><i class="fa fa-check"></i>Explore Results</a></li>
+<li class="chapter" data-level="" data-path="sort-results.html"><a href="sort-results.html"><i class="fa fa-check"></i>Sort Results</a></li>
+<li class="chapter" data-level="" data-path="question.html"><a href="question.html"><i class="fa fa-check"></i>Question</a></li>
+<li class="chapter" data-level="" data-path="interpretation.html"><a href="interpretation.html"><i class="fa fa-check"></i>Interpretation</a></li>
+<li class="chapter" data-level="" data-path="visualize-top-pathways.html"><a href="visualize-top-pathways.html"><i class="fa fa-check"></i>Visualize Top Pathways</a></li>
+<li class="chapter" data-level="" data-path="visualize-downregulated-pathways.html"><a href="visualize-downregulated-pathways.html"><i class="fa fa-check"></i>Visualize Downregulated Pathways</a></li>
+<li class="chapter" data-level="" data-path="enrichment-plot-for-one-pathway.html"><a href="enrichment-plot-for-one-pathway.html"><i class="fa fa-check"></i>Enrichment Plot for One Pathway</a></li>
+<li class="chapter" data-level="" data-path="interpretation-of-enrichment-plot.html"><a href="interpretation-of-enrichment-plot.html"><i class="fa fa-check"></i>Interpretation of Enrichment Plot</a></li>
+<li class="chapter" data-level="" data-path="visualize-multiple-pathways.html"><a href="visualize-multiple-pathways.html"><i class="fa fa-check"></i>Visualize Multiple Pathways</a></li>
+<li class="chapter" data-level="" data-path="volcano-style-nes-plot.html"><a href="volcano-style-nes-plot.html"><i class="fa fa-check"></i>Volcano-style NES Plot</a></li>
+<li class="chapter" data-level="" data-path="biological-interpretation-questions.html"><a href="biological-interpretation-questions.html"><i class="fa fa-check"></i>Biological Interpretation Questions</a></li>
+<li class="divider"></li>
+<h1 id="sponsors">Sponsors</h1>
+<center>
+<a href="https://www.cihr-irsc.gc.ca"><img src="img/sponsors/cihr.png" width=90% style="padding-bottom: 20px" alt="Canadian Institutes of Health Research logo."></a>
+<a href="https://www.hpcforhealth.ca"><img src="img/sponsors/hpc4health.png" width=90% style="padding-bottom: 20px" alt="HPC4Health logo."></a>
+<a href="https://genomecanada.ca/"><img src="img/sponsors/genomecanada.png" height="55" style="display:inline-block;"  style="padding-bottom: 20px" alt="Genome Canada logo.">
+<a href="https://www.ontariogenomics.ca/"><img src="img/sponsors/ontariogenomics.png" height="55" style="display:inline-block;" style="padding-bottom: 20px;" alt="Ontario Genomics logo.">
+<br><br>
+<a href="https://oicr.on.ca/"><img src="img/sponsors/oicr.png" width=35% style="display:inline-block;" style="padding-bottom: 20px" alt="Ontario Institute for Cancer Research logo.">
+<a href="https://genomequebec.com"><img src="img/sponsors/genomequebec.png" height="100" style="display:inline-block;"  style="padding-bottom: 20px" alt="Genome Québec logo.">
+<a href="https://ivado.ca/en/"><img src="img/sponsors/ivado.png" height="55" style="display:inline-block;"  style="padding-bottom: 20px" alt="Ivado logo.">
+<a href="https://santenumerique.umontreal.ca/accueil/"><img src="img/sponsors/csn.png" height="70" style="display:inline-block;"  style="padding-bottom: 22px" alt="Consortium Santé Numérique logo.">
+<a href="https://www.umontreal.ca"><img src="img/sponsors/udem.png" height="45" style="display:inline-block;"  style="padding-bottom: 10px" alt="Université de Montréal logo.">
+<a href="https://www.mun.ca"><img src="img/sponsors/memorialuniversity.png" height="45" style="display:inline-block;"  style="padding-bottom: 10px" alt="Memorial University logo.">
+<a href="https://www.dal.ca"><img src="img/sponsors/dalhousie.png" height="45" style="display:inline-block;"  style="padding-bottom: 10px" alt="Dalhousie University logo.">
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">(2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="create-pathway-list" class="section level1 hasAnchor">
+<h1>Create Pathway List<a href="create-pathway-list.html#create-pathway-list" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>fgsea requires a list format:</p>
+<ul>
+<li>pathway name</li>
+<li>vector of genes</li>
+</ul>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="create-pathway-list.html#cb73-1" tabindex="-1"></a>hallmark_list <span class="ot">&lt;-</span> hallmark_df <span class="sc">%&gt;%</span></span>
+<span id="cb73-2"><a href="create-pathway-list.html#cb73-2" tabindex="-1"></a>  <span class="fu">split</span>(<span class="at">x =</span> .<span class="sc">$</span>ncbi_gene,</span>
+<span id="cb73-3"><a href="create-pathway-list.html#cb73-3" tabindex="-1"></a>        <span class="at">f =</span> .<span class="sc">$</span>gs_name)</span>
+<span id="cb73-4"><a href="create-pathway-list.html#cb73-4" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="create-pathway-list.html#cb73-5" tabindex="-1"></a><span class="fu">head</span>(hallmark_list)</span></code></pre></div>
+<pre><code>## $HALLMARK_ADIPOGENESIS
+##   [1] &quot;19&quot;     &quot;11194&quot;  &quot;10449&quot;  &quot;33&quot;     &quot;34&quot;     &quot;35&quot;     &quot;47&quot;     &quot;50&quot;    
+##   [9] &quot;51&quot;     &quot;112&quot;    &quot;149685&quot; &quot;9370&quot;   &quot;79602&quot;  &quot;56894&quot;  &quot;9131&quot;   &quot;204&quot;   
+##  [17] &quot;217&quot;    &quot;226&quot;    &quot;284&quot;    &quot;51129&quot;  &quot;334&quot;    &quot;348&quot;    &quot;369&quot;    &quot;10124&quot; 
+##  [25] &quot;64225&quot;  &quot;483&quot;    &quot;539&quot;    &quot;11176&quot;  &quot;593&quot;    &quot;23786&quot;  &quot;604&quot;    &quot;718&quot;   
+##  [33] &quot;847&quot;    &quot;284119&quot; &quot;8436&quot;   &quot;901&quot;    &quot;977&quot;    &quot;9936&quot;   &quot;948&quot;    &quot;1031&quot;  
+##  [41] &quot;400916&quot; &quot;1147&quot;   &quot;1149&quot;   &quot;134147&quot; &quot;51727&quot;  &quot;1306&quot;   &quot;1282&quot;   &quot;51805&quot; 
+##  [49] &quot;84274&quot;  &quot;57017&quot;  &quot;1337&quot;   &quot;1349&quot;   &quot;1351&quot;   &quot;1376&quot;   &quot;1384&quot;   &quot;1431&quot;  
+##  [57] &quot;1537&quot;   &quot;1580&quot;   &quot;1629&quot;   &quot;1652&quot;   &quot;1666&quot;   &quot;8694&quot;   &quot;1717&quot;   &quot;51635&quot; 
+##  [65] &quot;25979&quot;  &quot;1737&quot;   &quot;1738&quot;   &quot;4189&quot;   &quot;29103&quot;  &quot;128338&quot; &quot;1891&quot;   &quot;1892&quot;  
+##  [73] &quot;84173&quot;  &quot;79071&quot;  &quot;5168&quot;   &quot;2053&quot;   &quot;2101&quot;   &quot;23344&quot;  &quot;2109&quot;   &quot;2167&quot;  
+##  [81] &quot;2184&quot;   &quot;8322&quot;   &quot;9908&quot;   &quot;1647&quot;   &quot;2632&quot;   &quot;27069&quot;  &quot;57678&quot;  &quot;137964&quot;
+##  [89] &quot;2820&quot;   &quot;10243&quot;  &quot;2878&quot;   &quot;2879&quot;   &quot;80273&quot;  &quot;3033&quot;   &quot;26275&quot;  &quot;26353&quot; 
+##  [97] &quot;3417&quot;   &quot;3419&quot;   &quot;3421&quot;   &quot;3459&quot;   &quot;10989&quot;  &quot;3679&quot;   &quot;80760&quot;  &quot;6453&quot;  
+## [105] &quot;84522&quot;  &quot;3910&quot;   &quot;3952&quot;   &quot;3977&quot;   &quot;3991&quot;   &quot;10162&quot;  &quot;4023&quot;   &quot;4056&quot;  
+## [113] &quot;8491&quot;   &quot;56922&quot;  &quot;4191&quot;   &quot;4199&quot;   &quot;11343&quot;  &quot;4259&quot;   &quot;84895&quot;  &quot;56246&quot; 
+## [121] &quot;29088&quot;  &quot;54996&quot;  &quot;23788&quot;  &quot;4638&quot;   &quot;64859&quot;  &quot;4698&quot;   &quot;4706&quot;   &quot;4713&quot;  
+## [129] &quot;4722&quot;   &quot;28512&quot;  &quot;4836&quot;   &quot;4958&quot;   &quot;5004&quot;   &quot;27250&quot;  &quot;10400&quot;  &quot;5195&quot;  
+## [137] &quot;5209&quot;   &quot;5211&quot;   &quot;5236&quot;   &quot;23187&quot;  &quot;5264&quot;   &quot;415116&quot; &quot;123&quot;    &quot;5447&quot;  
+## [145] &quot;5468&quot;   &quot;5495&quot;   &quot;84919&quot;  &quot;10935&quot;  &quot;10113&quot;  &quot;55037&quot;  &quot;5733&quot;   &quot;5860&quot;  
+## [153] &quot;83871&quot;  &quot;7905&quot;   &quot;92840&quot;  &quot;56729&quot;  &quot;54884&quot;  &quot;8780&quot;   &quot;55177&quot;  &quot;26994&quot; 
+## [161] &quot;6239&quot;   &quot;10313&quot;  &quot;25813&quot;  &quot;949&quot;    &quot;6342&quot;   &quot;6390&quot;   &quot;6391&quot;   &quot;6573&quot;  
+## [169] &quot;6510&quot;   &quot;6576&quot;   &quot;1468&quot;   &quot;376497&quot; &quot;8884&quot;   &quot;130814&quot; &quot;6623&quot;   &quot;6647&quot;  
+## [177] &quot;10580&quot;  &quot;65124&quot;  &quot;8404&quot;   &quot;58472&quot;  &quot;8082&quot;   &quot;6776&quot;   &quot;2040&quot;   &quot;8802&quot;  
+## [185] &quot;6817&quot;   &quot;6888&quot;   &quot;10010&quot;  &quot;7086&quot;   &quot;10140&quot;  &quot;7263&quot;   &quot;7316&quot;   &quot;29979&quot; 
+## [193] &quot;83549&quot;  &quot;7351&quot;   &quot;29796&quot;  &quot;10975&quot;  &quot;7384&quot;   &quot;27089&quot;  &quot;7423&quot;   &quot;7532&quot;  
+## 
+## $HALLMARK_ALLOGRAFT_REJECTION
+##   [1] &quot;16&quot;     &quot;6059&quot;   &quot;10006&quot;  &quot;43&quot;     &quot;92&quot;     &quot;207&quot;    &quot;322&quot;    &quot;567&quot;   
+##   [9] &quot;586&quot;    &quot;8915&quot;   &quot;602&quot;    &quot;672&quot;    &quot;717&quot;    &quot;822&quot;    &quot;9607&quot;   &quot;6356&quot;  
+##  [17] &quot;6357&quot;   &quot;6363&quot;   &quot;6347&quot;   &quot;6367&quot;   &quot;6351&quot;   &quot;6352&quot;   &quot;6354&quot;   &quot;894&quot;   
+##  [25] &quot;896&quot;    &quot;1230&quot;   &quot;729230&quot; &quot;1234&quot;   &quot;912&quot;    &quot;914&quot;    &quot;919&quot;    &quot;940&quot;   
+##  [33] &quot;915&quot;    &quot;916&quot;    &quot;917&quot;    &quot;920&quot;    &quot;958&quot;    &quot;959&quot;    &quot;961&quot;    &quot;924&quot;   
+##  [41] &quot;972&quot;    &quot;973&quot;    &quot;941&quot;    &quot;942&quot;    &quot;925&quot;    &quot;926&quot;    &quot;10225&quot;  &quot;1029&quot;  
+##  [49] &quot;5199&quot;   &quot;56253&quot;  &quot;1435&quot;   &quot;1445&quot;   &quot;1520&quot;   &quot;10563&quot;  &quot;4283&quot;   &quot;2833&quot;  
+##  [57] &quot;1615&quot;   &quot;8560&quot;   &quot;8444&quot;   &quot;1956&quot;   &quot;8661&quot;   &quot;8664&quot;   &quot;8669&quot;   &quot;8672&quot;  
+##  [65] &quot;1984&quot;   &quot;1991&quot;   &quot;2000&quot;   &quot;2069&quot;   &quot;2113&quot;   &quot;2147&quot;   &quot;2149&quot;   &quot;355&quot;   
+##  [73] &quot;356&quot;    &quot;2213&quot;   &quot;2268&quot;   &quot;2316&quot;   &quot;2533&quot;   &quot;2589&quot;   &quot;2634&quot;   &quot;2650&quot;  
+##  [81] &quot;11146&quot;  &quot;8477&quot;   &quot;3001&quot;   &quot;3002&quot;   &quot;3059&quot;   &quot;9734&quot;   &quot;3091&quot;   &quot;3105&quot;  
+##  [89] &quot;3108&quot;   &quot;3109&quot;   &quot;3111&quot;   &quot;3112&quot;   &quot;3117&quot;   &quot;3122&quot;   &quot;3133&quot;   &quot;3135&quot;  
+##  [97] &quot;3383&quot;   &quot;23308&quot;  &quot;3455&quot;   &quot;3458&quot;   &quot;3459&quot;   &quot;3460&quot;   &quot;10261&quot;  &quot;3551&quot;  
+## [105] &quot;3586&quot;   &quot;3589&quot;   &quot;3592&quot;   &quot;3593&quot;   &quot;3594&quot;   &quot;3596&quot;   &quot;3600&quot;   &quot;3603&quot;  
+## [113] &quot;3606&quot;   &quot;8807&quot;   &quot;3553&quot;   &quot;3558&quot;   &quot;9466&quot;   &quot;3559&quot;   &quot;3560&quot;   &quot;3561&quot;  
+## [121] &quot;3565&quot;   &quot;3566&quot;   &quot;3569&quot;   &quot;3574&quot;   &quot;3578&quot;   &quot;3624&quot;   &quot;3625&quot;   &quot;3662&quot;  
+## [129] &quot;3665&quot;   &quot;3394&quot;   &quot;3683&quot;   &quot;3689&quot;   &quot;3702&quot;   &quot;3717&quot;   &quot;3824&quot;   &quot;3848&quot;  
+## [137] &quot;3932&quot;   &quot;3937&quot;   &quot;3976&quot;   &quot;4050&quot;   &quot;4065&quot;   &quot;9450&quot;   &quot;4067&quot;   &quot;6885&quot;  
+## [145] &quot;11184&quot;  &quot;4153&quot;   &quot;4318&quot;   &quot;11222&quot;  &quot;4528&quot;   &quot;4689&quot;   &quot;4690&quot;   &quot;9437&quot;  
+## [153] &quot;114548&quot; &quot;4830&quot;   &quot;4843&quot;   &quot;4869&quot;   &quot;5196&quot;   &quot;5551&quot;   &quot;5579&quot;   &quot;5582&quot;  
+## [161] &quot;5699&quot;   &quot;5777&quot;   &quot;5788&quot;   &quot;5917&quot;   &quot;8767&quot;   &quot;6170&quot;   &quot;6123&quot;   &quot;6133&quot;  
+## [169] &quot;6223&quot;   &quot;6189&quot;   &quot;6203&quot;   &quot;27240&quot;  &quot;8651&quot;   &quot;9655&quot;   &quot;6688&quot;   &quot;5552&quot;  
+## [177] &quot;7903&quot;   &quot;23166&quot;  &quot;6772&quot;   &quot;6775&quot;   &quot;6890&quot;   &quot;6891&quot;   &quot;6892&quot;   &quot;7040&quot;  
+## [185] &quot;7042&quot;   &quot;7070&quot;   &quot;7076&quot;   &quot;7096&quot;   &quot;7097&quot;   &quot;7098&quot;   &quot;10333&quot;  &quot;7124&quot;  
+## [193] &quot;7163&quot;   &quot;7186&quot;   &quot;50852&quot;  &quot;7321&quot;   &quot;7334&quot;   &quot;7453&quot;   &quot;7454&quot;   &quot;7535&quot;  
+## 
+## $HALLMARK_ANDROGEN_RESPONSE
+##   [1] &quot;10257&quot;  &quot;11057&quot;  &quot;2181&quot;   &quot;87&quot;     &quot;9510&quot;   &quot;11047&quot;  &quot;9590&quot;   &quot;207&quot;   
+##   [9] &quot;220&quot;    &quot;56172&quot;  &quot;10513&quot;  &quot;84159&quot;  &quot;563&quot;    &quot;567&quot;    &quot;2683&quot;   &quot;658&quot;   
+##  [17] &quot;10645&quot;  &quot;595&quot;    &quot;896&quot;    &quot;8555&quot;   &quot;1021&quot;   &quot;55839&quot;  &quot;1622&quot;   &quot;1718&quot;  
+##  [25] &quot;4189&quot;   &quot;2005&quot;   &quot;22936&quot;  &quot;60481&quot;  &quot;3992&quot;   &quot;2289&quot;   &quot;2773&quot;   &quot;23171&quot; 
+##  [33] &quot;2936&quot;   &quot;2982&quot;   &quot;3005&quot;   &quot;8916&quot;   &quot;3156&quot;   &quot;3157&quot;   &quot;9455&quot;   &quot;3248&quot;  
+##  [41] &quot;51171&quot;  &quot;3422&quot;   &quot;8821&quot;   &quot;3638&quot;   &quot;10788&quot;  &quot;3685&quot;   &quot;3817&quot;   &quot;354&quot;   
+##  [49] &quot;3880&quot;   &quot;3856&quot;   &quot;3977&quot;   &quot;3998&quot;   &quot;4094&quot;   &quot;4117&quot;   &quot;9053&quot;   &quot;10461&quot; 
+##  [57] &quot;10627&quot;  &quot;8031&quot;   &quot;10397&quot;  &quot;55768&quot;  &quot;4824&quot;   &quot;5036&quot;   &quot;10611&quot;  &quot;5238&quot;  
+##  [65] &quot;8554&quot;   &quot;8611&quot;   &quot;56937&quot;  &quot;2185&quot;   &quot;11099&quot;  &quot;5867&quot;   &quot;6197&quot;   &quot;23223&quot; 
+##  [73] &quot;6303&quot;   &quot;6319&quot;   &quot;9871&quot;   &quot;6414&quot;   &quot;6446&quot;   &quot;1836&quot;   &quot;54407&quot;  &quot;6611&quot;  
+##  [81] &quot;6652&quot;   &quot;60559&quot;  &quot;25803&quot;  &quot;6722&quot;   &quot;6728&quot;   &quot;79689&quot;  &quot;27347&quot;  &quot;445347&quot;
+##  [89] &quot;23585&quot;  &quot;7113&quot;   &quot;25816&quot;  &quot;7163&quot;   &quot;8848&quot;   &quot;6675&quot;   &quot;7329&quot;   &quot;51465&quot; 
+##  [97] &quot;9218&quot;   &quot;7520&quot;   &quot;2547&quot;   &quot;65986&quot;  &quot;57178&quot; 
+## 
+## $HALLMARK_ANGIOGENESIS
+##  [1] &quot;350&quot;   &quot;351&quot;   &quot;894&quot;   &quot;1281&quot;  &quot;1290&quot;  &quot;6372&quot;  &quot;2260&quot;  &quot;11167&quot; &quot;3685&quot; 
+## [10] &quot;182&quot;   &quot;3714&quot;  &quot;3764&quot;  &quot;4023&quot;  &quot;4043&quot;  &quot;4060&quot;  &quot;4487&quot;  &quot;8829&quot;  &quot;4973&quot; 
+## [19] &quot;5154&quot;  &quot;5196&quot;  &quot;8993&quot;  &quot;10631&quot; &quot;5553&quot;  &quot;5747&quot;  &quot;6275&quot;  &quot;5104&quot;  &quot;6578&quot; 
+## [28] &quot;6696&quot;  &quot;6781&quot;  &quot;7056&quot;  &quot;7076&quot;  &quot;27242&quot; &quot;7410&quot;  &quot;1462&quot;  &quot;7422&quot;  &quot;7448&quot; 
+## 
+## $HALLMARK_APICAL_JUNCTION
+##   [1] &quot;58&quot;     &quot;60&quot;     &quot;70&quot;     &quot;71&quot;     &quot;72&quot;     &quot;87&quot;     &quot;88&quot;     &quot;89&quot;    
+##   [9] &quot;81&quot;     &quot;8751&quot;   &quot;8745&quot;   &quot;8754&quot;   &quot;11096&quot;  &quot;147&quot;    &quot;208&quot;    &quot;10000&quot; 
+##  [17] &quot;247&quot;    &quot;268&quot;    &quot;57463&quot;  &quot;347902&quot; &quot;9459&quot;   &quot;10109&quot;  &quot;478&quot;    &quot;2683&quot;  
+##  [25] &quot;10458&quot;  &quot;649&quot;    &quot;253559&quot; &quot;57863&quot;  &quot;794&quot;    &quot;10487&quot;  &quot;30835&quot;  &quot;29126&quot; 
+##  [33] &quot;80381&quot;  &quot;947&quot;    &quot;942&quot;    &quot;4267&quot;   &quot;999&quot;    &quot;1009&quot;   &quot;1013&quot;   &quot;1001&quot;  
+##  [41] &quot;1002&quot;   &quot;1004&quot;   &quot;1006&quot;   &quot;1024&quot;   &quot;1041&quot;   &quot;51148&quot;  &quot;5010&quot;   &quot;23562&quot; 
+##  [49] &quot;24146&quot;  &quot;51208&quot;  &quot;149461&quot; &quot;1364&quot;   &quot;7122&quot;   &quot;9074&quot;   &quot;1366&quot;   &quot;9073&quot;  
+##  [57] &quot;9080&quot;   &quot;1265&quot;   &quot;1272&quot;   &quot;1307&quot;   &quot;1308&quot;   &quot;1297&quot;   &quot;1384&quot;   &quot;92359&quot; 
+##  [65] &quot;1495&quot;   &quot;1500&quot;   &quot;6376&quot;   &quot;8449&quot;   &quot;1739&quot;   &quot;1758&quot;   &quot;1823&quot;   &quot;1825&quot;  
+##  [73] &quot;1956&quot;   &quot;2037&quot;   &quot;51466&quot;  &quot;60412&quot;  &quot;2200&quot;   &quot;2318&quot;   &quot;6624&quot;   &quot;2533&quot;  
+##  [81] &quot;2593&quot;   &quot;2770&quot;   &quot;2771&quot;   &quot;2886&quot;   &quot;2962&quot;   &quot;3033&quot;   &quot;3265&quot;   &quot;3383&quot;  
+##  [89] &quot;3384&quot;   &quot;3386&quot;   &quot;7087&quot;   &quot;8517&quot;   &quot;3636&quot;   &quot;3638&quot;   &quot;3667&quot;   &quot;8515&quot;  
+##  [97] &quot;3673&quot;   &quot;3675&quot;   &quot;3680&quot;   &quot;3688&quot;   &quot;3691&quot;   &quot;83700&quot;  &quot;3728&quot;   &quot;3757&quot;  
+## [105] &quot;3881&quot;   &quot;3909&quot;   &quot;3914&quot;   &quot;3918&quot;   &quot;143903&quot; &quot;26119&quot;  &quot;51474&quot;  &quot;8174&quot;  
+## [113] &quot;51776&quot;  &quot;5871&quot;   &quot;5600&quot;   &quot;5603&quot;   &quot;1432&quot;   &quot;4192&quot;   &quot;4313&quot;   &quot;4318&quot;  
+## [121] &quot;9019&quot;   &quot;10205&quot;  &quot;4478&quot;   &quot;4597&quot;   &quot;4628&quot;   &quot;4627&quot;   &quot;103910&quot; &quot;10398&quot; 
+## [129] &quot;5818&quot;   &quot;5819&quot;   &quot;25945&quot;  &quot;81607&quot;  &quot;257194&quot; &quot;91624&quot;  &quot;4763&quot;   &quot;4771&quot;  
+## [137] &quot;23114&quot;  &quot;79849&quot;  &quot;57555&quot;  &quot;54413&quot;  &quot;4892&quot;   &quot;4902&quot;   &quot;9379&quot;   &quot;64398&quot; 
+## [145] &quot;84552&quot;  &quot;55742&quot;  &quot;5089&quot;   &quot;5097&quot;   &quot;5175&quot;   &quot;5216&quot;   &quot;5291&quot;   &quot;8503&quot;  
+## [153] &quot;5310&quot;   &quot;5335&quot;   &quot;5522&quot;   &quot;5728&quot;   &quot;5747&quot;   &quot;5788&quot;   &quot;5880&quot;   &quot;5921&quot;  
+## [161] &quot;54509&quot;  &quot;6237&quot;   &quot;6251&quot;   &quot;9672&quot;   &quot;8910&quot;   &quot;6464&quot;   &quot;357&quot;    &quot;140885&quot;
+## [169] &quot;8935&quot;   &quot;7781&quot;   &quot;9353&quot;   &quot;10174&quot;  &quot;10290&quot;  &quot;6714&quot;   &quot;6810&quot;   &quot;6850&quot;  
+## [177] &quot;8189&quot;   &quot;9344&quot;   &quot;7045&quot;   &quot;7059&quot;   &quot;7070&quot;   &quot;7073&quot;   &quot;7082&quot;   &quot;51754&quot; 
+## [185] &quot;4982&quot;   &quot;7185&quot;   &quot;7216&quot;   &quot;7248&quot;   &quot;7106&quot;   &quot;7283&quot;   &quot;7408&quot;   &quot;7410&quot;  
+## [193] &quot;7412&quot;   &quot;1462&quot;   &quot;7414&quot;   &quot;7450&quot;   &quot;8976&quot;   &quot;65266&quot;  &quot;7533&quot;   &quot;7791&quot;  
+## 
+## $HALLMARK_APICAL_SURFACE
+##  [1] &quot;102&quot;    &quot;79602&quot;  &quot;84632&quot;  &quot;9465&quot;   &quot;351&quot;    &quot;50617&quot;  &quot;5205&quot;   &quot;2683&quot;  
+##  [9] &quot;672&quot;    &quot;11126&quot;  &quot;9696&quot;   &quot;202&quot;    &quot;6376&quot;   &quot;131566&quot; &quot;1946&quot;   &quot;2050&quot;  
+## [17] &quot;2319&quot;   &quot;2619&quot;   &quot;2625&quot;   &quot;51738&quot;  &quot;2947&quot;   &quot;3315&quot;   &quot;3560&quot;   &quot;3561&quot;  
+## [25] &quot;4067&quot;   &quot;27076&quot;  &quot;4118&quot;   &quot;266727&quot; &quot;23054&quot;  &quot;22854&quot;  &quot;255738&quot; &quot;5314&quot;  
+## [33] &quot;5329&quot;   &quot;51458&quot;  &quot;146760&quot; &quot;80274&quot;  &quot;357&quot;    &quot;116085&quot; &quot;6517&quot;   &quot;142680&quot;
+## [41] &quot;8406&quot;   &quot;55959&quot;  &quot;7070&quot;   &quot;51754&quot;</code></pre>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="run-gsea-with-gene-sets-from-msigdb.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="run-fgsea.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/bioinformaticsdotca/RNA_MontStJ-2606/blob/main/040-module-4.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>
