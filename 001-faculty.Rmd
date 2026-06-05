@@ -104,7 +104,7 @@ Halifax, NS, Canada
 
 Ben has a Master of Science degree in Microbiology and Immunology, completing his bioinformatics training under Dr. Morgan Langille at Dalhousie University. Throughout his training, he has instructed others in genetics, molecular biology, and microbiome data science. Ben is passionate about continued education of trainees and professionals, and firmly believes that enhancing bioinformatics and computational biology competencies will support the success of Canada’s current and future scientists.
 
-##Systems Administrator
+## Systems Administrator
 
 #### Zhibin Lu (he/him)
 
