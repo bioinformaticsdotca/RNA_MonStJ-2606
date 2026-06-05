@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 1: Intro to RNAseq concepts, inputs and QC | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL</title>
+  <meta name="description" content="Workshop website for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 1: Intro to RNAseq concepts, inputs and QC | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://bioinformaticsdotca.github.io/RNA_MontStJ-2606/img/bioinformatics_logo.png" />
+  <meta property="og:description" content="Workshop website for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop" />
+  <meta name="github-repo" content="bioinformaticsdotca/RNA_MontStJ-2606" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 1: Intro to RNAseq concepts, inputs and QC | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL" />
+  
+  <meta name="twitter:description" content="Workshop website for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop" />
+  <meta name="twitter:image" content="https://bioinformaticsdotca.github.io/RNA_MontStJ-2606/img/bioinformatics_logo.png" />
+
+<meta name="author" content="Faculty: Virginie Calderon, Lourdes Peña-Castillo" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="data-and-compute-setup.html"/>
+<link rel="next" href="module-2-rna-seq-alignment-concepts-and-file-formats.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.12.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "(2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL",
+  "description": "The complete set of tutorials, slides, and practical exercises for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL 2026 Canadian Bioinformatics Workshop, hosted on GitHub Pages.",
+  "url": "https://bioinformaticsdotca.github.io/RNA_MontStJ-2606",
+  "learningResourceType": ["tutorial", "slides", "exercise"],
+  "inLanguage": "en",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "provider": {
+    "@type": "Organization",
+    "name": "Bioinformatics.ca",
+    "url": "https://bioinformatics.ca"
+  },
+  "keywords": "",
+  "isPartOf": {
+    "@type": "Course",
+    "@id": "https://bioinformatics.ca/workshops-all/2026-rna-seq-analysis-montreal-qc/"
+  }
+}
+</script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<a href="https://bioinformaticsdotca.github.io/">
+ <img src="img/bioinformatics_logo.png" width="90%" alt="bioinformatics.ca logo" style="display:block; margin-left:auto; margin-right:auto; margin-top:15px;">
+ </a>
+<li><center><strong><a href="./"><br>(2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL<br><br></a></strong></center></li>
+<a href="./">
+ <img src="img/RNA-icon.png" width="70%" alt="(2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL logo" style="display:block; margin-left:auto; margin-right:auto; ">
+ </a>
+<br>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Workshop Info</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pre-work"><i class="fa fa-check"></i>Pre-work</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#class-photo"><i class="fa fa-check"></i>Class Photo</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i>Schedule</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="meet-your-faculty.html"><a href="meet-your-faculty.html"><i class="fa fa-check"></i>Meet Your Faculty</a>
+<ul>
+<li class="chapter" data-level="" data-path="meet-your-faculty.html"><a href="meet-your-faculty.html#instructors"><i class="fa fa-check"></i>Instructors</a></li>
+<li class="chapter" data-level="" data-path="meet-your-faculty.html"><a href="meet-your-faculty.html#teaching-assistants"><i class="fa fa-check"></i>Teaching Assistants</a></li>
+<li class="chapter" data-level="" data-path="meet-your-faculty.html"><a href="meet-your-faculty.html#facilitators"><i class="fa fa-check"></i>Facilitators</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-and-compute-setup.html"><a href="data-and-compute-setup.html"><i class="fa fa-check"></i>Data and Compute Setup</a></li>
+<li class="part"><span><b>II Modules</b></span></li>
+<li class="chapter" data-level="" data-path="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html"><i class="fa fa-check"></i>Module 1: Intro to RNAseq concepts, inputs and QC</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#lecture"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#lab"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#dataset"><i class="fa fa-check"></i>Dataset</a></li>
+<li class="chapter" data-level="" data-path="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#pipeline"><i class="fa fa-check"></i>Pipeline</a></li>
+<li class="chapter" data-level="" data-path="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#sequencing-quality-control-with-fastqc"><i class="fa fa-check"></i>Sequencing quality control with FastQC</a></li>
+<li class="chapter" data-level="" data-path="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#read-trimming-with-fastp"><i class="fa fa-check"></i>Read trimming with Fastp</a></li>
+<li class="chapter" data-level="" data-path="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#use-fastqc-and-multiqc-to-compare-the-impact-of-trimming"><i class="fa fa-check"></i>Use FastQC and multiqc to compare the impact of trimming</a></li>
+<li class="chapter" data-level="" data-path="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#clean-up"><i class="fa fa-check"></i>Clean up</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html"><i class="fa fa-check"></i>Module 2: RNA-seq alignment concepts and file formats</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#lecture-1"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#lab-1"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#key-concepts"><i class="fa fa-check"></i>Key concepts</a></li>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#module-2---learning-objectives"><i class="fa fa-check"></i>Module 2 - Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#lectures-from-previous-workshop"><i class="fa fa-check"></i>Lectures from previous workshop</a></li>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#star-alignment"><i class="fa fa-check"></i>STAR alignment</a></li>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#pseudo-alignement-with-kallisto"><i class="fa fa-check"></i>Pseudo-alignement with Kallisto</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-3-rna-expression-and-differential-expression.html"><a href="module-3-rna-expression-and-differential-expression.html"><i class="fa fa-check"></i>Module 3: RNA Expression and Differential Expression</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-3-rna-expression-and-differential-expression.html"><a href="module-3-rna-expression-and-differential-expression.html#lecture-2"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-3-rna-expression-and-differential-expression.html"><a href="module-3-rna-expression-and-differential-expression.html#lab-2"><i class="fa fa-check"></i>Lab</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-4-enrichment-analysis.html"><a href="module-4-enrichment-analysis.html"><i class="fa fa-check"></i>Module 4: Enrichment analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-4-enrichment-analysis.html"><a href="module-4-enrichment-analysis.html#lecture-3"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-4-enrichment-analysis.html"><a href="module-4-enrichment-analysis.html#lab-3"><i class="fa fa-check"></i>Lab</a></li>
+</ul></li>
+<li class="divider"></li>
+<h1 id="sponsors">Sponsors</h1>
+<center>
+<a href="https://www.cihr-irsc.gc.ca"><img src="img/sponsors/cihr.png" width=90% style="padding-bottom: 20px" alt="Canadian Institutes of Health Research logo."></a>
+<a href="https://www.hpcforhealth.ca"><img src="img/sponsors/hpc4health.png" width=90% style="padding-bottom: 20px" alt="HPC4Health logo."></a>
+<a href="https://genomecanada.ca/"><img src="img/sponsors/genomecanada.png" height="55" style="display:inline-block;"  style="padding-bottom: 20px" alt="Genome Canada logo.">
+<a href="https://www.ontariogenomics.ca/"><img src="img/sponsors/ontariogenomics.png" height="55" style="display:inline-block;" style="padding-bottom: 20px;" alt="Ontario Genomics logo.">
+<br><br>
+<a href="https://oicr.on.ca/"><img src="img/sponsors/oicr.png" width=35% style="display:inline-block;" style="padding-bottom: 20px" alt="Ontario Institute for Cancer Research logo.">
+<a href="https://genomequebec.com"><img src="img/sponsors/genomequebec.png" height="100" style="display:inline-block;"  style="padding-bottom: 20px" alt="Genome Québec logo.">
+<a href="https://ivado.ca/en/"><img src="img/sponsors/ivado.png" height="55" style="display:inline-block;"  style="padding-bottom: 20px" alt="Ivado logo.">
+<a href="https://santenumerique.umontreal.ca/accueil/"><img src="img/sponsors/csn.png" height="70" style="display:inline-block;"  style="padding-bottom: 22px" alt="Consortium Santé Numérique logo.">
+<a href="https://www.umontreal.ca"><img src="img/sponsors/udem.png" height="45" style="display:inline-block;"  style="padding-bottom: 10px" alt="Université de Montréal logo.">
+<a href="https://www.mun.ca"><img src="img/sponsors/memorialuniversity.png" height="45" style="display:inline-block;"  style="padding-bottom: 10px" alt="Memorial University logo.">
+<a href="https://www.dal.ca"><img src="img/sponsors/dalhousie.png" height="45" style="display:inline-block;"  style="padding-bottom: 10px" alt="Dalhousie University logo.">
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">(2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="module-1-intro-to-rnaseq-concepts-inputs-and-qc" class="section level1 hasAnchor">
+<h1>Module 1: Intro to RNAseq concepts, inputs and QC<a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#module-1-intro-to-rnaseq-concepts-inputs-and-qc" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="lecture" class="section level2 hasAnchor">
+<h2>Lecture<a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#lecture" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<!--<iframe width="640" height="360" src="YOUTUBE EMBED LINK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+-->
+<iframe src="https://docs.google.com/presentation/d/112p-Bx30at8G6N9tmTcbpKJY6Zhk1DH_/preview" width="640" height="480" allow="autoplay">
+</iframe>
+</div>
+<div id="lab" class="section level2 hasAnchor">
+<h2>Lab<a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#lab" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="dataset" class="section level3 hasAnchor">
+<h3>Dataset<a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Objectives: In this assignment, we will be using a subset of the GSE114360 dataset, which consists of 6 RNA sequence files on the SGC-7901 gastric cancer cell line, (3 transfected with tcons_00001221 shRNA, and 3 control shRNA), and determine the number of differentially expressed genes.</p>
+<p>Experimental information and other things to keep in mind:</p>
+<p>The libraries are prepared as paired-end reads.<br />
+The samples were sequenced on an <strong>Illumina HiSeq 4000</strong> platform, with reads of <strong>150 bp</strong> in length.</p>
+<p>👉 <a href="https://www.ncbi.nlm.nih.gov/bioproject/PRJNA471072">GSE114360</a></p>
+<ul>
+<li>3 samples transfected with target shRNA<br />
+</li>
+<li>3 samples with control shRNA</li>
+</ul>
+<p>Libraries were prepared using standard Illumina protocols.</p>
+<p>For this exercise, we use a subset of the data (<strong>first 1,000,000 reads per pair</strong>).</p>
+<hr />
+<p>The files are named based on their SRR id’s:</p>
+<ul>
+<li>SRR7155055 = transfected sample 1</li>
+<li>SRR7155056 = transfected sample 2</li>
+<li>SRR7155057 = transfected sample 3</li>
+<li>SRR7155058 = control sample 1</li>
+<li>SRR7155059 = control sample 2</li>
+<li>SRR7155060 = control sample 3</li>
+</ul>
+</div>
+<div id="pipeline" class="section level3 hasAnchor">
+<h3>Pipeline<a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="float">
+<img src="rnaseq_pipeline.png" alt="Pipeline RNA-seq" />
+<div class="figcaption">Pipeline RNA-seq</div>
+</div>
+</div>
+<div id="sequencing-quality-control-with-fastqc" class="section level3 hasAnchor">
+<h3>Sequencing quality control with FastQC<a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#sequencing-quality-control-with-fastqc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="read-trimming-with-fastp" class="section level3 hasAnchor">
+<h3>Read trimming with Fastp<a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#read-trimming-with-fastp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Use Fastp to trim sequence adapter from the read FASTQ files and also perform basic data quality cleanup. The output of this step will be trimmed and filtered FASTQ files for each data set.</p>
+<p>Refer to the Fastp project and manual for a more detailed explanation:</p>
+<ul>
+<li><a href="https://github.com/OpenGene/fastp">fastp</a></li>
+</ul>
+<p>Fastp basic usage:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb1-1" tabindex="-1"></a>    <span class="ex">fastp</span> <span class="at">-i</span> in.R1.fq.gz <span class="at">-I</span> in.R2.fq.gz <span class="at">-o</span> out.R1.fq.gz <span class="at">-O</span> out.R2.fq.gz</span></code></pre></div>
+<p>The <code>-i</code> and <code>-I</code> parameters specify input R1 and R2 data files (raw data)
+The <code>-o</code> and <code>-O</code> parameters specify output R1 and R2 data files (trimmed and quality filtered)
+Extra options specified below:</p>
+<ul>
+<li>‘-l 25’ the minimum read length allowed after trimming is 25bp</li>
+<li>‘–adapter_fasta’ the path to the adapter FASTA file containing adapter sequences to trim</li>
+<li>‘–trim_front1 13’ trim a fixed number (13 in this case) of bases off the left end of read1</li>
+<li>‘–trim_front2 13’ trim a fixed number (13 in this case) of bases off the left end of read2</li>
+<li>‘–json’ the path to store a log file in JSON file format</li>
+<li>‘–html’ the path to store a web report file</li>
+<li>‘2&gt;’ use to store the information that would be printed to the screen into a file instead</li>
+</ul>
+<p>First, set up some directories for output</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb2-1" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$RNA_DATA_TRIM_DIR</span></span>
+<span id="cb2-2"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb2-2" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$RNA_DATA_TRIM_DIR</span></span></code></pre></div>
+<p>Download necessary Illumina adapter sequence files.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb3-1" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$RNA_REFS_DIR</span></span>
+<span id="cb3-2"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb3-2" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$RNA_REFS_DIR</span></span>
+<span id="cb3-3"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb3-3" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_REFS_DIR</span></span>
+<span id="cb3-4"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb3-4" tabindex="-1"></a><span class="fu">wget</span> http://genomedata.org/rnaseq-tutorial/illumina_multiplex.fa</span></code></pre></div>
+<p>Use fastp to remove illumina adapter sequences (if any), trim the first 13 bases of each read, and perform default read quality filtering to remove reads that are too short, have too many low quality bases or have too many N’s.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-1" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_HOME</span></span>
+<span id="cb4-2"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-2" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-3" tabindex="-1"></a><span class="bu">export</span> <span class="va">S1</span><span class="op">=</span>UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22</span>
+<span id="cb4-4"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-4" tabindex="-1"></a><span class="ex">fastp</span> <span class="at">-i</span> <span class="va">$RNA_DATA_DIR</span>/<span class="va">$S1</span>.read1.fastq.gz <span class="at">-I</span> <span class="va">$RNA_DATA_DIR</span>/<span class="va">$S1</span>.read2.fastq.gz <span class="at">-o</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S1</span>.read1.fastq.gz <span class="at">-O</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S1</span>.read2.fastq.gz <span class="at">-l</span> 25 <span class="at">--adapter_fasta</span> <span class="va">$RNA_REFS_DIR</span>/illumina_multiplex.fa <span class="at">--trim_front1</span> 13 <span class="at">--trim_front2</span> 13 <span class="at">--json</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S1</span>.fastp.json <span class="at">--html</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S1</span>.fastp.html <span class="dv">2</span><span class="op">&gt;</span><span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S1</span>.fastp.log</span>
+<span id="cb4-5"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-5" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-6" tabindex="-1"></a><span class="bu">export</span> <span class="va">S2</span><span class="op">=</span>UHR_Rep2_ERCC-Mix1_Build37-ErccTranscripts-chr22</span>
+<span id="cb4-7"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-7" tabindex="-1"></a><span class="ex">fastp</span> <span class="at">-i</span> <span class="va">$RNA_DATA_DIR</span>/<span class="va">$S2</span>.read1.fastq.gz <span class="at">-I</span> <span class="va">$RNA_DATA_DIR</span>/<span class="va">$S2</span>.read2.fastq.gz <span class="at">-o</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S2</span>.read1.fastq.gz <span class="at">-O</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S2</span>.read2.fastq.gz <span class="at">-l</span> 25 <span class="at">--adapter_fasta</span> <span class="va">$RNA_REFS_DIR</span>/illumina_multiplex.fa <span class="at">--trim_front1</span> 13 <span class="at">--trim_front2</span> 13 <span class="at">--json</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S2</span>.fastp.json <span class="at">--html</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S2</span>.fastp.html <span class="dv">2</span><span class="op">&gt;</span><span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S2</span>.fastp.log</span>
+<span id="cb4-8"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-8" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-9" tabindex="-1"></a><span class="bu">export</span> <span class="va">S3</span><span class="op">=</span>UHR_Rep3_ERCC-Mix1_Build37-ErccTranscripts-chr22</span>
+<span id="cb4-10"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-10" tabindex="-1"></a><span class="ex">fastp</span> <span class="at">-i</span> <span class="va">$RNA_DATA_DIR</span>/<span class="va">$S3</span>.read1.fastq.gz <span class="at">-I</span> <span class="va">$RNA_DATA_DIR</span>/<span class="va">$S3</span>.read2.fastq.gz <span class="at">-o</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S3</span>.read1.fastq.gz <span class="at">-O</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S3</span>.read2.fastq.gz <span class="at">-l</span> 25 <span class="at">--adapter_fasta</span> <span class="va">$RNA_REFS_DIR</span>/illumina_multiplex.fa <span class="at">--trim_front1</span> 13 <span class="at">--trim_front2</span> 13 <span class="at">--json</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S3</span>.fastp.json <span class="at">--html</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S3</span>.fastp.html <span class="dv">2</span><span class="op">&gt;</span><span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S3</span>.fastp.log</span>
+<span id="cb4-11"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-11" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-12" tabindex="-1"></a><span class="bu">export</span> <span class="va">S4</span><span class="op">=</span>HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22</span>
+<span id="cb4-13"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-13" tabindex="-1"></a><span class="ex">fastp</span> <span class="at">-i</span> <span class="va">$RNA_DATA_DIR</span>/<span class="va">$S4</span>.read1.fastq.gz <span class="at">-I</span> <span class="va">$RNA_DATA_DIR</span>/<span class="va">$S4</span>.read2.fastq.gz <span class="at">-o</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S4</span>.read1.fastq.gz <span class="at">-O</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S4</span>.read2.fastq.gz <span class="at">-l</span> 25 <span class="at">--adapter_fasta</span> <span class="va">$RNA_REFS_DIR</span>/illumina_multiplex.fa <span class="at">--trim_front1</span> 13 <span class="at">--trim_front2</span> 13 <span class="at">--json</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S4</span>.fastp.json <span class="at">--html</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S4</span>.fastp.html <span class="dv">2</span><span class="op">&gt;</span><span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S4</span>.fastp.log</span>
+<span id="cb4-14"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-14" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-15" tabindex="-1"></a><span class="bu">export</span> <span class="va">S5</span><span class="op">=</span>HBR_Rep2_ERCC-Mix2_Build37-ErccTranscripts-chr22</span>
+<span id="cb4-16"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-16" tabindex="-1"></a><span class="ex">fastp</span> <span class="at">-i</span> <span class="va">$RNA_DATA_DIR</span>/<span class="va">$S5</span>.read1.fastq.gz <span class="at">-I</span> <span class="va">$RNA_DATA_DIR</span>/<span class="va">$S5</span>.read2.fastq.gz <span class="at">-o</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S5</span>.read1.fastq.gz <span class="at">-O</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S5</span>.read2.fastq.gz <span class="at">-l</span> 25 <span class="at">--adapter_fasta</span> <span class="va">$RNA_REFS_DIR</span>/illumina_multiplex.fa <span class="at">--trim_front1</span> 13 <span class="at">--trim_front2</span> 13 <span class="at">--json</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S5</span>.fastp.json <span class="at">--html</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S5</span>.fastp.html <span class="dv">2</span><span class="op">&gt;</span><span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S5</span>.fastp.log</span>
+<span id="cb4-17"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-17" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-18" tabindex="-1"></a><span class="bu">export</span> <span class="va">S6</span><span class="op">=</span>HBR_Rep3_ERCC-Mix2_Build37-ErccTranscripts-chr22</span>
+<span id="cb4-19"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb4-19" tabindex="-1"></a><span class="ex">fastp</span> <span class="at">-i</span> <span class="va">$RNA_DATA_DIR</span>/<span class="va">$S6</span>.read1.fastq.gz <span class="at">-I</span> <span class="va">$RNA_DATA_DIR</span>/<span class="va">$S6</span>.read2.fastq.gz <span class="at">-o</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S6</span>.read1.fastq.gz <span class="at">-O</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S6</span>.read2.fastq.gz <span class="at">-l</span> 25 <span class="at">--adapter_fasta</span> <span class="va">$RNA_REFS_DIR</span>/illumina_multiplex.fa <span class="at">--trim_front1</span> 13 <span class="at">--trim_front2</span> 13 <span class="at">--json</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S6</span>.fastp.json <span class="at">--html</span> <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S6</span>.fastp.html <span class="dv">2</span><span class="op">&gt;</span><span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">$S6</span>.fastp.log</span></code></pre></div>
+</div>
+<div id="use-fastqc-and-multiqc-to-compare-the-impact-of-trimming" class="section level3 hasAnchor">
+<h3>Use FastQC and multiqc to compare the impact of trimming<a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#use-fastqc-and-multiqc-to-compare-the-impact-of-trimming" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Optional exercise: Compare the FastQC reports for fastq files before and after trimming. All fastqc reports can be generated on the commandline.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb5-1" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_DATA_TRIM_DIR</span></span>
+<span id="cb5-2"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb5-2" tabindex="-1"></a><span class="ex">fastqc</span> <span class="pp">*</span>.fastq.gz</span>
+<span id="cb5-3"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb5-3" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb5-4" tabindex="-1"></a><span class="ex">multiqc</span> ./</span></code></pre></div>
+<p>The resulting html reports can be viewed by navigating to:</p>
+<ul>
+<li><a href="http://" class="uri">http://</a><strong>YOUR_PUBLIC_IPv4_ADDRESS</strong>/rnaseq/data/</li>
+<li><a href="http://" class="uri">http://</a><strong>YOUR_PUBLIC_IPv4_ADDRESS</strong>/rnaseq/data/trimmed/</li>
+</ul>
+</div>
+<div id="clean-up" class="section level3 hasAnchor">
+<h3>Clean up<a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#clean-up" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Move the fastqc and fastp results into sub-directories to keep things tidy</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb6-1" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_DATA_TRIM_DIR</span></span>
+<span id="cb6-2"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb6-2" tabindex="-1"></a><span class="fu">mkdir</span> fastqc</span>
+<span id="cb6-3"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb6-3" tabindex="-1"></a><span class="fu">mv</span> <span class="pp">*</span>_fastqc<span class="pp">*</span> fastqc</span>
+<span id="cb6-4"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb6-4" tabindex="-1"></a><span class="fu">mkdir</span> fastp</span>
+<span id="cb6-5"><a href="module-1-intro-to-rnaseq-concepts-inputs-and-qc.html#cb6-5" tabindex="-1"></a><span class="fu">mv</span> <span class="pp">*</span>fastp.<span class="pp">*</span> fastp</span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-and-compute-setup.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="module-2-rna-seq-alignment-concepts-and-file-formats.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/bioinformaticsdotca/RNA_MontStJ-2606/blob/main/010-module-1.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>
