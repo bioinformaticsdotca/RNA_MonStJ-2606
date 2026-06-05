@@ -345,7 +345,7 @@ dotplot(  ekegg,  showCategory = 20)
 Change the code to include only the top10 KEGG pathways.
 
 
-details>
+<details>
 <summary>Show solution</summary>
 
 ```{r fig.width=10, fig.height=8, message=FALSE, warning=FALSE}
@@ -446,7 +446,8 @@ knitr::include_graphics("hsa05205.logFCx.png")
 
 </details>
 
-Know the scale color is correct, but from green to red. We usually avoid using these colors in figures.
+
+Now the scale color is correct, but from green to red. We usually avoid using these colors in figures.
 Change the scale to: yellow - blue
 
 
@@ -474,6 +475,7 @@ pathview(
 knitr::include_graphics("hsa05205.logFCx_YB.png")
 ```
 </details>
+
 
 
 
