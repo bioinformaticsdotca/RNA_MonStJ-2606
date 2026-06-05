@@ -17,7 +17,7 @@ Dr. Virginie Calderon earned her PhD in Bioinformatics at the Université de Tou
 Her expertise focuses on Next‑Generation Sequencing data analysis to support research projects across the full analytical workflow, from experimental design and data quality assessment to downstream analysis and biological interpretation.
 
 
-#### Lourdes Peña-Castillo (St John's)
+#### Lourdes Peña-Castillo (St John's) (she/her)
 
 <img src="./img/faculty/lourdes.jpeg" width="200" alt="Photo of Lourdes Peña-Castillo">
 
@@ -32,7 +32,7 @@ Dr. Peña-Castillo is a Professor at the Departments of Biology and Computer Sci
 
 ## Teaching Assistants
 
-#### Sophie Mockly (Montréal)
+#### Sophie Mockly (Montréal) (she/her)
 
 
 
@@ -47,7 +47,7 @@ Sophie Mockly is a Postdoctoral Fellow at the Montreal Clinical Research Institu
 
 #### Sophie Ehresmann (Montréal)
 
-#### Yvonne He (St John's)
+#### Yvonne He (St John's) (she/her)
 
 <img src="./img/faculty/Yvonne_He.jpg" width="200" alt="Photo of Yvonne He">
 
@@ -59,7 +59,7 @@ St. John’s, NL, Canada
 
 Yvonne He is a PhD candidate in the Department of Biology at Memorial University, where her research focuses on microbial genomics, specifically the evolution and applications of gene transfer agents. She is experienced in managing the entire genomic workflow, from the library prep to NGS data analyses. 
 
-#### Paniz Taghipour (St John's)
+#### Paniz Taghipour (St John's) (she/her)
 
 
 
@@ -74,7 +74,7 @@ Paniz Taghipour is an MSc student in Bioinformatics at Memorial University of Ne
 
 ## Facilitators
 
-#### Canelle Schuhler-Husson (Montréal)
+#### Canelle Schuhler-Husson (Montréal) 
 <img src="./img/faculty/canelle.jpg" width="200" alt="Photo of Canelle Schuhler-Husson">
 
 
@@ -91,7 +91,7 @@ Canelle joined the Canadian Bioinformatics Hub team in 2025 as the Regional Coor
 Passionate about collaborative environments and committed to advancing life sciences and digital technologies, she now applies her skills in project management, communication, and logistics to the Canadian Bioinformatics Hub, with the goal of actively contributing to its regional and national reach.
 
 
-#### Ben Fisher (St. John's)
+#### Ben Fisher (St. John's) (he/him)
 
 <img src="./img/faculty/ben-fisher.jpg" width="200" alt="Photo of Ben Fisher">
 
@@ -104,4 +104,17 @@ Halifax, NS, Canada
 
 Ben has a Master of Science degree in Microbiology and Immunology, completing his bioinformatics training under Dr. Morgan Langille at Dalhousie University. Throughout his training, he has instructed others in genetics, molecular biology, and microbiome data science. Ben is passionate about continued education of trainees and professionals, and firmly believes that enhancing bioinformatics and computational biology competencies will support the success of Canada’s current and future scientists.
 
+##Systems Administrator
 
+#### Zhibin Lu (he/him)
+
+<img src="./img/faculty/zhibin.jpeg" width="200" alt="Photo of Zhibin Lu">
+
+>
+Senior Manager, Digital Research<br>
+University Health Network<br>
+Toronto, ON, Canada
+>
+> --- zhibin@gmail.com
+
+Zhibin Lu is a senior manager at University Health Network Digital. He is responsible for UHN HPC operations and scientific software. He manages two HPC clusters at UHN, including system administration, user management, and maintenance of bioinformatics tools for HPC4health. He is also skilled in Next-Gen sequence data analysis and has developed and maintained bioinformatics pipelines at the Bioinformatics and HPC Core. He is a member of the Digital Research Alliance of Canada Bioinformatics National Team and Scheduling National Team.
