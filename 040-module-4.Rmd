@@ -1,4 +1,4 @@
-# Module 4: Pseudo-alignment and enrichment analysis
+# Module 4: Enrichment analysis
 
 ## Lecture
 
