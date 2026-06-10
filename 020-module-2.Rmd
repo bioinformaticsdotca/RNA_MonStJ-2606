@@ -9,7 +9,7 @@
 
 ## Lab
 
-### Key concepts
+### Module 2 - Key concepts
 * Splice-aware alignment, SAM/BAM format
 
 ### Module 2 - Learning objectives
@@ -30,6 +30,7 @@
 * [Introduction to IGV lecture](https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cbw/2025/full/RNASeq_Module2_IGV_Tutorial_Brief.pdf)
 * [Alignment QC mini lecture](https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cbw/2025/mini/RNASeq_MiniLecture_02_04_alignmentQC.pdf)
 
+## Module 2 - Practical Exercises
 
 ### STAR alignment
 
@@ -129,19 +130,60 @@ Refer to STAR manual for a more detailed explanation:
 The basic options to run a mapping job are as follows:
 
 
-**Post-alignment QC**
+
+**Question 1**
+
+Why is RNA-seq alignment more complex than DNA-seq alignment?
+
+- What is the role of splice-aware aligners like STAR?
+- What biological phenomenon makes alignment more challenging?
+
+
+**Question 2**
+
+What information is stored in a BAM file?
+
+- Can you identify where to find:
+  - mapping position
+  - mapping quality
+  - CIGAR string
+- Why is BAM preferred over SAM?
+
+
+
+### Post-alignment QC
 
 STAR generates a summary of the alignments in a .log file for each sample. 
 Notice the number of total reads, reads aligned and various metrics regarding how the reads aligned to the reference.
 To help alignment QC, multiQC can be used to aggregate the alignemnt statistics.
 
-Run the following command art the root of your project, so multiqc can screen for fastQC, fastp and star statistics.
+Run the following command at the root of your project, so multiqc can screen for fastQC, fastp and star statistics.
 
 ```bash
 multiqc ./
 ```
 
-**IGV visualization**
+Go through the generated html by browsing through the following directory in a web browser:
+
+http://YOUR_PUBLIC_IPv4_ADDRESS/workspace/rnaseq
+
+
+**Question 3**
+What percentage of reads successfully aligned to the reference genome?
+
+- Is this alignment rate acceptable?
+- What could explain a low alignment rate?
+
+
+**Question 4**
+How many reads are uniquely mapped vs multi-mapped?
+
+- Why are multi-mapped reads common in RNA-seq data?
+- Should they be included in downstream analysis?
+
+
+
+### IGV visualization
 
 To facilitate IGV visualization, BAM files can be merged by condition. BAM files also need to be index with samtools.
 

@@ -251,10 +251,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#lecture-2"><i class="fa fa-check"></i>Lecture</a></li>
 <li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#lab"><i class="fa fa-check"></i>Lab</a>
 <ul>
-<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#key-concepts"><i class="fa fa-check"></i>Key concepts</a></li>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#module-2---key-concepts"><i class="fa fa-check"></i>Module 2 - Key concepts</a></li>
 <li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#module-2---learning-objectives"><i class="fa fa-check"></i>Module 2 - Learning objectives</a></li>
 <li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#lectures-from-previous-workshop"><i class="fa fa-check"></i>Lectures from previous workshop</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#module-2---practical-exercises"><i class="fa fa-check"></i>Module 2 - Practical Exercises</a>
+<ul>
 <li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#star-alignment"><i class="fa fa-check"></i>STAR alignment</a></li>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#post-alignment-qc"><i class="fa fa-check"></i>Post-alignment QC</a></li>
+<li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#igv-visualization"><i class="fa fa-check"></i>IGV visualization</a></li>
 <li class="chapter" data-level="" data-path="module-2-rna-seq-alignment-concepts-and-file-formats.html"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#pseudo-alignement-with-kallisto"><i class="fa fa-check"></i>Pseudo-alignement with Kallisto</a></li>
 </ul></li>
 </ul></li>
@@ -310,8 +315,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="lab" class="section level2 hasAnchor">
 <h2>Lab<a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#lab" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="key-concepts" class="section level3 hasAnchor">
-<h3>Key concepts<a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#key-concepts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="module-2---key-concepts" class="section level3 hasAnchor">
+<h3>Module 2 - Key concepts<a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#module-2---key-concepts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Splice-aware alignment, SAM/BAM format</li>
 </ul>
@@ -339,6 +344,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cbw/2025/mini/RNASeq_MiniLecture_02_04_alignmentQC.pdf">Alignment QC mini lecture</a></li>
 </ul>
 </div>
+</div>
+<div id="module-2---practical-exercises" class="section level2 hasAnchor">
+<h2>Module 2 - Practical Exercises<a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#module-2---practical-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="star-alignment" class="section level3 hasAnchor">
 <h3>STAR alignment<a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#star-alignment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Prepare genome for alignment</strong></p>
@@ -407,13 +415,17 @@ Redirect standard output and error messages to a log file for each sample.</p></
 <li><a href="https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf">STARmanual.pdf</a></li>
 </ul>
 <p>The basic options to run a mapping job are as follows:</p>
-<p><strong>Post-alignment QC</strong></p>
+</div>
+<div id="post-alignment-qc" class="section level3 hasAnchor">
+<h3>Post-alignment QC<a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#post-alignment-qc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>STAR generates a summary of the alignments in a .log file for each sample.
 Notice the number of total reads, reads aligned and various metrics regarding how the reads aligned to the reference.
 To help alignment QC, multiQC can be used to aggregate the alignemnt statistics.</p>
 <p>Run the following command art the root of your project, so multiqc can screen for fastQC, fastp and star statistics.</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb70-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb70-1" tabindex="-1"></a><span class="ex">multiqc</span> ./</span></code></pre></div>
-<p><strong>IGV visualization</strong></p>
+</div>
+<div id="igv-visualization" class="section level3 hasAnchor">
+<h3>IGV visualization<a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#igv-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To facilitate IGV visualization, BAM files can be merged by condition. BAM files also need to be index with samtools.</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb71-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb71-1" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_ALIGN_DIR</span></span>
 <span id="cb71-2"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb71-2" tabindex="-1"></a><span class="ex">samtools</span> merge <span class="at">-o</span> HBR.bam HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam HBR_Rep2_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam HBR_Rep3_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam</span>
