@@ -415,14 +415,45 @@ Redirect standard output and error messages to a log file for each sample.</p></
 <li><a href="https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf">STARmanual.pdf</a></li>
 </ul>
 <p>The basic options to run a mapping job are as follows:</p>
+<p><strong>Question 1</strong></p>
+<p>Why is RNA-seq alignment more complex than DNA-seq alignment?</p>
+<ul>
+<li>What is the role of splice-aware aligners like STAR?</li>
+<li>What biological phenomenon makes alignment more challenging?</li>
+</ul>
+<p><strong>Question 2</strong></p>
+<p>What information is stored in a BAM file?</p>
+<ul>
+<li>Can you identify where to find:
+<ul>
+<li>mapping position</li>
+<li>mapping quality</li>
+<li>CIGAR string</li>
+</ul></li>
+<li>Why is BAM preferred over SAM?</li>
+</ul>
 </div>
 <div id="post-alignment-qc" class="section level3 hasAnchor">
 <h3>Post-alignment QC<a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#post-alignment-qc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>STAR generates a summary of the alignments in a .log file for each sample.
 Notice the number of total reads, reads aligned and various metrics regarding how the reads aligned to the reference.
 To help alignment QC, multiQC can be used to aggregate the alignemnt statistics.</p>
-<p>Run the following command art the root of your project, so multiqc can screen for fastQC, fastp and star statistics.</p>
+<p>Run the following command at the root of your project, so multiqc can screen for fastQC, fastp and star statistics.</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb70-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb70-1" tabindex="-1"></a><span class="ex">multiqc</span> ./</span></code></pre></div>
+<p>Go through the generated html by browsing through the following directory in a web browser:</p>
+<p><a href="http://YOUR_PUBLIC_IPv4_ADDRESS/workspace/rnaseq" class="uri">http://YOUR_PUBLIC_IPv4_ADDRESS/workspace/rnaseq</a></p>
+<p><strong>Question 3</strong>
+What percentage of reads successfully aligned to the reference genome?</p>
+<ul>
+<li>Is this alignment rate acceptable?</li>
+<li>What could explain a low alignment rate?</li>
+</ul>
+<p><strong>Question 4</strong>
+How many reads are uniquely mapped vs multi-mapped?</p>
+<ul>
+<li>Why are multi-mapped reads common in RNA-seq data?</li>
+<li>Should they be included in downstream analysis?</li>
+</ul>
 </div>
 <div id="igv-visualization" class="section level3 hasAnchor">
 <h3>IGV visualization<a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#igv-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
