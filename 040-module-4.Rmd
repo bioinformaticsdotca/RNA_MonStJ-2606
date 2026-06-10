@@ -13,7 +13,7 @@ In this tutorial you will perform functional enrichment analysis using:
 2. Gene Set Enrichment analysis (GSEA) with fgsea and MSigDB
 
 
-**4.1 What is enrichment analysis?**
+###  What is enrichment analysis?
 
 Enrichment analysis tests whether specific pathways or biological functions are overrepresented in our DEG list.
 
@@ -25,7 +25,7 @@ Examples:
 - apoptosis
 
 
-**4.2 Required packages**
+### Required packages
 
 ```{r setup, message=FALSE, warning=FALSE}
 library(data.table)
@@ -95,9 +95,9 @@ deg=subset(res,res$padj<0.01)
 ```
 
 
-**4.3 Over-Representation Analysis (ORA)**
+### Over-Representation Analysis (ORA)
 
-**4.3a Enrichment analysis with gProfiler**
+**Enrichment analysis with gProfiler**
 
 Documentation : [gProfiler](https://biit.cs.ut.ee/gprofiler/gost)
 
@@ -226,7 +226,7 @@ barplot(
 ```
 
 
-**4.3b Enrichment analysis with clusterProfiler**
+**Enrichment analysis with clusterProfiler**
 
 clusterProfiler is a widely used Bioconductor package for statistical analysis and visualization of functional profiles from genomic data.  
 
@@ -290,7 +290,7 @@ What changes?
 
 
 
-**- Visualize GO Results**
+**Visualize GO Results**
 
 **GO Barplot**
 ```{r fig.width=10, fig.height=6, message=FALSE, warning=FALSE}
@@ -315,7 +315,7 @@ Dot color represents:
 
 
 
-**- KEGG Pathway Enrichment**
+**KEGG Pathway Enrichment**
 
 ```{r, message=FALSE, warning=FALSE}
 ekegg = enrichKEGG(
@@ -479,7 +479,7 @@ knitr::include_graphics("hsa05205.logFCx_YB.png")
 
 
 
-**4.4 Gene Set Enrichment Analysis (GSEA)**
+### Gene Set Enrichment Analysis (GSEA)
 
 Unlike classical enrichment analysis that uses only significant DEGs,
 GSEA uses ALL genes ranked by a statistic such as:
@@ -491,7 +491,7 @@ This approach avoids arbitrary DEG thresholds and can detect subtle but coordina
 
 
 
-**4.4a Prepare Ranked Gene List**
+**Prepare Ranked Gene List**
 
 We will rank genes using both:
 
@@ -552,7 +552,7 @@ hist(
 
 
 
-**4.4b Run GSEA with Gene Sets from MSigDB**
+**Run GSEA with Gene Sets from MSigDB**
 
 
 [MSigDB](https://www.gsea-msigdb.org/gsea/msigdb) (Molecular Signatures Database) is a curated collection of annotated gene sets commonly used for pathway and enrichment analysis.  
@@ -617,7 +617,7 @@ fgsea_res = fgsea(
 ```
 
 
-**4.4c Explore Results**
+**Explore Results**
 
 ```{r}
 head(fgsea_res)
@@ -653,7 +653,7 @@ What does the NES (Normalized Enrichment Score) represent?
 
 
 
-**4.4d Visualize Top Pathways**
+**Visualize Top Pathways**
 
 ```{r fig.width=10, fig.height=8, message=FALSE, warning=FALSE}
 topPathwaysUp <- fgsea_res %>%
@@ -768,7 +768,7 @@ ggplot(
 5. Which biological processes dominate the dataset?
 
 
-**4.4e Mini Challenge**
+### Mini Challenge
 
 Try modifying one parameter in the analysis:
 

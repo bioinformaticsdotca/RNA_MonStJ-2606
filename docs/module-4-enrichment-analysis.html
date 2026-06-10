@@ -271,7 +271,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="module-4-enrichment-analysis.html"><a href="module-4-enrichment-analysis.html"><i class="fa fa-check"></i>Module 4: Enrichment analysis</a>
 <ul>
 <li class="chapter" data-level="" data-path="module-4-enrichment-analysis.html"><a href="module-4-enrichment-analysis.html#lecture-4"><i class="fa fa-check"></i>Lecture</a></li>
-<li class="chapter" data-level="" data-path="module-4-enrichment-analysis.html"><a href="module-4-enrichment-analysis.html#lab-2"><i class="fa fa-check"></i>Lab</a></li>
+<li class="chapter" data-level="" data-path="module-4-enrichment-analysis.html"><a href="module-4-enrichment-analysis.html#lab-2"><i class="fa fa-check"></i>Lab</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-4-enrichment-analysis.html"><a href="module-4-enrichment-analysis.html#what-is-enrichment-analysis"><i class="fa fa-check"></i>What is enrichment analysis?</a></li>
+<li class="chapter" data-level="" data-path="module-4-enrichment-analysis.html"><a href="module-4-enrichment-analysis.html#required-packages"><i class="fa fa-check"></i>Required packages</a></li>
+<li class="chapter" data-level="" data-path="module-4-enrichment-analysis.html"><a href="module-4-enrichment-analysis.html#over-representation-analysis-ora"><i class="fa fa-check"></i>Over-Representation Analysis (ORA)</a></li>
+<li class="chapter" data-level="" data-path="module-4-enrichment-analysis.html"><a href="module-4-enrichment-analysis.html#gene-set-enrichment-analysis-gsea"><i class="fa fa-check"></i>Gene Set Enrichment Analysis (GSEA)</a></li>
+<li class="chapter" data-level="" data-path="module-4-enrichment-analysis.html"><a href="module-4-enrichment-analysis.html#mini-challenge"><i class="fa fa-check"></i>Mini Challenge</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <h1 id="sponsors">Sponsors</h1>
@@ -320,7 +327,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Over-Representation Analysis (ORA) with gProfiler and clusterProfiler</li>
 <li>Gene Set Enrichment analysis (GSEA) with fgsea and MSigDB</li>
 </ol>
-<p><strong>4.1 What is enrichment analysis?</strong></p>
+<div id="what-is-enrichment-analysis" class="section level3 hasAnchor">
+<h3>What is enrichment analysis?<a href="module-4-enrichment-analysis.html#what-is-enrichment-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Enrichment analysis tests whether specific pathways or biological functions are overrepresented in our DEG list.</p>
 <p>Examples:</p>
 <ul>
@@ -329,7 +337,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>cell cycle</li>
 <li>apoptosis</li>
 </ul>
-<p><strong>4.2 Required packages</strong></p>
+</div>
+<div id="required-packages" class="section level3 hasAnchor">
+<h3>Required packages<a href="module-4-enrichment-analysis.html#required-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="module-4-enrichment-analysis.html#cb77-1" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
 <span id="cb77-2"><a href="module-4-enrichment-analysis.html#cb77-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb77-3"><a href="module-4-enrichment-analysis.html#cb77-3" tabindex="-1"></a><span class="fu">library</span>(gprofiler2)</span>
@@ -341,8 +351,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb77-9"><a href="module-4-enrichment-analysis.html#cb77-9" tabindex="-1"></a><span class="fu">library</span>(KEGGREST)</span>
 <span id="cb77-10"><a href="module-4-enrichment-analysis.html#cb77-10" tabindex="-1"></a><span class="fu">library</span>(fgsea)</span>
 <span id="cb77-11"><a href="module-4-enrichment-analysis.html#cb77-11" tabindex="-1"></a><span class="fu">library</span>(msigdbr)</span></code></pre></div>
-<p><strong>4.3 Over-Representation Analysis (ORA)</strong></p>
-<p><strong>4.3a Enrichment analysis with gProfiler</strong></p>
+</div>
+<div id="over-representation-analysis-ora" class="section level3 hasAnchor">
+<h3>Over-Representation Analysis (ORA)<a href="module-4-enrichment-analysis.html#over-representation-analysis-ora" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Enrichment analysis with gProfiler</strong></p>
 <p>Documentation : <a href="https://biit.cs.ut.ee/gprofiler/gost">gProfiler</a></p>
 <p>gProfiler is a popular web tool and R package used to identify biological pathways, Gene Ontology terms, and molecular functions enriched in a list of genes.</p>
 <p>It compares our differentially expressed genes (DEGs) against known biological annotations from databases such as GO, KEGG, Reactome, and WikiPathways to help interpret the biological meaning of RNA-seq results.</p>
@@ -428,7 +440,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb82-15"><a href="module-4-enrichment-analysis.html#cb82-15" tabindex="-1"></a>  <span class="at">las =</span> <span class="dv">1</span>,      <span class="co"># horizontal labels</span></span>
 <span id="cb82-16"><a href="module-4-enrichment-analysis.html#cb82-16" tabindex="-1"></a>  <span class="at">cex.names =</span> <span class="fl">0.8</span>  <span class="co"># text size</span></span>
 <span id="cb82-17"><a href="module-4-enrichment-analysis.html#cb82-17" tabindex="-1"></a>)</span></code></pre></div>
-<p><strong>4.3b Enrichment analysis with clusterProfiler</strong></p>
+<p><strong>Enrichment analysis with clusterProfiler</strong></p>
 <p>clusterProfiler is a widely used Bioconductor package for statistical analysis and visualization of functional profiles from genomic data.</p>
 <p>It allows users to perform enrichment analysis using Gene Ontology (GO), KEGG, Reactome, and Gene Set Enrichment Analysis (GSEA), while providing powerful visualization tools such as dotplots, enrichment maps, and pathway networks.</p>
 <ul>
@@ -471,7 +483,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>or</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="module-4-enrichment-analysis.html#cb85-1" tabindex="-1"></a>ont <span class="ot">=</span> <span class="st">&quot;MF&quot;</span></span></code></pre></div>
 <p>What changes?</p>
-<p><strong>- Visualize GO Results</strong></p>
+<p><strong>Visualize GO Results</strong></p>
 <p><strong>GO Barplot</strong></p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="module-4-enrichment-analysis.html#cb86-1" tabindex="-1"></a><span class="fu">barplot</span>(  ego_bp,  <span class="at">showCategory =</span> <span class="dv">15</span>)</span></code></pre></div>
 <p><strong>GO Dotplot</strong></p>
@@ -485,7 +497,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>statistical significance</li>
 </ul>
-<p><strong>- KEGG Pathway Enrichment</strong></p>
+<p><strong>KEGG Pathway Enrichment</strong></p>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="module-4-enrichment-analysis.html#cb88-1" tabindex="-1"></a>ekegg <span class="ot">=</span> <span class="fu">enrichKEGG</span>(</span>
 <span id="cb88-2"><a href="module-4-enrichment-analysis.html#cb88-2" tabindex="-1"></a>  <span class="at">gene =</span> <span class="fu">rownames</span>(deg),</span>
 <span id="cb88-3"><a href="module-4-enrichment-analysis.html#cb88-3" tabindex="-1"></a>  <span class="at">organism =</span> <span class="st">&quot;hsa&quot;</span>,</span>
@@ -599,7 +611,9 @@ Show solution
 <span id="cb96-16"><a href="module-4-enrichment-analysis.html#cb96-16" tabindex="-1"></a></span>
 <span id="cb96-17"><a href="module-4-enrichment-analysis.html#cb96-17" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;hsa05205.logFCx_YB.png&quot;</span>)</span></code></pre></div>
 </details>
-<p><strong>4.4 Gene Set Enrichment Analysis (GSEA)</strong></p>
+</div>
+<div id="gene-set-enrichment-analysis-gsea" class="section level3 hasAnchor">
+<h3>Gene Set Enrichment Analysis (GSEA)<a href="module-4-enrichment-analysis.html#gene-set-enrichment-analysis-gsea" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Unlike classical enrichment analysis that uses only significant DEGs,
 GSEA uses ALL genes ranked by a statistic such as:</p>
 <ul>
@@ -607,7 +621,7 @@ GSEA uses ALL genes ranked by a statistic such as:</p>
 <li>adjusted p-value</li>
 </ul>
 <p>This approach avoids arbitrary DEG thresholds and can detect subtle but coordinated biological changes.</p>
-<p><strong>4.4a Prepare Ranked Gene List</strong></p>
+<p><strong>Prepare Ranked Gene List</strong></p>
 <p>We will rank genes using both:</p>
 <ul>
 <li>adjusted p-value (<code>padj</code>)</li>
@@ -646,7 +660,7 @@ GSEA uses ALL genes ranked by a statistic such as:</p>
 <span id="cb100-5"><a href="module-4-enrichment-analysis.html#cb100-5" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Distribution of GSEA Ranking Scores&quot;</span>,</span>
 <span id="cb100-6"><a href="module-4-enrichment-analysis.html#cb100-6" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Ranking score&quot;</span></span>
 <span id="cb100-7"><a href="module-4-enrichment-analysis.html#cb100-7" tabindex="-1"></a>)</span></code></pre></div>
-<p><strong>4.4b Run GSEA with Gene Sets from MSigDB</strong></p>
+<p><strong>Run GSEA with Gene Sets from MSigDB</strong></p>
 <p><a href="https://www.gsea-msigdb.org/gsea/msigdb">MSigDB</a> (Molecular Signatures Database) is a curated collection of annotated gene sets commonly used for pathway and enrichment analysis.</p>
 <p>It contains multiple categories of biological signatures, including Hallmark pathways, Gene Ontology terms, immune signatures, and curated pathways from databases such as KEGG and Reactome.</p>
 <p>We will use the Hallmark gene sets.</p>
@@ -692,7 +706,7 @@ GSEA uses ALL genes ranked by a statistic such as:</p>
 <span id="cb103-15"><a href="module-4-enrichment-analysis.html#cb103-15" tabindex="-1"></a>  <span class="co"># Number of permutations</span></span>
 <span id="cb103-16"><a href="module-4-enrichment-analysis.html#cb103-16" tabindex="-1"></a>  <span class="at">nperm =</span> <span class="dv">1000</span></span>
 <span id="cb103-17"><a href="module-4-enrichment-analysis.html#cb103-17" tabindex="-1"></a>)</span></code></pre></div>
-<p><strong>4.4c Explore Results</strong></p>
+<p><strong>Explore Results</strong></p>
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="module-4-enrichment-analysis.html#cb104-1" tabindex="-1"></a><span class="fu">head</span>(fgsea_res)</span></code></pre></div>
 <p><strong>Sort Results</strong></p>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="module-4-enrichment-analysis.html#cb105-1" tabindex="-1"></a>fgsea_res <span class="ot">&lt;-</span> fgsea_res <span class="sc">%&gt;%</span><span class="fu">arrange</span>(padj)</span>
@@ -708,7 +722,7 @@ pathway enriched among downregulated genes</p></li>
 <li><p>Large absolute NES:
 stronger enrichment signal</p></li>
 </ul>
-<p><strong>4.4d Visualize Top Pathways</strong></p>
+<p><strong>Visualize Top Pathways</strong></p>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="module-4-enrichment-analysis.html#cb106-1" tabindex="-1"></a>topPathwaysUp <span class="ot">&lt;-</span> fgsea_res <span class="sc">%&gt;%</span></span>
 <span id="cb106-2"><a href="module-4-enrichment-analysis.html#cb106-2" tabindex="-1"></a>  <span class="fu">filter</span>(NES <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb106-3"><a href="module-4-enrichment-analysis.html#cb106-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(NES)) <span class="sc">%&gt;%</span></span>
@@ -791,7 +805,9 @@ pathway repressed</p></li>
 <li>Are proliferation pathways activated?</li>
 <li>Which biological processes dominate the dataset?</li>
 </ol>
-<p><strong>4.4e Mini Challenge</strong></p>
+</div>
+<div id="mini-challenge" class="section level3 hasAnchor">
+<h3>Mini Challenge<a href="module-4-enrichment-analysis.html#mini-challenge" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Try modifying one parameter in the analysis:</p>
 <p>Examples:</p>
 <ul>
@@ -804,6 +820,7 @@ pathway repressed</p></li>
 <li>Which pathways become more significant?</li>
 </ol>
 
+</div>
 </div>
 </div>
             </section>
