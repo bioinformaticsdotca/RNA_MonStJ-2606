@@ -346,4 +346,5 @@ schedule_component <- tagList(
 
 # 7. Output the final component
 schedule_component
+
 ```
