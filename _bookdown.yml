@@ -1,5 +1,4 @@
 delete_merged_file: true
-before_chapter_script: "_common.R"
 language:
   ui:
     chapter_name: ""
