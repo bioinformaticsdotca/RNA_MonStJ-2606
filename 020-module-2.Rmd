@@ -7,12 +7,10 @@
 
 
 
-## Lab
-
-### Module 2 - Key concepts
+## Module 2 - Key concepts
 * Splice-aware alignment, SAM/BAM format
 
-### Module 2 - Learning objectives
+## Module 2 - Learning objectives
 * RNA-seq alignment challenges and common questions
 * Alignment strategies
 * STAR
@@ -23,7 +21,7 @@
 * Pseudo-alignment
 
 
-### Lectures from previous workshop
+## Lectures from previous workshop
 * [Introduction to alignment mini lecture](https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cbw/2025/mini/RNASeq_MiniLecture_02_01_Alignment.pdf)
 * [Alignment/Assembly/kmer mini lecture](https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cbw/2025/mini/RNASeq_MiniLecture_02_02_Alignment_vs_Assembly_vs_Kmer.pdf)
 * [SAM/BAM/BED formats mini lecture](https://github.com/griffithlab/rnabio.org/blob/master/assets/lectures/cbw/2025/mini/RNASeq_MiniLecture_02_03_SAM_BAM_BED.pdf)

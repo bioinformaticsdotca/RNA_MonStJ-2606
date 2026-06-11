@@ -4,7 +4,7 @@
 
 <iframe src="https://docs.google.com/presentation/d/1A6x8O0ae_uh1w9_zeNX3pyom4OJqcTR8/preview" width="640" height="480" allow="autoplay"></iframe>  
 
-## Lab
+## Module 4 - Practical Exercise
 
 
 In this tutorial you will perform functional enrichment analysis using:
@@ -27,7 +27,7 @@ Examples:
 
 ### Required packages
 
-```{r setup, message=FALSE, warning=FALSE}
+```{r setupbis, message=FALSE, warning=FALSE}
 library(data.table)
 library(ggplot2)
 library(gprofiler2)

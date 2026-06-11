@@ -1,4 +1,4 @@
-# Module 1
+# Module 1: RNAseq inputs and QC
 
 ## Lecture
 <iframe src="https://docs.google.com/presentation/d/112p-Bx30at8G6N9tmTcbpKJY6Zhk1DH_/preview" width="640" height="480" allow="autoplay"></iframe> 

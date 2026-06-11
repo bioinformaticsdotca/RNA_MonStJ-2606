@@ -1,14 +1,14 @@
-# Module 3
+# Module 3: RNA Expression and Differential Expression
 
 ## Lecture
 <iframe src="https://docs.google.com/presentation/d/1ufYUvnTMj4Wm8UEbHSdI1JZsfS1ao0uZ/preview" width="640" height="480" allow="autoplay"></iframe>  
 
 
 
-### Module 3 - Key concepts
+## Module 3 - Key concepts
 * Differential Gene Expression (DGE) Analysis
 
-### Module 3 - Learning objectives
+## Module 3 - Learning objectives
 
 By the end of this module, you should be able to:
 
@@ -19,7 +19,7 @@ By the end of this module, you should be able to:
 * perform a DGE analysis with DESeq2
 
 
-### Differential Gene Expression (DGE) analysis Lab
+## Module 3 - Practicle Exercise: Differential Gene Expression (DGE) analysis Lab
 
 First step is to load the required R packages and read the data. For the data, we are using the raw counts table provided at the NCBI.
 
@@ -129,7 +129,7 @@ Based on the PCA plot, would you expect to find differentially expressed genes (
 
 Based on the correlation values between samples, would you conclude that the assumption about the expression levels of most genes remained the same across groups is correct for these data? Why?
 
-#### DGE Analysis
+### DGE Analysis
 
 ```{r, message=FALSE, warning=FALSE}
 ## Run DGE analysis with default values
@@ -179,7 +179,7 @@ plotMA(resMean, xlim=xlim, ylim=ylim, main="mean")
 
 * Which dispersion estimator method would you say work best for these data? Why?
 
-#### Exercise
+### Exercise
 
 Another argument that can be changed in the DESeq function controls how the scaling factors are calculated. The scaling factor calculation method is set with the argument `sfType`. Look at the help for this function (by typing `?DESeq` in the R console) and try one of the alternative approaches, and generate the corresponding MA-plot which should look like one of the plots below. Compare these MA-plots with the MA-plot obtained with the default values. Which method would you expect to deem more genes as differentially expressed?
 
@@ -193,7 +193,7 @@ Another argument that can be changed in the DESeq function controls how the scal
  plotMA(resIt, xlim=xlim, ylim=ylim, main="iterate")
 ```
 
-#### Obtain the DEGs
+### Obtain the DEGs
 
 Let's first see how methodological choices change the results. 
 
@@ -288,10 +288,10 @@ write.csv(as.data.frame(resOrdered),  file="DGE_analysis_results.csv")
 * How many of the top 10 most significant genes are down in the HBR condition?
 
 
-#### Exercise
+### Exercise
 
 Save only the results for the genes in the intersection of the three methods in a csv file named "GenesInCommon_results.csv".
 
-### DESeq2 resources
+## DESeq2 resources
 
 The [DESeq2 bioconductor vignette](https://bioconductor.org/packages//release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html) is a great resource to dive deeper into DESeq2's functionality.
