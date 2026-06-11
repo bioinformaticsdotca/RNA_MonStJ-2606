@@ -30,7 +30,7 @@ Coming soon!
 
 ## Schedule
 
-```{r schedule-loader, echo=FALSE, message=FALSE, warning=FALSE}
+```{r schedule-loader, echo=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
 # --- Self-Contained R-Markdown Schedule Component ---
 
 # 1. Load necessary libraries
