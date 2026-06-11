@@ -34,7 +34,7 @@ Dr. Peña-Castillo is a Professor at the Departments of Biology and Computer Sci
 
 #### Sophie Mockly (Montréal) (she/her)
 
-
+<img src="./img/faculty/sophie_mockly.jpg" width="200" alt="Photo of Sophie Mockly">
 
 >
 Postdoctoral Fellow <br>
@@ -46,6 +46,16 @@ Sophie Mockly is a Postdoctoral Fellow at the Montreal Clinical Research Institu
 
 
 #### Sophie Ehresmann (Montréal)
+
+<img src="./img/faculty/Sophie_ehresmann.jpeg" width="200" alt="Photo of Sophie Ehresmann">
+
+>
+PhD Candidate <br>
+IRCM, Université de Montréal <br>
+Montréal, QC, Canada
+>
+
+Sophie Ehresmann is a PhD candidate at the Montreal Clinical Research Institute (IRCM) in the RNA and Noncoding Mechanisms of Disease Laboratory. She previously obtained a MSc in molecular biology at the Université de Montréal where she used omics tools to characterize pediatric neurodevelopmental disorders in patient-derived cell models. She now leverages both bioinformatics and molecular biology to study the development of breast cancer, with a focus on Nanopore sequencing technologies. 
 
 #### Yvonne He (St John's) (she/her)
 
@@ -61,7 +71,7 @@ Yvonne He is a PhD candidate in the Department of Biology at Memorial University
 
 #### Paniz Taghipour (St John's) (she/her)
 
-
+<img src="./img/faculty/paniz_taghipour.jpg" width="200" alt="Photo of Paniz Taghipour">
 
 >
 MSc Student <br>
