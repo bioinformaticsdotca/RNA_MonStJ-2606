@@ -223,17 +223,13 @@ To learn more, see:
 **GTF (.gtf) file** - A common file format referred to as Gene Transfer Format used to store gene and transcript annotation information. You can learn more about this format here: [http://genome.ucsc.edu/FAQ/FAQformat#format4](http://genome.ucsc.edu/FAQ/FAQformat#format4)
 
 ### The Purpose of Gene Annotations (.gtf file)
-When running the HISAT2/StringTie/Ballgown pipeline, known gene/transcript annotations are used for several purposes:
+Gene/transcript annotations are used for several purposes:
 
-* During the HISAT2 index creation step, annotations may be provided to create local indexes to represent transcripts as well as a global index for the entire reference genome. This allows for faster mapping and better mapping across exon boundaries and splice sites. If an alignment still can not be found it will attempt to determine if the read corresponds to a novel exon-exon junction. See the [Indexing section](/module-01-inputs/0001/04/01/Indexing/) and the HISAT2 publication for more details.
+* During indexing, annotations may be provided to some tools create local indexes to represent transcripts as well as a global index for the entire reference genome. This allows for faster mapping and better mapping across exon boundaries and splice sites. If an alignment still can not be found it will attempt to determine if the read corresponds to a novel exon-exon junction.
 
-* During the StringTie step, a .gtf file can be used to specify transcript models to guide the assembly process and limit expression estimates to predefined transcripts using the `-G` and `-e` options together. The `-e` option will give you one expression estimate for each of the transcripts in your .gtf file, giving you a 'microarray like' expression result.
+* During quantification, annotations are used to determine which reads are mapped to which features (genes).
 
-* During the StringTie step, if the `-G` option is specified without the `-e` option the .gtf file is used only to 'guide' the assembly of transcripts. Instead of assuming only the known transcript models are correct, the resulting expression estimates will correspond to both known and novel/predicted transcripts.
-
-* During the StringTie and gffcompare steps, a .gtf file is used to determine the transcripts that will be examined for differential expression using Ballgown. These may be known transcripts that you download from a public source, or a .gtf of transcripts predicted by StringTie from the read data in an earlier step.
-
-### Sources for obtaining gene annotation files formatted for HISAT2/StringTie/Ballgown
+### Sources for obtaining gene annotation files
 There are many possible sources of .gtf gene/transcript annotation files. For example, from Ensembl, UCSC, RefSeq, etc. Several options and related instructions for obtaining the gene annotation files are provided below.
 
 #### I. ENSEMBL FTP SITE
@@ -418,7 +414,9 @@ fastp -i $RNA_DATA_DIR/$S6.read1.fastq.gz -I $RNA_DATA_DIR/$S6.read2.fastq.gz -o
 
 Optional exercise: Generate FastQC and multiqc reports for fastq files after trimming. Compare these reports with those generated before trimming.
 
-#### Acknowledgments
 
-Some exercises in this lab were adapted from Malachi Griffith, Jason R. Walker, Nicholas C. Spies, Benjamin J. Ainscough, Obi L. Griffith*. 2015. [Informatics for RNA-seq: A web resource for analysis on the cloud.](http://dx.doi.org/10.1371/journal.pcbi.1004393) PLoS Comp Biol. 11(8):e1004393.
+#### Acknowledgments
+Some exercises adapted from Malachi Griffith, Jason R. Walker, Nicholas C. Spies, Benjamin J. Ainscough, Obi L. Griffith*. 2015. [Informatics for RNA-seq: A web resource for analysis on the cloud.](http://dx.doi.org/10.1371/journal.pcbi.1004393) PLoS Comp Biol. 11(8):e1004393.
+
+
 
