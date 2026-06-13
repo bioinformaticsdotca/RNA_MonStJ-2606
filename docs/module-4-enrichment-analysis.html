@@ -536,9 +536,8 @@ Show solution
 <span id="cb91-12"><a href="module-4-enrichment-analysis.html#cb91-12" tabindex="-1"></a>  <span class="at">pathway.id =</span> <span class="st">&quot;hsa05205&quot;</span>,</span>
 <span id="cb91-13"><a href="module-4-enrichment-analysis.html#cb91-13" tabindex="-1"></a>  <span class="at">species =</span> <span class="st">&quot;hsa&quot;</span>,</span>
 <span id="cb91-14"><a href="module-4-enrichment-analysis.html#cb91-14" tabindex="-1"></a>  <span class="at">out.suffix =</span> <span class="st">&quot;init&quot;</span></span>
-<span id="cb91-15"><a href="module-4-enrichment-analysis.html#cb91-15" tabindex="-1"></a>)</span>
-<span id="cb91-16"><a href="module-4-enrichment-analysis.html#cb91-16" tabindex="-1"></a></span>
-<span id="cb91-17"><a href="module-4-enrichment-analysis.html#cb91-17" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;hsa05205.init.png&quot;</span>)</span></code></pre></div>
+<span id="cb91-15"><a href="module-4-enrichment-analysis.html#cb91-15" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="hsa05205.init.png" width="400"></p>
 <p>What is the difference with this code?</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="module-4-enrichment-analysis.html#cb92-1" tabindex="-1"></a><span class="co"># Visualize pathway</span></span>
 <span id="cb92-2"><a href="module-4-enrichment-analysis.html#cb92-2" tabindex="-1"></a><span class="fu">pathview</span>(</span>
@@ -547,9 +546,8 @@ Show solution
 <span id="cb92-5"><a href="module-4-enrichment-analysis.html#cb92-5" tabindex="-1"></a>  <span class="at">species =</span> <span class="st">&quot;hsa&quot;</span>,</span>
 <span id="cb92-6"><a href="module-4-enrichment-analysis.html#cb92-6" tabindex="-1"></a>  <span class="at">out.suffix =</span> <span class="st">&quot;logFC&quot;</span></span>
 <span id="cb92-7"><a href="module-4-enrichment-analysis.html#cb92-7" tabindex="-1"></a></span>
-<span id="cb92-8"><a href="module-4-enrichment-analysis.html#cb92-8" tabindex="-1"></a>)</span>
-<span id="cb92-9"><a href="module-4-enrichment-analysis.html#cb92-9" tabindex="-1"></a></span>
-<span id="cb92-10"><a href="module-4-enrichment-analysis.html#cb92-10" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;hsa05205.logFC.png&quot;</span>)</span></code></pre></div>
+<span id="cb92-8"><a href="module-4-enrichment-analysis.html#cb92-8" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="hsa05205.logFC.png" width="400"></p>
 <p>To customize the map, we need to identify the range of expression of the DEGs involved in this pathway:</p>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="module-4-enrichment-analysis.html#cb93-1" tabindex="-1"></a><span class="fu">library</span>(KEGGREST)</span>
 <span id="cb93-2"><a href="module-4-enrichment-analysis.html#cb93-2" tabindex="-1"></a></span>
@@ -579,9 +577,8 @@ Show solution
 <span id="cb94-5"><a href="module-4-enrichment-analysis.html#cb94-5" tabindex="-1"></a>  <span class="at">species =</span> <span class="st">&quot;hsa&quot;</span>,</span>
 <span id="cb94-6"><a href="module-4-enrichment-analysis.html#cb94-6" tabindex="-1"></a>  <span class="at">out.suffix =</span> <span class="st">&quot;logFCx&quot;</span>,</span>
 <span id="cb94-7"><a href="module-4-enrichment-analysis.html#cb94-7" tabindex="-1"></a>  <span class="at">limit =</span> <span class="fu">list</span>(<span class="at">gene =</span> <span class="fl">0.5</span>) <span class="co">#logFC from -0.5 to 0.5</span></span>
-<span id="cb94-8"><a href="module-4-enrichment-analysis.html#cb94-8" tabindex="-1"></a>)</span>
-<span id="cb94-9"><a href="module-4-enrichment-analysis.html#cb94-9" tabindex="-1"></a></span>
-<span id="cb94-10"><a href="module-4-enrichment-analysis.html#cb94-10" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;hsa05205.logFCx.png&quot;</span>)</span></code></pre></div>
+<span id="cb94-8"><a href="module-4-enrichment-analysis.html#cb94-8" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="hsa05205.logFCx.png" width="400"></p>
 </details>
 <p>Now the scale color is correct, but from green to red. We usually avoid using these colors in figures.
 Change the scale to: yellow - blue</p>
@@ -603,9 +600,8 @@ Show solution
 <span id="cb95-12"><a href="module-4-enrichment-analysis.html#cb95-12" tabindex="-1"></a>  <span class="co"># High values (upregulated genes)</span></span>
 <span id="cb95-13"><a href="module-4-enrichment-analysis.html#cb95-13" tabindex="-1"></a>  <span class="at">high =</span> <span class="fu">list</span>(<span class="at">gene =</span> <span class="st">&quot;blue&quot;</span>)</span>
 <span id="cb95-14"><a href="module-4-enrichment-analysis.html#cb95-14" tabindex="-1"></a></span>
-<span id="cb95-15"><a href="module-4-enrichment-analysis.html#cb95-15" tabindex="-1"></a>)</span>
-<span id="cb95-16"><a href="module-4-enrichment-analysis.html#cb95-16" tabindex="-1"></a></span>
-<span id="cb95-17"><a href="module-4-enrichment-analysis.html#cb95-17" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;hsa05205.logFCx_YB.png&quot;</span>)</span></code></pre></div>
+<span id="cb95-15"><a href="module-4-enrichment-analysis.html#cb95-15" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="hsa05205.logFCx_YB.png" width="400"></p>
 </details>
 </div>
 <div id="gene-set-enrichment-analysis-gsea" class="section level3 hasAnchor">

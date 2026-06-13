@@ -172,11 +172,10 @@ gostres_filt=gostres_filt[order(gostres_filt$log10,decreasing=F),]
 
 **Manhattan plot for all the results**
 
-```{r , message=FALSE, warning=FALSE}
+```{r , message=FALSE, warning=FALSE, fig.width=8, fig.height=6}
 
 #Manhattan plot for all results
 gostplot(gost.res)
-
 ```
 
 
@@ -378,9 +377,9 @@ pathview(
   species = "hsa",
   out.suffix = "init"
 )
-
-knitr::include_graphics("hsa05205.init.png")
 ```
+<img src="hsa05205.init.png" width="400">
+
 
 What is the difference with this code?
 
@@ -395,8 +394,9 @@ pathview(
 
 )
 
-knitr::include_graphics("hsa05205.logFC.png")
 ```
+<img src="hsa05205.logFC.png" width="400">
+
 
 To customize the map, we need to identify the range of expression of the DEGs involved in this pathway:
 
@@ -441,8 +441,9 @@ pathview(
   limit = list(gene = 0.5) #logFC from -0.5 to 0.5
 )
 
-knitr::include_graphics("hsa05205.logFCx.png")
 ```
+<img src="hsa05205.logFCx.png" width="400">
+
 
 </details>
 
@@ -472,8 +473,9 @@ pathview(
 
 )
 
-knitr::include_graphics("hsa05205.logFCx_YB.png")
 ```
+<img src="hsa05205.logFCx_YB.png" width="400">
+
 </details>
 
 
