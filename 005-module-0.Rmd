@@ -274,13 +274,14 @@ For this tutorial we require:
 * [data.table](https://cran.r-project.org/web/packages/data.table/index.html)
 * [gprofiler2](https://cran.r-project.org/web/packages/gprofiler2/index.html)
 * [msigdbr](https://cran.r-project.org/web/packages/msigdbr/index.html)
-
+* [ggVennDiagram](https://cran.r-project.org/web/packages/ggVennDiagram/readme/README.html)
+* [pheatmap](https://cran.r-project.org/web/packages/pheatmap/index.html)
 
 launch R (enter `R` at linux command prompt) and type the following at an R command prompt.
 
 ```bash
 #R
-#install.packages(c("devtools","dplyr","gplots","ggplot2","data.table","gprofiler2","msigdbr"),repos="http://cran.us.r-project.org")
+#install.packages(c("devtools","dplyr","gplots","ggplot2","data.table","gprofiler2","msigdbr","ggVennDiagram","pheatmap"),repos="http://cran.us.r-project.org")
 #quit(save="no")
 ```
 
