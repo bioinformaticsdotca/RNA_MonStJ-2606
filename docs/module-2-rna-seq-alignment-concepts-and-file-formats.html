@@ -415,23 +415,72 @@ Redirect standard output and error messages to a log file for each sample.</p></
 <li><a href="https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf">STARmanual.pdf</a></li>
 </ul>
 <p>The basic options to run a mapping job are as follows:</p>
+<p>Use samtools view to see the format of a BAM alignment file:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb60-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb60-1" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_ALIGN_DIR</span></span>
+<span id="cb60-2"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb60-2" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-H</span> HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam</span>
+<span id="cb60-3"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb60-3" tabindex="-1"></a><span class="ex">samtools</span> view HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam <span class="kw">|</span> <span class="fu">head</span></span></code></pre></div>
 <p><strong>Question 1</strong></p>
+<ul>
+<li>What type of information is contained in the header of the BAM file?</li>
+</ul>
+<details>
+<summary>
+Show answer
+</summary>
+<p>The header (shown with samtools view -H) contains:</p>
+<p>Reference sequences (chromosomes, transcript IDs)
+Alignment metadata (aligner used, version, parameters)
+Read group information (sample, library, sequencing platform)</p>
+<p>Lines start with @ (e.g., <span class="citation">(<a href="#ref-SQ"><strong>SQ?</strong></a>)</span>, <span class="citation">(<a href="#ref-PG"><strong>PG?</strong></a>)</span>, <span class="citation">(<a href="#ref-RG"><strong>RG?</strong></a>)</span>)</p>
+</details>
+<ul>
+<li>How is each alignment line structured? Name at least 5 fields</li>
+</ul>
+<details>
+<summary>
+Show answer
+</summary>
+<p>Each alignment line (SAM format) contains tab-separated fields:</p>
+<ul>
+<li>QNAME → read name</li>
+<li>FLAG → bitwise flag (read properties)</li>
+<li>RNAME → reference (chromosome/transcript)</li>
+<li>POS → alignment position</li>
+<li>MAPQ → mapping quality</li>
+<li>CIGAR → alignment structure</li>
+<li>RNEXT → mate reference</li>
+<li>PNEXT → mate position</li>
+<li>TLEN → fragment length</li>
+<li>SEQ → read sequence</li>
+<li>QUAL → base quality</li>
+</ul>
+<p>Plus optional fields at the end</p>
+</details>
+<ul>
+<li>What does the FLAG field represent?</li>
+</ul>
+<details>
+<summary>
+Show answer
+</summary>
+<p>The FLAG is a bitwise integer encoding properties of the read:
+Examples:</p>
+<ul>
+<li>0 → single-end, mapped</li>
+<li>16 → read mapped to reverse strand</li>
+<li>4 → unmapped read</li>
+<li>99 / 147 → paired-end properly aligned</li>
+</ul>
+<p>It encodes multiple binary properties in one number</p>
+</details>
+<p><strong>Question 2</strong></p>
 <p>Why is RNA-seq alignment more complex than DNA-seq alignment?</p>
 <ul>
 <li>What is the role of splice-aware aligners like STAR?</li>
 <li>What biological phenomenon makes alignment more challenging?</li>
 </ul>
-<p><strong>Question 2</strong></p>
-<p>What information is stored in a BAM file?</p>
-<ul>
-<li>Can you identify where to find:
-<ul>
-<li>mapping position</li>
-<li>mapping quality</li>
-<li>CIGAR string</li>
-</ul></li>
-<li>Why is BAM preferred over SAM?</li>
-</ul>
+<p><strong>Question 3</strong></p>
+<p>Why is BAM preferred over SAM?</p>
 </div>
 <div id="post-alignment-qc" class="section level3 hasAnchor">
 <h3>Post-alignment QC<a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#post-alignment-qc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -439,16 +488,16 @@ Redirect standard output and error messages to a log file for each sample.</p></
 Notice the number of total reads, reads aligned and various metrics regarding how the reads aligned to the reference.
 To help alignment QC, multiQC can be used to aggregate the alignemnt statistics.</p>
 <p>Run the following command at the root of your project, so multiqc can screen for fastQC, fastp and star statistics.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb60-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb60-1" tabindex="-1"></a><span class="ex">multiqc</span> ./</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb61-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-1" tabindex="-1"></a><span class="ex">multiqc</span> ./</span></code></pre></div>
 <p>Go through the generated html by browsing through the following directory in a web browser:</p>
 <p><a href="http://YOUR_PUBLIC_IPv4_ADDRESS/workspace/rnaseq" class="uri">http://YOUR_PUBLIC_IPv4_ADDRESS/workspace/rnaseq</a></p>
-<p><strong>Question 3</strong>
+<p><strong>Question 4</strong>
 What percentage of reads successfully aligned to the reference genome?</p>
 <ul>
 <li>Is this alignment rate acceptable?</li>
 <li>What could explain a low alignment rate?</li>
 </ul>
-<p><strong>Question 4</strong>
+<p><strong>Question 5</strong>
 How many reads are uniquely mapped vs multi-mapped?</p>
 <ul>
 <li>Why are multi-mapped reads common in RNA-seq data?</li>
@@ -458,11 +507,11 @@ How many reads are uniquely mapped vs multi-mapped?</p>
 <div id="igv-visualization" class="section level3 hasAnchor">
 <h3>IGV visualization<a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#igv-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To facilitate IGV visualization, BAM files can be merged by condition. BAM files also need to be index with samtools.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb61-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-1" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_ALIGN_DIR</span></span>
-<span id="cb61-2"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-2" tabindex="-1"></a><span class="ex">samtools</span> merge <span class="at">-o</span> HBR.bam HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam HBR_Rep2_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam HBR_Rep3_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam</span>
-<span id="cb61-3"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-3" tabindex="-1"></a><span class="ex">samtools</span> index HBR.bam</span>
-<span id="cb61-4"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-4" tabindex="-1"></a><span class="ex">samtools</span> merge <span class="at">-o</span> UHR.bam  UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam UHR_Rep2_ERCC-Mix1_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam UHR_Rep3_ERCC-Mix1_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam </span>
-<span id="cb61-5"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-5" tabindex="-1"></a><span class="ex">samtools</span> index UHR.bam</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb62-1" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_ALIGN_DIR</span></span>
+<span id="cb62-2"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb62-2" tabindex="-1"></a><span class="ex">samtools</span> merge <span class="at">-o</span> HBR.bam HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam HBR_Rep2_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam HBR_Rep3_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam</span>
+<span id="cb62-3"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb62-3" tabindex="-1"></a><span class="ex">samtools</span> index HBR.bam</span>
+<span id="cb62-4"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb62-4" tabindex="-1"></a><span class="ex">samtools</span> merge <span class="at">-o</span> UHR.bam  UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam UHR_Rep2_ERCC-Mix1_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam UHR_Rep3_ERCC-Mix1_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam </span>
+<span id="cb62-5"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb62-5" tabindex="-1"></a><span class="ex">samtools</span> index UHR.bam</span></code></pre></div>
 <p>Now that our BAM files have been indexed with samtools we can load them and explore the RNA-seq alignments using the Integrative Genomics Viewer (IGV).</p>
 <p>The exercise below assumes that you have IGV installed on your local computer. If you are unable to get IGV to run locally you may also consider a web based version of IGV that runs in your browser. The interface of the IGV Web App is different from the local install, and is missing a few features, but is conceptually very similar.</p>
 <p>To access it simply visit: <a href="https://igv.org/app/">IGV Web App</a>.</p>
@@ -498,48 +547,76 @@ Other highly expressed genes you might explore are: NUP50, CYB5R3, and EIF3L (al
 <p><strong>Reference transcriptome</strong></p>
 <p>To allow us to compare Kallisto results to expression results from STAR, we will create a custom Fasta file that corresponds to the transcripts we used for the STAR analysis. How can we obtain these transcript sequences in Fasta format?</p>
 <p>We can use BedTools to create a transcripts fastq file from a transcript GTF file. This approach is convenient because it will also include the sequences for the ERCC spike in controls, allowing us to generate Kallisto abundance estimates for those features as well. Use bedtools getfasta to create an Ensembl+ERCC92 transcripts fasta file as follows.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb62-1" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_HOME</span>/refs</span>
-<span id="cb62-2"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb62-2" tabindex="-1"></a></span>
-<span id="cb62-3"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb62-3" tabindex="-1"></a><span class="co"># Convert GTF to genePred</span></span>
-<span id="cb62-4"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb62-4" tabindex="-1"></a><span class="ex">gtfToGenePred</span> chr22_with_ERCC92.gtf chr22_with_ERCC92.genePred</span>
-<span id="cb62-5"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb62-5" tabindex="-1"></a></span>
-<span id="cb62-6"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb62-6" tabindex="-1"></a><span class="co"># Convert genePred to BED12</span></span>
-<span id="cb62-7"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb62-7" tabindex="-1"></a><span class="ex">genePredToBed</span> chr22_with_ERCC92.genePred chr22_with_ERCC92.bed12</span>
-<span id="cb62-8"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb62-8" tabindex="-1"></a></span>
-<span id="cb62-9"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb62-9" tabindex="-1"></a><span class="ex">bedtools</span> getfasta <span class="at">-fi</span> chr22_with_ERCC92.fa <span class="at">-bed</span> chr22_with_ERCC92.bed12 <span class="at">-s</span> <span class="at">-split</span> <span class="at">-name</span> <span class="at">-fo</span> chr22_ERCC92_transcripts.fa</span>
-<span id="cb62-10"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb62-10" tabindex="-1"></a></span>
-<span id="cb62-11"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb62-11" tabindex="-1"></a><span class="co"># to see an explanation of the options used in this command:</span></span>
-<span id="cb62-12"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb62-12" tabindex="-1"></a><span class="ex">bedtools</span> getfasta</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb63-1" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_HOME</span>/refs</span>
+<span id="cb63-2"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb63-2" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb63-3" tabindex="-1"></a><span class="co"># Convert GTF to genePred</span></span>
+<span id="cb63-4"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb63-4" tabindex="-1"></a><span class="ex">gtfToGenePred</span> chr22_with_ERCC92.gtf chr22_with_ERCC92.genePred</span>
+<span id="cb63-5"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb63-5" tabindex="-1"></a></span>
+<span id="cb63-6"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb63-6" tabindex="-1"></a><span class="co"># Convert genePred to BED12</span></span>
+<span id="cb63-7"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb63-7" tabindex="-1"></a><span class="ex">genePredToBed</span> chr22_with_ERCC92.genePred chr22_with_ERCC92.bed12</span>
+<span id="cb63-8"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb63-8" tabindex="-1"></a></span>
+<span id="cb63-9"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb63-9" tabindex="-1"></a><span class="ex">bedtools</span> getfasta <span class="at">-fi</span> chr22_with_ERCC92.fa <span class="at">-bed</span> chr22_with_ERCC92.bed12 <span class="at">-s</span> <span class="at">-split</span> <span class="at">-name</span> <span class="at">-fo</span> chr22_ERCC92_transcripts.fa</span>
+<span id="cb63-10"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb63-10" tabindex="-1"></a></span>
+<span id="cb63-11"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb63-11" tabindex="-1"></a><span class="co"># to see an explanation of the options used in this command:</span></span>
+<span id="cb63-12"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb63-12" tabindex="-1"></a><span class="ex">bedtools</span> getfasta</span></code></pre></div>
 <p>Use less to view the file chr22_ERCC92_transcripts.fa. Note that this file has messy transcript names. Use the following hairball Perl one-liner to tidy up the header line for each fasta sequence. This Perl expression looks complex but it is really just looking for header lines the FASTA file that match one of two patterns (those that have names like ERCC… and those that have regular Ensembl transcript names). To learn more about this kind of string matching/parsing, you can refer to the <a href="https://perldoc.perl.org/perlre">Perl regular expression documentation</a>.</p>
 <p><strong>Build a Kallisto transcriptome index</strong></p>
 <p>Remember that Kallisto does not perform alignment or use a reference genome sequence. Instead it performs pseudoalignment to determine the compatibility of reads with targets (transcript sequences in this case). However, similar to alignment algorithms like Tophat or STAR, Kallisto requires an index to assess this compatibility efficiently and quickly.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb63-1" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_HOME</span>/refs</span>
-<span id="cb63-2"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb63-2" tabindex="-1"></a><span class="fu">mkdir</span> kallisto</span>
-<span id="cb63-3"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb63-3" tabindex="-1"></a><span class="bu">cd</span> kallisto</span>
-<span id="cb63-4"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb63-4" tabindex="-1"></a><span class="ex">kallisto</span> index <span class="at">--index</span><span class="op">=</span>chr22_ERCC92_transcripts_kallisto_index ../chr22_ERCC92_transcripts.fa</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb64-1" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_HOME</span>/refs</span>
+<span id="cb64-2"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb64-2" tabindex="-1"></a><span class="fu">mkdir</span> kallisto</span>
+<span id="cb64-3"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb64-3" tabindex="-1"></a><span class="bu">cd</span> kallisto</span>
+<span id="cb64-4"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb64-4" tabindex="-1"></a><span class="ex">kallisto</span> index <span class="at">--index</span><span class="op">=</span>chr22_ERCC92_transcripts_kallisto_index ../chr22_ERCC92_transcripts.fa</span></code></pre></div>
 <p><strong>Generate abundance estimates for all samples using Kallisto</strong></p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb64-1" tabindex="-1"></a></span>
-<span id="cb64-2"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb64-2" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$RNA_PSEUDOALIGN_DIR</span></span>
-<span id="cb64-3"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb64-3" tabindex="-1"></a><span class="fu">mkdir</span> <span class="va">$RNA_PSEUDOALIGN_DIR</span></span>
-<span id="cb64-4"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb64-4" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_PSEUDOALIGN_DIR</span></span>
-<span id="cb64-5"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb64-5" tabindex="-1"></a></span>
-<span id="cb64-6"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb64-6" tabindex="-1"></a><span class="ex">kallisto</span> quant <span class="at">--rf-stranded</span> <span class="at">--index</span><span class="op">=</span><span class="va">$RNA_HOME</span>/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index <span class="at">--output-dir</span><span class="op">=</span>UHR_Rep1_ERCC-Mix1 <span class="at">--threads</span><span class="op">=</span>4 <span class="at">--plaintext</span> <span class="va">$RNA_DATA_DIR</span>/UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22.read1.fastq.gz <span class="va">$RNA_DATA_DIR</span>/UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22.read2.fastq.gz</span>
-<span id="cb64-7"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb64-7" tabindex="-1"></a><span class="ex">kallisto</span> quant <span class="at">--rf-stranded</span> <span class="at">--index</span><span class="op">=</span><span class="va">$RNA_HOME</span>/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index <span class="at">--output-dir</span><span class="op">=</span>UHR_Rep2_ERCC-Mix1 <span class="at">--threads</span><span class="op">=</span>4 <span class="at">--plaintext</span> <span class="va">$RNA_DATA_DIR</span>/UHR_Rep2_ERCC-Mix1_Build37-ErccTranscripts-chr22.read1.fastq.gz <span class="va">$RNA_DATA_DIR</span>/UHR_Rep2_ERCC-Mix1_Build37-ErccTranscripts-chr22.read2.fastq.gz</span>
-<span id="cb64-8"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb64-8" tabindex="-1"></a><span class="ex">kallisto</span> quant <span class="at">--rf-stranded</span> <span class="at">--index</span><span class="op">=</span><span class="va">$RNA_HOME</span>/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index <span class="at">--output-dir</span><span class="op">=</span>UHR_Rep3_ERCC-Mix1 <span class="at">--threads</span><span class="op">=</span>4 <span class="at">--plaintext</span> <span class="va">$RNA_DATA_DIR</span>/UHR_Rep3_ERCC-Mix1_Build37-ErccTranscripts-chr22.read1.fastq.gz <span class="va">$RNA_DATA_DIR</span>/UHR_Rep3_ERCC-Mix1_Build37-ErccTranscripts-chr22.read2.fastq.gz</span>
-<span id="cb64-9"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb64-9" tabindex="-1"></a></span>
-<span id="cb64-10"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb64-10" tabindex="-1"></a><span class="ex">kallisto</span> quant <span class="at">--rf-stranded</span> <span class="at">--index</span><span class="op">=</span><span class="va">$RNA_HOME</span>/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index <span class="at">--output-dir</span><span class="op">=</span>HBR_Rep1_ERCC-Mix2 <span class="at">--threads</span><span class="op">=</span>4 <span class="at">--plaintext</span> <span class="va">$RNA_DATA_DIR</span>/HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.read1.fastq.gz <span class="va">$RNA_DATA_DIR</span>/HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.read2.fastq.gz</span>
-<span id="cb64-11"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb64-11" tabindex="-1"></a><span class="ex">kallisto</span> quant <span class="at">--rf-stranded</span> <span class="at">--index</span><span class="op">=</span><span class="va">$RNA_HOME</span>/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index <span class="at">--output-dir</span><span class="op">=</span>HBR_Rep2_ERCC-Mix2 <span class="at">--threads</span><span class="op">=</span>4 <span class="at">--plaintext</span> <span class="va">$RNA_DATA_DIR</span>/HBR_Rep2_ERCC-Mix2_Build37-ErccTranscripts-chr22.read1.fastq.gz <span class="va">$RNA_DATA_DIR</span>/HBR_Rep2_ERCC-Mix2_Build37-ErccTranscripts-chr22.read2.fastq.gz</span>
-<span id="cb64-12"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb64-12" tabindex="-1"></a><span class="ex">kallisto</span> quant <span class="at">--rf-stranded</span> <span class="at">--index</span><span class="op">=</span><span class="va">$RNA_HOME</span>/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index <span class="at">--output-dir</span><span class="op">=</span>HBR_Rep3_ERCC-Mix2 <span class="at">--threads</span><span class="op">=</span>4 <span class="at">--plaintext</span> <span class="va">$RNA_DATA_DIR</span>/HBR_Rep3_ERCC-Mix2_Build37-ErccTranscripts-chr22.read1.fastq.gz <span class="va">$RNA_DATA_DIR</span>/HBR_Rep3_ERCC-Mix2_Build37-ErccTranscripts-chr22.read2.fastq.gz</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb65-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-1" tabindex="-1"></a></span>
+<span id="cb65-2"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-2" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$RNA_PSEUDOALIGN_DIR</span></span>
+<span id="cb65-3"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-3" tabindex="-1"></a><span class="fu">mkdir</span> <span class="va">$RNA_PSEUDOALIGN_DIR</span></span>
+<span id="cb65-4"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-4" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_PSEUDOALIGN_DIR</span></span>
+<span id="cb65-5"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-5" tabindex="-1"></a></span>
+<span id="cb65-6"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-6" tabindex="-1"></a><span class="ex">kallisto</span> quant <span class="at">--rf-stranded</span> <span class="at">--index</span><span class="op">=</span><span class="va">$RNA_HOME</span>/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index <span class="at">--output-dir</span><span class="op">=</span>UHR_Rep1_ERCC-Mix1 <span class="at">--threads</span><span class="op">=</span>4 <span class="at">--plaintext</span> <span class="va">$RNA_DATA_DIR</span>/UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22.read1.fastq.gz <span class="va">$RNA_DATA_DIR</span>/UHR_Rep1_ERCC-Mix1_Build37-ErccTranscripts-chr22.read2.fastq.gz</span>
+<span id="cb65-7"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-7" tabindex="-1"></a><span class="ex">kallisto</span> quant <span class="at">--rf-stranded</span> <span class="at">--index</span><span class="op">=</span><span class="va">$RNA_HOME</span>/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index <span class="at">--output-dir</span><span class="op">=</span>UHR_Rep2_ERCC-Mix1 <span class="at">--threads</span><span class="op">=</span>4 <span class="at">--plaintext</span> <span class="va">$RNA_DATA_DIR</span>/UHR_Rep2_ERCC-Mix1_Build37-ErccTranscripts-chr22.read1.fastq.gz <span class="va">$RNA_DATA_DIR</span>/UHR_Rep2_ERCC-Mix1_Build37-ErccTranscripts-chr22.read2.fastq.gz</span>
+<span id="cb65-8"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-8" tabindex="-1"></a><span class="ex">kallisto</span> quant <span class="at">--rf-stranded</span> <span class="at">--index</span><span class="op">=</span><span class="va">$RNA_HOME</span>/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index <span class="at">--output-dir</span><span class="op">=</span>UHR_Rep3_ERCC-Mix1 <span class="at">--threads</span><span class="op">=</span>4 <span class="at">--plaintext</span> <span class="va">$RNA_DATA_DIR</span>/UHR_Rep3_ERCC-Mix1_Build37-ErccTranscripts-chr22.read1.fastq.gz <span class="va">$RNA_DATA_DIR</span>/UHR_Rep3_ERCC-Mix1_Build37-ErccTranscripts-chr22.read2.fastq.gz</span>
+<span id="cb65-9"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-9" tabindex="-1"></a></span>
+<span id="cb65-10"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-10" tabindex="-1"></a><span class="ex">kallisto</span> quant <span class="at">--rf-stranded</span> <span class="at">--index</span><span class="op">=</span><span class="va">$RNA_HOME</span>/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index <span class="at">--output-dir</span><span class="op">=</span>HBR_Rep1_ERCC-Mix2 <span class="at">--threads</span><span class="op">=</span>4 <span class="at">--plaintext</span> <span class="va">$RNA_DATA_DIR</span>/HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.read1.fastq.gz <span class="va">$RNA_DATA_DIR</span>/HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.read2.fastq.gz</span>
+<span id="cb65-11"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-11" tabindex="-1"></a><span class="ex">kallisto</span> quant <span class="at">--rf-stranded</span> <span class="at">--index</span><span class="op">=</span><span class="va">$RNA_HOME</span>/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index <span class="at">--output-dir</span><span class="op">=</span>HBR_Rep2_ERCC-Mix2 <span class="at">--threads</span><span class="op">=</span>4 <span class="at">--plaintext</span> <span class="va">$RNA_DATA_DIR</span>/HBR_Rep2_ERCC-Mix2_Build37-ErccTranscripts-chr22.read1.fastq.gz <span class="va">$RNA_DATA_DIR</span>/HBR_Rep2_ERCC-Mix2_Build37-ErccTranscripts-chr22.read2.fastq.gz</span>
+<span id="cb65-12"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-12" tabindex="-1"></a><span class="ex">kallisto</span> quant <span class="at">--rf-stranded</span> <span class="at">--index</span><span class="op">=</span><span class="va">$RNA_HOME</span>/refs/kallisto/chr22_ERCC92_transcripts_kallisto_index <span class="at">--output-dir</span><span class="op">=</span>HBR_Rep3_ERCC-Mix2 <span class="at">--threads</span><span class="op">=</span>4 <span class="at">--plaintext</span> <span class="va">$RNA_DATA_DIR</span>/HBR_Rep3_ERCC-Mix2_Build37-ErccTranscripts-chr22.read1.fastq.gz <span class="va">$RNA_DATA_DIR</span>/HBR_Rep3_ERCC-Mix2_Build37-ErccTranscripts-chr22.read2.fastq.gz</span></code></pre></div>
 <p>Create a single TSV file that has the TPM abundance estimates for all six samples.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb65-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-1" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_PSEUDOALIGN_DIR</span></span>
-<span id="cb65-2"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-2" tabindex="-1"></a><span class="fu">paste</span> <span class="pp">*</span>/abundance.tsv <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f</span> 1,2,5,10,15,20,25,30 <span class="op">&gt;</span> transcript_tpms_all_samples.tsv</span>
-<span id="cb65-3"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-3" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-1</span> <span class="pp">*</span>/abundance.tsv <span class="kw">|</span> <span class="fu">perl</span> <span class="at">-ne</span> <span class="st">&#39;chomp $_; if ($_ =~ /(\S+)\/abundance\.tsv/){print &quot;\t$1&quot;}&#39;</span> <span class="kw">|</span> <span class="fu">perl</span> <span class="at">-ne</span> <span class="st">&#39;print &quot;target_id\tlength$_\n&quot;&#39;</span> <span class="op">&gt;</span> header.tsv</span>
-<span id="cb65-4"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-4" tabindex="-1"></a><span class="fu">cat</span> header.tsv transcript_tpms_all_samples.tsv <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">&quot;tpm&quot;</span> <span class="op">&gt;</span> transcript_tpms_all_samples.tsv2</span>
-<span id="cb65-5"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-5" tabindex="-1"></a><span class="fu">mv</span> transcript_tpms_all_samples.tsv2 transcript_tpms_all_samples.tsv</span>
-<span id="cb65-6"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb65-6" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> header.tsv</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb66-1" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_PSEUDOALIGN_DIR</span></span>
+<span id="cb66-2"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb66-2" tabindex="-1"></a><span class="fu">paste</span> <span class="pp">*</span>/abundance.tsv <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f</span> 1,2,5,10,15,20,25,30 <span class="op">&gt;</span> transcript_tpms_all_samples.tsv</span>
+<span id="cb66-3"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb66-3" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-1</span> <span class="pp">*</span>/abundance.tsv <span class="kw">|</span> <span class="fu">perl</span> <span class="at">-ne</span> <span class="st">&#39;chomp $_; if ($_ =~ /(\S+)\/abundance\.tsv/){print &quot;\t$1&quot;}&#39;</span> <span class="kw">|</span> <span class="fu">perl</span> <span class="at">-ne</span> <span class="st">&#39;print &quot;target_id\tlength$_\n&quot;&#39;</span> <span class="op">&gt;</span> header.tsv</span>
+<span id="cb66-4"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb66-4" tabindex="-1"></a><span class="fu">cat</span> header.tsv transcript_tpms_all_samples.tsv <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">&quot;tpm&quot;</span> <span class="op">&gt;</span> transcript_tpms_all_samples.tsv2</span>
+<span id="cb66-5"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb66-5" tabindex="-1"></a><span class="fu">mv</span> transcript_tpms_all_samples.tsv2 transcript_tpms_all_samples.tsv</span>
+<span id="cb66-6"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb66-6" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> header.tsv</span></code></pre></div>
 <p>Take a look at the final kallisto result file we created:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb66-1" tabindex="-1"></a><span class="fu">head</span> transcript_tpms_all_samples.tsv</span>
-<span id="cb66-2"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb66-2" tabindex="-1"></a><span class="fu">tail</span> transcript_tpms_all_samples.tsv</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb67-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb67-1" tabindex="-1"></a><span class="fu">head</span> transcript_tpms_all_samples.tsv</span>
+<span id="cb67-2"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb67-2" tabindex="-1"></a><span class="fu">tail</span> transcript_tpms_all_samples.tsv</span></code></pre></div>
+<p><strong>Question 5</strong></p>
+<ul>
+<li>What type of information is stored in this file?</li>
+</ul>
+<details>
+<summary>
+Show answer
+</summary>
+<p>The file contains transcript expression values (TPM) for all samples.</p>
+<p>TPM (Transcripts Per Million) represents normalized expression levels accounting for:</p>
+<ul>
+<li>sequencing depth</li>
+<li>transcript length</li>
+</ul>
+</details>
+<ul>
+<li>How are samples organized (rows vs columns)?</li>
+</ul>
+<details>
+<summary>
+Show answer
+</summary>
+<ul>
+<li>Rows → transcripts</li>
+<li>Columns → samples</li>
+<li>Values → expression (TPM)</li>
+</ul>
+</details>
 
 </div>
 </div>

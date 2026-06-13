@@ -128,8 +128,76 @@ Refer to STAR manual for a more detailed explanation:
 The basic options to run a mapping job are as follows:
 
 
+Use samtools view to see the format of a BAM alignment file:
+
+```bash
+cd $RNA_ALIGN_DIR
+samtools view -H HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam
+samtools view HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.Aligned.sortedByCoord.out.bam | head
+```
 
 **Question 1**
+
+- What type of information is contained in the header of the BAM file?
+
+
+
+<details>
+<summary> Show answer</summary>
+
+The header (shown with samtools view -H) contains:
+
+Reference sequences (chromosomes, transcript IDs)
+Alignment metadata (aligner used, version, parameters)
+Read group information (sample, library, sequencing platform)
+
+Lines start with @ (e.g., @SQ, @PG, @RG)
+
+</details>
+
+
+- How is each alignment line structured? Name at least 5 fields
+
+<details>
+<summary> Show answer</summary>
+
+Each alignment line (SAM format) contains tab-separated fields:
+
+- QNAME → read name
+- FLAG → bitwise flag (read properties)
+- RNAME → reference (chromosome/transcript)
+- POS → alignment position
+- MAPQ → mapping quality
+- CIGAR → alignment structure
+- RNEXT → mate reference
+- PNEXT → mate position
+- TLEN → fragment length
+- SEQ → read sequence
+- QUAL → base quality
+
+Plus optional fields at the end
+
+</details>
+
+- What does the FLAG field represent?
+
+<details>
+<summary> Show answer</summary>
+
+The FLAG is a bitwise integer encoding properties of the read:
+Examples:
+
+- 0 → single-end, mapped
+- 16 → read mapped to reverse strand
+- 4 → unmapped read
+- 99 / 147 → paired-end properly aligned
+
+It encodes multiple binary properties in one number
+
+</details>
+
+
+**Question 2**
 
 Why is RNA-seq alignment more complex than DNA-seq alignment?
 
@@ -137,16 +205,9 @@ Why is RNA-seq alignment more complex than DNA-seq alignment?
 - What biological phenomenon makes alignment more challenging?
 
 
-**Question 2**
+**Question 3**
 
-What information is stored in a BAM file?
-
-- Can you identify where to find:
-  - mapping position
-  - mapping quality
-  - CIGAR string
-- Why is BAM preferred over SAM?
-
+Why is BAM preferred over SAM?
 
 
 ### Post-alignment QC
@@ -166,14 +227,14 @@ Go through the generated html by browsing through the following directory in a w
 http://YOUR_PUBLIC_IPv4_ADDRESS/workspace/rnaseq
 
 
-**Question 3**
+**Question 4**
 What percentage of reads successfully aligned to the reference genome?
 
 - Is this alignment rate acceptable?
 - What could explain a low alignment rate?
 
 
-**Question 4**
+**Question 5**
 How many reads are uniquely mapped vs multi-mapped?
 
 - Why are multi-mapped reads common in RNA-seq data?
@@ -306,7 +367,31 @@ head transcript_tpms_all_samples.tsv
 tail transcript_tpms_all_samples.tsv
 ```
 
+**Question 5**
 
+- What type of information is stored in this file?
+
+<details>
+<summary> Show answer</summary>
+
+The file contains transcript expression values (TPM) for all samples.
+
+TPM (Transcripts Per Million) represents normalized expression levels accounting for:
+
+- sequencing depth
+- transcript length
+</details>
+
+- How are samples organized (rows vs columns)?
+
+<details>
+<summary> Show answer</summary>
+
+- Rows → transcripts
+- Columns → samples
+- Values → expression (TPM)
+
+</details>
 
 
 
