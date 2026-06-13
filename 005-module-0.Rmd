@@ -68,16 +68,11 @@ export RNA_REFS_DIR=$RNA_HOME/refs
 export RNA_REF_INDEX=$RNA_REFS_DIR/chr22_with_ERCC92
 export RNA_REF_FASTA=$RNA_REF_INDEX.fa
 export RNA_REF_GTF=$RNA_REF_INDEX.gtf
-export RNA_ALIGN_DIR=$RNA_HOME/alignments/hisat2
+export RNA_ALIGN_DIR=$RNA_HOME/alignments/star
+export RNA_PSEUDOALIGN_DIR=$RNA_HOME/alignments/kallisto
 ```
 
 **Now logout and login again.**
-
-We will be using picard tools throughout this workshop. To follow along, you will need to set an environment variable pointing to your picard installation. Verify that this environment variable is already set to /home/ubuntu/bin/picard.jar
-
-```bash
-echo $PICARD
-```
 
 
 Now if you run the following command, you should see the RNA environment variables present.
@@ -109,7 +104,7 @@ Note that if you are doing this course on the Google Cloud Platform instead of A
 **All tools are already installed in the Amazon EC2 instance. Thus, DO NOT run the installation instructions below. These are given for you to know how to install these tools on your own linux machine after the workshop.** You can practice installing a tool by doing the [Practical Exercise 1](#PRACTICAL EXERCISE 1 - Software Installation) at the end of this module.
 
 ***
-Tools needed for this analysis are: samtools, bam-readcount, HISAT2, stringtie, gffcompare, featureCounts, gtf_to_fasta (TopHat), kallisto, FastQC, Fastp, MultiQC, Picard, Regtools, RSeqQC, bedops, gtfToGenePred, genePredToBed, how_are_we_stranded_here, CellRanger, R, BioConductor, ballgown, and other R packages. In the following installation example, the installs are local and will work whether you have root (i.e. admin) access or not. However, if root is available some binaries can/will be copied to system-wide locations (e.g., ~/bin/).
+Tools needed for this analysis are: samtools, bedtools, STAR, kallisto, featureCounts, FastQC, Fastp, MultiQC, gtfToGenePred, genePredToBed, how_are_we_stranded_here, R, BioConductor and other R packages. In the following installation example, the installs are local and will work whether you have root (i.e. admin) access or not. However, if root is available some binaries can/will be copied to system-wide locations (e.g., ~/bin/).
 
 Set up tool installation location:
 
@@ -117,122 +112,6 @@ Set up tool installation location:
 cd $RNA_HOME
 mkdir student_tools
 cd student_tools
-```
-
-### [SAMtools](http://www.htslib.org/)
-
-Installation type: build C++ binary from source code using `make`. Citation: [PMID: 19505943](https://pubmed.ncbi.nlm.nih.gov/19505943/).
-
-The following tool is installed by downloading a compressed archive using `wget`, decompressing it using `bunzip2`, unpacking the archive using `tar`, and building the source code using `make` to run compiler commands in the "Makefile" provided with the tool. When `make` is run without options, it attempts the "default goal" in the make file which is the first "target" defined.  In this case the first "target" is `:all`. Once the build is complete, we test that it worked by attempting to execute the `samtools` binary. Remember that the `./` in `./samtools` tells the commandline that you want to execute the `samtools` binary in the current directory. We do this because there may be other `samtools` binaries in our PATH. Try `which samtools` to see the samtools binary that appears first in our PATH and therefore will be the one used when we specify `samtools` without specifying a particular location of the binary.
-
-```bash
-cd $RNA_HOME/student_tools/
-wget https://github.com/samtools/samtools/releases/download/1.18/samtools-1.18.tar.bz2
-bunzip2 samtools-1.18.tar.bz2
-tar -xvf samtools-1.18.tar
-cd samtools-1.18
-make
-./samtools
-```
-
-### [bam-readcount](https://github.com/genome/bam-readcount)
-
-Installation type: build C++ binary from source code using `cmake` and `make`. Citation: [PMID: 34341766](https://pubmed.ncbi.nlm.nih.gov/34341766/).
-
-Installation of the bam-readcount tool involves "cloning" the source code with a code version control system called `git`. The code is then compiled using `cmake` and `make`. `cmake` is an application for managing the build process of software using a compiler-independent method. It is used in conjunction with native build environments such as `make` ([cmake ref](https://en.wikipedia.org/wiki/CMake)). Note that bam-readcount relies on another tool, samtools, as a dependency. An environment variable is used to specify the path to the samtools install.
-
-```bash
-cd $RNA_HOME/student_tools/
-export SAMTOOLS_ROOT=$RNA_HOME/student_tools/samtools-1.18
-git clone https://github.com/genome/bam-readcount 
-cd bam-readcount
-mkdir build
-cd build
-cmake ..
-make
-./bin/bam-readcount
-```
-
-### [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml)
-
-Installation type: download a precompiled binary. Citation: [PMID: 31375807](https://pubmed.ncbi.nlm.nih.gov/31375807/).
-
-The `hisat2` aligner is installed below by simply downloading an archive of binaries using `wget`, unpacking them with `unzip`, and testing the tool to make sure it executes without error on the current system. This approach relies on understanding the architecture of your system and downloading the correct precompiled binary. The `uname -m` command lists the current system architecture.
-
-```bash
-uname -m
-cd $RNA_HOME/student_tools/
-curl -s https://cloud.biohpc.swmed.edu/index.php/s/oTtGWbWjaxsQ2Ho/download > hisat2-2.2.1-Linux_x86_64.zip
-unzip hisat2-2.2.1-Linux_x86_64.zip
-cd hisat2-2.2.1
-./hisat2 -h
-```
-
-### [StringTie](https://ccb.jhu.edu/software/stringtie/index.shtml?t=manual)
-
-Installation type: download a precompiled binary. Citation: [PMID: 25690850](https://pubmed.ncbi.nlm.nih.gov/25690850/).
-
-The `stringtie` reference guided transcript assembly and abundance estimation tool is installed below by simply downloading an archive with `wget`, unpacking the archive with `tar`, and executing `stringtie` to confirm it runs without error on our system.
-
-```bash
-cd $RNA_HOME/student_tools/
-wget http://ccb.jhu.edu/software/stringtie/dl/stringtie-2.2.1.tar.gz
-tar -xzvf stringtie-2.2.1.tar.gz
-cd stringtie-2.2.1
-make release
-./stringtie -h
-```
-
-### [gffcompare](http://ccb.jhu.edu/software/stringtie/gff.shtml#gffcompare)
-
-Installation type: download a precompiled binary. Citation: [PMID: 25690850](https://pubmed.ncbi.nlm.nih.gov/25690850/).
-
-The `gffcompare` tool for comparing transcript annotations is installed below by simply downloading an archive with `wget`, unpacking it with `tar`, and executing `gffcompare` to ensure it runs without error on our system.
-
-```bash
-cd $RNA_HOME/student_tools/
-wget http://ccb.jhu.edu/software/stringtie/dl/gffcompare-0.12.6.Linux_x86_64.tar.gz
-tar -xzvf gffcompare-0.12.6.Linux_x86_64.tar.gz
-cd gffcompare-0.12.6.Linux_x86_64/
-./gffcompare
-```
-
-<!-- ### [htseq-count](https://htseq.readthedocs.io/en/master/install.html) -->
-
-<!-- Installation type: pip install. Citation: [PMID: 25260700](https://pubmed.ncbi.nlm.nih.gov/25260700/). -->
-
-<!-- The htseq-count read counting tools is a python package that can be installed using `pip`. -->
-
-<!-- ```bash -->
-<!-- pip3 install --user HTSeq -->
-<!-- ``` -->
-
-### [TopHat](https://ccb.jhu.edu/software/tophat/index.shtml)
-
-Installation type: dowload a precompiled binary. Citation: [PMID: 19289445](https://pubmed.ncbi.nlm.nih.gov/19289445/).
-
-Note, this tool is currently only installed for the gtf_to_fasta tool used in kallisto section.
-
-```bash
-cd $RNA_HOME/student_tools/
-wget http://genomedata.org/rnaseq-tutorial/tophat-2.1.1.Linux_x86_64.tar.gz
-tar -zxvf tophat-2.1.1.Linux_x86_64.tar.gz
-cd tophat-2.1.1.Linux_x86_64/
-./gtf_to_fasta
-```
-
-### [kallisto](https://pachterlab.github.io/kallisto/)
-
-Installation type: download a precompiled binary. Citation: [PMID: 27043002](https://pubmed.ncbi.nlm.nih.gov/27043002/).
-
-The kallisto alignment free expression estimation tool is installed below simply by downloading an archive with `wget`, unpacking the archive with `tar`, and testing the binary to ensure it runs on our system.
-
-```bash
-cd $RNA_HOME/student_tools/
-wget https://github.com/pachterlab/kallisto/releases/download/v0.44.0/kallisto_linux-v0.44.0.tar.gz
-tar -zxvf kallisto_linux-v0.44.0.tar.gz
-cd kallisto_linux-v0.44.0/
-./kallisto
 ```
 
 ### [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
@@ -261,7 +140,6 @@ chmod a+x ./fastp
 ./fastp
 ```
 
-
 ### [MultiQC](http://multiqc.info/)
 
 Installation type: use pip. Citation: [PMID: 27312411](https://pubmed.ncbi.nlm.nih.gov/27312411/).
@@ -274,53 +152,65 @@ export PATH=/home/ubuntu/.local/bin:$PATH
 multiqc --help
 ```
 
-### [Picard](https://broadinstitute.github.io/picard/)
 
-Installation type: download java jar file. Citation: [broadinstitute/picard](https://github.com/broadinstitute/picard).
+### [STAR](https://github.com/alexdobin/STAR/)
 
-Picard is a rich tool kit for BAM file manipulation that is installed below simply by downloading a jar file. The jar file is tested using Java, a dependency that must also be installed (it should already be present in many systems).
+Installation type: build C++ binary from source code using `make`. Citation: [PMID: 23104886](https://pubmed.ncbi.nlm.nih.gov/23104886/).
+
+The following tool is installed by downloading a github repository `git clone`, and building the source code using `make` to run compiler commands in the "Makefile" provided with the tool. When `make` is run without options, it attempts the "default goal" in the make file which is the first "target" defined.  In this case the first "target" is `:all`. Once the build is complete, we test that it worked by attempting to execute the `STAR` binary. Remember that the `./` in `./STAR` tells the commandline that you want to execute the `STAR` binary in the current directory. We do this because there may be other `STAR` binaries in our PATH. Try `which STAR` to see the STAR binary that appears first in our PATH and therefore will be the one used when we specify `STAR` without specifying a particular location of the binary.
+
 
 ```bash
 cd $RNA_HOME/student_tools/
-wget https://github.com/broadinstitute/picard/releases/download/2.26.4/picard.jar -O picard.jar
-java -jar $RNA_HOME/student_tools/picard.jar
+git clone https://github.com/alexdobin/STAR.git
+cd STAR/source
+make STAR
+./STAR
 ```
 
-### [RegTools](https://github.com/griffithlab/regtools#regtools)
+### [kallisto](https://pachterlab.github.io/kallisto/)
 
-Installation type: compile from source code using `cmake` and `make`. Citation: [bioRXiv: 10.1101/436634v2](https://www.biorxiv.org/content/10.1101/436634v2).
+Installation type: download a precompiled binary. Citation: [PMID: 27043002](https://pubmed.ncbi.nlm.nih.gov/27043002/).
+
+The kallisto alignment free expression estimation tool is installed below simply by downloading an archive with `wget`, unpacking the archive with `tar`, and testing the binary to ensure it runs on our system.
 
 ```bash
 cd $RNA_HOME/student_tools/
-git clone https://github.com/griffithlab/regtools
-cd regtools/
-mkdir build
-cd build/
-cmake ..
+wget https://github.com/pachterlab/kallisto/releases/download/v0.44.0/kallisto_linux-v0.44.0.tar.gz
+tar -zxvf kallisto_linux-v0.44.0.tar.gz
+cd kallisto_linux-v0.44.0/
+./kallisto
+```
+
+
+### [SAMtools](http://www.htslib.org/)
+
+Installation type: build C++ binary from source code using `make`. Citation: [PMID: 19505943](https://pubmed.ncbi.nlm.nih.gov/19505943/).
+
+The following tool is installed by downloading a compressed archive using `wget`, decompressing it using `bunzip2`, unpacking the archive using `tar`, and building the source code using `make` to run compiler commands in the "Makefile" provided with the tool. When `make` is run without options, it attempts the "default goal" in the make file which is the first "target" defined.  In this case the first "target" is `:all`. Once the build is complete, we test that it worked by attempting to execute the `samtools` binary. Remember that the `./` in `./samtools` tells the commandline that you want to execute the `samtools` binary in the current directory. We do this because there may be other `samtools` binaries in our PATH. Try `which samtools` to see the samtools binary that appears first in our PATH and therefore will be the one used when we specify `samtools` without specifying a particular location of the binary.
+
+```bash
+cd $RNA_HOME/student_tools/
+wget https://github.com/samtools/samtools/releases/download/1.18/samtools-1.18.tar.bz2
+bunzip2 samtools-1.18.tar.bz2
+tar -xvf samtools-1.18.tar
+cd samtools-1.18
 make
-./regtools
+./samtools
 ```
 
-### [RSeQC](http://rseqc.sourceforge.net/)
+### [BEDtools](https://github.com/arq5x/bedtools2)
 
-Installation type: use pip. Citation: [PMID: 22743226](https://pubmed.ncbi.nlm.nih.gov/22743226/).
+Installation type: build C++ binary from source code using `make`. Citation: [PMID: 19505943](https://pubmed.ncbi.nlm.nih.gov/19505943/).
 
-```bash
-pip3 install RSeQC
-read_GC.py
-```
-
-### [bedops](https://bedops.readthedocs.io/en/latest/)
-
-Installation type: download precompiled binary. Citation: [PMID: 22576172](https://pubmed.ncbi.nlm.nih.gov/22576172/).
+The following tool is installed by downloading a compressed archive using `wget`, decompressing it using `bunzip2`, unpacking the archive using `tar`, and building the source code using `make` to run compiler commands in the "Makefile" provided with the tool. When `make` is run without options, it attempts the "default goal" in the make file which is the first "target" defined.  In this case the first "target" is `:all`. Once the build is complete, we test that it worked by attempting to execute the `samtools` binary. Remember that the `./` in `./samtools` tells the commandline that you want to execute the `samtools` binary in the current directory. We do this because there may be other `samtools` binaries in our PATH. Try `which samtools` to see the samtools binary that appears first in our PATH and therefore will be the one used when we specify `samtools` without specifying a particular location of the binary.
 
 ```bash
 cd $RNA_HOME/student_tools/
-mkdir bedops_linux_x86_64-v2.4.41
-cd bedops_linux_x86_64-v2.4.41
-wget -c https://github.com/bedops/bedops/releases/download/v2.4.41/bedops_linux_x86_64-v2.4.41.tar.bz2
-tar -jxvf bedops_linux_x86_64-v2.4.41.tar.bz2
-./bin/bedops
+git clone https://github.com/arq5x/bedtools2.git
+cd bedtools2/
+make
+./bedtools
 ```
 
 ### [gtfToGenePred](https://bioconda.github.io/recipes/ucsc-gtftogenepred/README.html)
@@ -356,15 +246,6 @@ pip3 install git+https://github.com/kcotto/how_are_we_stranded_here.git
 check_strandedness
 ```
 
-### Install [Cell Ranger](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/installation)
-
-* Must register to get download link, modify command below to match downloaded tar
-
-```bash
-cd $RNA_HOME/student_tools/
-wget `download_link`
-tar -xzvf cellranger-7.2.0.tar.gz
-```
 
 ### Install [R](http://www.r-project.org/)
 
@@ -390,6 +271,10 @@ For this tutorial we require:
 * [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html)
 * [gplots](http://cran.r-project.org/web/packages/gplots/index.html)
 * [ggplot2](https://ggplot2.tidyverse.org/)
+* [data.table](https://cran.r-project.org/web/packages/data.table/index.html)
+* [gprofiler2](https://cran.r-project.org/web/packages/gprofiler2/index.html)
+* [msigdbr](https://cran.r-project.org/web/packages/msigdbr/index.html)
+
 
 launch R (enter `R` at linux command prompt) and type the following at an R command prompt.
 
@@ -405,31 +290,22 @@ Installation type: add bioconductor libraries to an R installation. Citation: [P
 
 For this tutorial we require:
 
-* [genefilter](http://bioconductor.org/packages/release/bioc/html/genefilter.html)
-* [ballgown](http://bioconductor.org/packages/release/bioc/html/ballgown.html). Citation: [PMID: 25748911](https://pubmed.ncbi.nlm.nih.gov/25748911/).
-* [edgeR](http://www.bioconductor.org/packages/release/bioc/html/edgeR.html). Citation: [PMID: 19910308](https://pubmed.ncbi.nlm.nih.gov/19910308/).
-* [GenomicRanges](http://bioconductor.org/packages/release/bioc/html/GenomicRanges.html)
-* [rhdf5](https://www.bioconductor.org/packages/release/bioc/html/rhdf5.html)
-* [biomaRt](https://bioconductor.org/packages/release/bioc/html/biomaRt.html). Citation: [PMID: 21930506](https://pubmed.ncbi.nlm.nih.gov/21930506/).
-* [Rsubread](https://bioconductor.org/packages/release/bioc/html/Rsubread.html). Citation: [PMID:  30783653](https://pubmed.ncbi.nlm.nih.gov/30783653/).
+
+* [clusterProfiler](https://bioconductor.org/packages/release/bioc/html/clusterProfiler.html)
+* [org.Hs.eg.db](https://bioconductor.org/packages/release/data/annotation/html/org.Hs.eg.db.html)
+* [enrichplot](https://www.bioconductor.org/packages/release/bioc/html/enrichplot.html)
+* [pathview](https://www.bioconductor.org/packages/release/bioc/html/pathview.html)
+* [KEGGREST](https://www.bioconductor.org/packages/release/bioc/html/KEGGREST.html)
+* [fgsea](https://bioconductor.org/packages/release/bioc/html/fgsea.html)
+* [DESeq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html)
+* [Rsubread](https://bioconductor.org/packages/release/bioc/html/Rsubread.html)
 
 launch R (enter `R` at linux command prompt) and type the following at an R command prompt. If prompted, type "a" to update all old packages. NOTE: This has been pre-installed for you, so these commands can be skipped.
 
 ```bash
 #R
 #source("http://bioconductor.org/biocLite.R")
-#biocLite(c("genefilter","ballgown","edgeR","GenomicRanges","rhdf5","biomaRt"))
-#quit(save="no")
-```
-
-### [Sleuth](https://pachterlab.github.io/sleuth/download)
-
-Installation type: R package installation from a git repository. Citation: [PMID: 28581496](https://pubmed.ncbi.nlm.nih.gov/28581496/).
-
-```bash
-#R
-#install.packages("devtools")
-#devtools::install_github("pachterlab/sleuth")
+#biocLite(c("clusterProfiler","org.Hs.eg.db","enrichplot","pathview","KEGGREST","fgsea","DESeq2","Rsubread"))
 #quit(save="no")
 ```
 
@@ -487,11 +363,10 @@ Note that if you encounter errors with /tmp space usage or would like to control
 To use the locally installed version of each tool without having to specify complete paths, you could add the install directory of each tool to your '$PATH' variable and set some other environment variables:
 
 ```bash
-PATH=$RNA_HOME/student_tools/genePredToBed:$RNA_HOME/student_tools/gtfToGenePred:$RNA_HOME/student_tools/bedops_linux_x86_64-v2.4.41/bin:$RNA_HOME/student_tools/samtools-1.18:$RNA_HOME/student_tools/bam-readcount/bin:$RNA_HOME/student_tools/hisat2-2.2.1:$RNA_HOME/student_tools/stringtie-2.2.1:$RNA_HOME/student_tools/gffcompare-0.12.6.Linux_x86_64:$RNA_HOME/student_tools/tophat-2.1.1.Linux_x86_64:$RNA_HOME/student_tools/kallisto_linux-v0.44.0:$RNA_HOME/student_tools/FastQC:$RNA_HOME/student_tools/fastp:$RNA_HOME/student_tools/regtools/build:/home/ubuntu/bin/bedtools2/bin:/home/ubuntu/.local/bin:$PATH
+PATH=$RNA_HOME/student_tools/genePredToBed:$RNA_HOME/student_tools/gtfToGenePred:$RNA_HOME/student_tools/samtools-1.18:$RNA_HOME/student_tools/bam-readcount/bin:$RNA_HOME/student_tools/gffcompare-0.12.6.Linux_x86_64:$RNA_HOME/student_tools/kallisto_linux-v0.44.0:$RNA_HOME/student_tools/FastQC:$RNA_HOME/student_tools/fastp/home/ubuntu/bin/bedtools2/bin:/home/ubuntu/.local/bin:$PATH
 
 echo $PATH
 
-export PICARD=$RNA_HOME/student_tools/picard.jar
 ```
 
 You can make these changes permanent by adding the above lines to your .bashrc file
