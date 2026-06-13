@@ -280,7 +280,7 @@ launch R (enter `R` at linux command prompt) and type the following at an R comm
 
 ```bash
 #R
-#install.packages(c("devtools","dplyr","gplots","ggplot2"),repos="http://cran.us.r-project.org")
+#install.packages(c("devtools","dplyr","gplots","ggplot2","data.table","gprofiler2","msigdbr"),repos="http://cran.us.r-project.org")
 #quit(save="no")
 ```
 

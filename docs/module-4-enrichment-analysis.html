@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 4: Enrichment analysis | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL</title>
   <meta name="description" content="Workshop website for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop" />
-  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46.4 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 4: Enrichment analysis | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL" />
   <meta property="og:type" content="book" />
@@ -192,28 +192,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#tool-installation"><i class="fa fa-check"></i>Tool Installation</a>
 <ul>
 <li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#note"><i class="fa fa-check"></i>Note</a></li>
-<li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#samtools"><i class="fa fa-check"></i>SAMtools</a></li>
-<li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#bam-readcount"><i class="fa fa-check"></i>bam-readcount</a></li>
-<li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#hisat2"><i class="fa fa-check"></i>HISAT2</a></li>
-<li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#stringtie"><i class="fa fa-check"></i>StringTie</a></li>
-<li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#gffcompare"><i class="fa fa-check"></i>gffcompare</a></li>
-<li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#tophat"><i class="fa fa-check"></i>TopHat</a></li>
-<li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#kallisto"><i class="fa fa-check"></i>kallisto</a></li>
 <li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#fastqc"><i class="fa fa-check"></i>FastQC</a></li>
 <li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#fastp"><i class="fa fa-check"></i>Fastp</a></li>
 <li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#multiqc"><i class="fa fa-check"></i>MultiQC</a></li>
-<li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#picard"><i class="fa fa-check"></i>Picard</a></li>
-<li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#regtools"><i class="fa fa-check"></i>RegTools</a></li>
-<li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#rseqc"><i class="fa fa-check"></i>RSeQC</a></li>
-<li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#bedops"><i class="fa fa-check"></i>bedops</a></li>
+<li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#star"><i class="fa fa-check"></i>STAR</a></li>
+<li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#kallisto"><i class="fa fa-check"></i>kallisto</a></li>
+<li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#samtools"><i class="fa fa-check"></i>SAMtools</a></li>
+<li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#bedtools"><i class="fa fa-check"></i>BEDtools</a></li>
 <li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#gtftogenepred"><i class="fa fa-check"></i>gtfToGenePred</a></li>
 <li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#genepredtobed"><i class="fa fa-check"></i>genePredToBed</a></li>
 <li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#how_are_we_stranded_here"><i class="fa fa-check"></i>how_are_we_stranded_here</a></li>
-<li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#install-cell-ranger"><i class="fa fa-check"></i>Install Cell Ranger</a></li>
 <li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#install-r"><i class="fa fa-check"></i>Install R</a></li>
 <li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#r-libraries"><i class="fa fa-check"></i>R Libraries</a></li>
 <li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#bioconductor"><i class="fa fa-check"></i>Bioconductor</a></li>
-<li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#sleuth"><i class="fa fa-check"></i>Sleuth</a></li>
 <li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#installing-tools-from-official-ubuntu-packages"><i class="fa fa-check"></i>Installing tools from official ubuntu packages</a></li>
 <li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#installing-tools-by-docker-image"><i class="fa fa-check"></i>Installing tools by Docker image</a></li>
 <li class="chapter" data-level="" data-path="module-0-introductions-and-environment-setup.html"><a href="module-0-introductions-and-environment-setup.html#installing-tools-by-docker-image-using-singularity"><i class="fa fa-check"></i>Installing tools by Docker image (using Singularity)</a></li>
@@ -345,17 +336,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="required-packages" class="section level3 hasAnchor">
 <h3>Required packages<a href="module-4-enrichment-analysis.html#required-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="module-4-enrichment-analysis.html#cb85-1" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb85-2"><a href="module-4-enrichment-analysis.html#cb85-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb85-3"><a href="module-4-enrichment-analysis.html#cb85-3" tabindex="-1"></a><span class="fu">library</span>(gprofiler2)</span>
-<span id="cb85-4"><a href="module-4-enrichment-analysis.html#cb85-4" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
-<span id="cb85-5"><a href="module-4-enrichment-analysis.html#cb85-5" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
-<span id="cb85-6"><a href="module-4-enrichment-analysis.html#cb85-6" tabindex="-1"></a><span class="fu">library</span>(enrichplot)</span>
-<span id="cb85-7"><a href="module-4-enrichment-analysis.html#cb85-7" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb85-8"><a href="module-4-enrichment-analysis.html#cb85-8" tabindex="-1"></a><span class="fu">library</span>(pathview)</span>
-<span id="cb85-9"><a href="module-4-enrichment-analysis.html#cb85-9" tabindex="-1"></a><span class="fu">library</span>(KEGGREST)</span>
-<span id="cb85-10"><a href="module-4-enrichment-analysis.html#cb85-10" tabindex="-1"></a><span class="fu">library</span>(fgsea)</span>
-<span id="cb85-11"><a href="module-4-enrichment-analysis.html#cb85-11" tabindex="-1"></a><span class="fu">library</span>(msigdbr)</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="module-4-enrichment-analysis.html#cb75-1" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb75-2"><a href="module-4-enrichment-analysis.html#cb75-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb75-3"><a href="module-4-enrichment-analysis.html#cb75-3" tabindex="-1"></a><span class="fu">library</span>(gprofiler2)</span>
+<span id="cb75-4"><a href="module-4-enrichment-analysis.html#cb75-4" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
+<span id="cb75-5"><a href="module-4-enrichment-analysis.html#cb75-5" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
+<span id="cb75-6"><a href="module-4-enrichment-analysis.html#cb75-6" tabindex="-1"></a><span class="fu">library</span>(enrichplot)</span>
+<span id="cb75-7"><a href="module-4-enrichment-analysis.html#cb75-7" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb75-8"><a href="module-4-enrichment-analysis.html#cb75-8" tabindex="-1"></a><span class="fu">library</span>(pathview)</span>
+<span id="cb75-9"><a href="module-4-enrichment-analysis.html#cb75-9" tabindex="-1"></a><span class="fu">library</span>(KEGGREST)</span>
+<span id="cb75-10"><a href="module-4-enrichment-analysis.html#cb75-10" tabindex="-1"></a><span class="fu">library</span>(fgsea)</span>
+<span id="cb75-11"><a href="module-4-enrichment-analysis.html#cb75-11" tabindex="-1"></a><span class="fu">library</span>(msigdbr)</span></code></pre></div>
 </div>
 <div id="over-representation-analysis-ora" class="section level3 hasAnchor">
 <h3>Over-Representation Analysis (ORA)<a href="module-4-enrichment-analysis.html#over-representation-analysis-ora" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -363,35 +354,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Documentation : <a href="https://biit.cs.ut.ee/gprofiler/gost">gProfiler</a></p>
 <p>gProfiler is a popular web tool and R package used to identify biological pathways, Gene Ontology terms, and molecular functions enriched in a list of genes.</p>
 <p>It compares our differentially expressed genes (DEGs) against known biological annotations from databases such as GO, KEGG, Reactome, and WikiPathways to help interpret the biological meaning of RNA-seq results.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="module-4-enrichment-analysis.html#cb86-1" tabindex="-1"></a>gost.res <span class="ot">=</span> <span class="fu">gost</span>(</span>
-<span id="cb86-2"><a href="module-4-enrichment-analysis.html#cb86-2" tabindex="-1"></a></span>
-<span id="cb86-3"><a href="module-4-enrichment-analysis.html#cb86-3" tabindex="-1"></a>  <span class="co"># List of differentially expressed genes</span></span>
-<span id="cb86-4"><a href="module-4-enrichment-analysis.html#cb86-4" tabindex="-1"></a>  <span class="fu">rownames</span>(deg),</span>
-<span id="cb86-5"><a href="module-4-enrichment-analysis.html#cb86-5" tabindex="-1"></a></span>
-<span id="cb86-6"><a href="module-4-enrichment-analysis.html#cb86-6" tabindex="-1"></a>  <span class="co"># Organism used for the enrichment analysis</span></span>
-<span id="cb86-7"><a href="module-4-enrichment-analysis.html#cb86-7" tabindex="-1"></a>  <span class="co"># hsapiens = Homo sapiens (human)</span></span>
-<span id="cb86-8"><a href="module-4-enrichment-analysis.html#cb86-8" tabindex="-1"></a>  <span class="at">organism =</span> <span class="st">&quot;hsapiens&quot;</span>,</span>
-<span id="cb86-9"><a href="module-4-enrichment-analysis.html#cb86-9" tabindex="-1"></a></span>
-<span id="cb86-10"><a href="module-4-enrichment-analysis.html#cb86-10" tabindex="-1"></a>  <span class="co"># Return only statistically significant enriched terms</span></span>
-<span id="cb86-11"><a href="module-4-enrichment-analysis.html#cb86-11" tabindex="-1"></a>  <span class="at">significant =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb86-12"><a href="module-4-enrichment-analysis.html#cb86-12" tabindex="-1"></a></span>
-<span id="cb86-13"><a href="module-4-enrichment-analysis.html#cb86-13" tabindex="-1"></a>  <span class="co"># Do not test for underrepresented pathways</span></span>
-<span id="cb86-14"><a href="module-4-enrichment-analysis.html#cb86-14" tabindex="-1"></a>  <span class="co"># FALSE means we only look for overrepresented terms</span></span>
-<span id="cb86-15"><a href="module-4-enrichment-analysis.html#cb86-15" tabindex="-1"></a>  <span class="at">measure_underrepresentation =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb86-16"><a href="module-4-enrichment-analysis.html#cb86-16" tabindex="-1"></a></span>
-<span id="cb86-17"><a href="module-4-enrichment-analysis.html#cb86-17" tabindex="-1"></a>  <span class="co"># Significance threshold for enrichment analysis</span></span>
-<span id="cb86-18"><a href="module-4-enrichment-analysis.html#cb86-18" tabindex="-1"></a>  <span class="at">user_threshold =</span> <span class="fl">0.05</span>,</span>
-<span id="cb86-19"><a href="module-4-enrichment-analysis.html#cb86-19" tabindex="-1"></a></span>
-<span id="cb86-20"><a href="module-4-enrichment-analysis.html#cb86-20" tabindex="-1"></a>  <span class="co"># Multiple testing correction method</span></span>
-<span id="cb86-21"><a href="module-4-enrichment-analysis.html#cb86-21" tabindex="-1"></a>  <span class="co"># FDR = False Discovery Rate correction</span></span>
-<span id="cb86-22"><a href="module-4-enrichment-analysis.html#cb86-22" tabindex="-1"></a>  <span class="at">correction_method =</span> <span class="st">&quot;fdr&quot;</span>,</span>
-<span id="cb86-23"><a href="module-4-enrichment-analysis.html#cb86-23" tabindex="-1"></a></span>
-<span id="cb86-24"><a href="module-4-enrichment-analysis.html#cb86-24" tabindex="-1"></a>  <span class="co"># Include evidence codes for GO annotations</span></span>
-<span id="cb86-25"><a href="module-4-enrichment-analysis.html#cb86-25" tabindex="-1"></a>  <span class="at">evcodes =</span> <span class="cn">TRUE</span></span>
-<span id="cb86-26"><a href="module-4-enrichment-analysis.html#cb86-26" tabindex="-1"></a>)</span></code></pre></div>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="module-4-enrichment-analysis.html#cb87-1" tabindex="-1"></a><span class="co"># Extract Results</span></span>
-<span id="cb87-2"><a href="module-4-enrichment-analysis.html#cb87-2" tabindex="-1"></a>gostres <span class="ot">=</span> gost.res<span class="sc">$</span>result</span>
-<span id="cb87-3"><a href="module-4-enrichment-analysis.html#cb87-3" tabindex="-1"></a><span class="fu">head</span>(gostres)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="module-4-enrichment-analysis.html#cb76-1" tabindex="-1"></a>gost.res <span class="ot">=</span> <span class="fu">gost</span>(</span>
+<span id="cb76-2"><a href="module-4-enrichment-analysis.html#cb76-2" tabindex="-1"></a></span>
+<span id="cb76-3"><a href="module-4-enrichment-analysis.html#cb76-3" tabindex="-1"></a>  <span class="co"># List of differentially expressed genes</span></span>
+<span id="cb76-4"><a href="module-4-enrichment-analysis.html#cb76-4" tabindex="-1"></a>  <span class="fu">rownames</span>(deg),</span>
+<span id="cb76-5"><a href="module-4-enrichment-analysis.html#cb76-5" tabindex="-1"></a></span>
+<span id="cb76-6"><a href="module-4-enrichment-analysis.html#cb76-6" tabindex="-1"></a>  <span class="co"># Organism used for the enrichment analysis</span></span>
+<span id="cb76-7"><a href="module-4-enrichment-analysis.html#cb76-7" tabindex="-1"></a>  <span class="co"># hsapiens = Homo sapiens (human)</span></span>
+<span id="cb76-8"><a href="module-4-enrichment-analysis.html#cb76-8" tabindex="-1"></a>  <span class="at">organism =</span> <span class="st">&quot;hsapiens&quot;</span>,</span>
+<span id="cb76-9"><a href="module-4-enrichment-analysis.html#cb76-9" tabindex="-1"></a></span>
+<span id="cb76-10"><a href="module-4-enrichment-analysis.html#cb76-10" tabindex="-1"></a>  <span class="co"># Return only statistically significant enriched terms</span></span>
+<span id="cb76-11"><a href="module-4-enrichment-analysis.html#cb76-11" tabindex="-1"></a>  <span class="at">significant =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb76-12"><a href="module-4-enrichment-analysis.html#cb76-12" tabindex="-1"></a></span>
+<span id="cb76-13"><a href="module-4-enrichment-analysis.html#cb76-13" tabindex="-1"></a>  <span class="co"># Do not test for underrepresented pathways</span></span>
+<span id="cb76-14"><a href="module-4-enrichment-analysis.html#cb76-14" tabindex="-1"></a>  <span class="co"># FALSE means we only look for overrepresented terms</span></span>
+<span id="cb76-15"><a href="module-4-enrichment-analysis.html#cb76-15" tabindex="-1"></a>  <span class="at">measure_underrepresentation =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb76-16"><a href="module-4-enrichment-analysis.html#cb76-16" tabindex="-1"></a></span>
+<span id="cb76-17"><a href="module-4-enrichment-analysis.html#cb76-17" tabindex="-1"></a>  <span class="co"># Significance threshold for enrichment analysis</span></span>
+<span id="cb76-18"><a href="module-4-enrichment-analysis.html#cb76-18" tabindex="-1"></a>  <span class="at">user_threshold =</span> <span class="fl">0.05</span>,</span>
+<span id="cb76-19"><a href="module-4-enrichment-analysis.html#cb76-19" tabindex="-1"></a></span>
+<span id="cb76-20"><a href="module-4-enrichment-analysis.html#cb76-20" tabindex="-1"></a>  <span class="co"># Multiple testing correction method</span></span>
+<span id="cb76-21"><a href="module-4-enrichment-analysis.html#cb76-21" tabindex="-1"></a>  <span class="co"># FDR = False Discovery Rate correction</span></span>
+<span id="cb76-22"><a href="module-4-enrichment-analysis.html#cb76-22" tabindex="-1"></a>  <span class="at">correction_method =</span> <span class="st">&quot;fdr&quot;</span>,</span>
+<span id="cb76-23"><a href="module-4-enrichment-analysis.html#cb76-23" tabindex="-1"></a></span>
+<span id="cb76-24"><a href="module-4-enrichment-analysis.html#cb76-24" tabindex="-1"></a>  <span class="co"># Include evidence codes for GO annotations</span></span>
+<span id="cb76-25"><a href="module-4-enrichment-analysis.html#cb76-25" tabindex="-1"></a>  <span class="at">evcodes =</span> <span class="cn">TRUE</span></span>
+<span id="cb76-26"><a href="module-4-enrichment-analysis.html#cb76-26" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="module-4-enrichment-analysis.html#cb77-1" tabindex="-1"></a><span class="co"># Extract Results</span></span>
+<span id="cb77-2"><a href="module-4-enrichment-analysis.html#cb77-2" tabindex="-1"></a>gostres <span class="ot">=</span> gost.res<span class="sc">$</span>result</span>
+<span id="cb77-3"><a href="module-4-enrichment-analysis.html#cb77-3" tabindex="-1"></a><span class="fu">head</span>(gostres)</span></code></pre></div>
 <p><strong>Filter Enrichment Results</strong></p>
 <p>We remove:</p>
 <ul>
@@ -399,17 +390,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>extremely large terms (term_size)</li>
 <li>weakly represented terms (intersection_size)</li>
 </ul>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="module-4-enrichment-analysis.html#cb88-1" tabindex="-1"></a><span class="co"># filter results to reduce to less specialized or general terms with at least 2 genes from our list</span></span>
-<span id="cb88-2"><a href="module-4-enrichment-analysis.html#cb88-2" tabindex="-1"></a>gostres_filt <span class="ot">=</span> gostres[gostres<span class="sc">$</span>term_size <span class="sc">&gt;</span> <span class="dv">15</span> <span class="sc">&amp;</span> gostres<span class="sc">$</span>term_size <span class="sc">&lt;</span> <span class="dv">2000</span> <span class="sc">&amp;</span> gostres<span class="sc">$</span>intersection_size <span class="sc">&gt;</span> <span class="dv">2</span>,]</span>
-<span id="cb88-3"><a href="module-4-enrichment-analysis.html#cb88-3" tabindex="-1"></a></span>
-<span id="cb88-4"><a href="module-4-enrichment-analysis.html#cb88-4" tabindex="-1"></a><span class="co">#trasnform score with log10, higher is better</span></span>
-<span id="cb88-5"><a href="module-4-enrichment-analysis.html#cb88-5" tabindex="-1"></a>gostres_filt<span class="sc">$</span>log10<span class="ot">=</span><span class="sc">-</span><span class="dv">1</span> <span class="sc">*</span> <span class="fu">log10</span>(gostres_filt<span class="sc">$</span>p_value)</span>
-<span id="cb88-6"><a href="module-4-enrichment-analysis.html#cb88-6" tabindex="-1"></a></span>
-<span id="cb88-7"><a href="module-4-enrichment-analysis.html#cb88-7" tabindex="-1"></a><span class="co">#order results by decreasing score value</span></span>
-<span id="cb88-8"><a href="module-4-enrichment-analysis.html#cb88-8" tabindex="-1"></a>gostres_filt<span class="ot">=</span>gostres_filt[<span class="fu">order</span>(gostres_filt<span class="sc">$</span>log10,<span class="at">decreasing=</span>F),]</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="module-4-enrichment-analysis.html#cb78-1" tabindex="-1"></a><span class="co"># filter results to reduce to less specialized or general terms with at least 2 genes from our list</span></span>
+<span id="cb78-2"><a href="module-4-enrichment-analysis.html#cb78-2" tabindex="-1"></a>gostres_filt <span class="ot">=</span> gostres[gostres<span class="sc">$</span>term_size <span class="sc">&gt;</span> <span class="dv">15</span> <span class="sc">&amp;</span> gostres<span class="sc">$</span>term_size <span class="sc">&lt;</span> <span class="dv">2000</span> <span class="sc">&amp;</span> gostres<span class="sc">$</span>intersection_size <span class="sc">&gt;</span> <span class="dv">2</span>,]</span>
+<span id="cb78-3"><a href="module-4-enrichment-analysis.html#cb78-3" tabindex="-1"></a></span>
+<span id="cb78-4"><a href="module-4-enrichment-analysis.html#cb78-4" tabindex="-1"></a><span class="co">#trasnform score with log10, higher is better</span></span>
+<span id="cb78-5"><a href="module-4-enrichment-analysis.html#cb78-5" tabindex="-1"></a>gostres_filt<span class="sc">$</span>log10<span class="ot">=</span><span class="sc">-</span><span class="dv">1</span> <span class="sc">*</span> <span class="fu">log10</span>(gostres_filt<span class="sc">$</span>p_value)</span>
+<span id="cb78-6"><a href="module-4-enrichment-analysis.html#cb78-6" tabindex="-1"></a></span>
+<span id="cb78-7"><a href="module-4-enrichment-analysis.html#cb78-7" tabindex="-1"></a><span class="co">#order results by decreasing score value</span></span>
+<span id="cb78-8"><a href="module-4-enrichment-analysis.html#cb78-8" tabindex="-1"></a>gostres_filt<span class="ot">=</span>gostres_filt[<span class="fu">order</span>(gostres_filt<span class="sc">$</span>log10,<span class="at">decreasing=</span>F),]</span></code></pre></div>
 <p><strong>Manhattan plot for all the results</strong></p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="module-4-enrichment-analysis.html#cb89-1" tabindex="-1"></a><span class="co">#Manhattan plot for all results</span></span>
-<span id="cb89-2"><a href="module-4-enrichment-analysis.html#cb89-2" tabindex="-1"></a><span class="fu">gostplot</span>(gost.res)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="module-4-enrichment-analysis.html#cb79-1" tabindex="-1"></a><span class="co">#Manhattan plot for all results</span></span>
+<span id="cb79-2"><a href="module-4-enrichment-analysis.html#cb79-2" tabindex="-1"></a><span class="fu">gostplot</span>(gost.res)</span></code></pre></div>
 <p><strong>Interpretation</strong></p>
 <p>Each point represents:</p>
 <ul>
@@ -428,71 +419,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>WikiPathways</li>
 </ul>
 <p><strong>Barplot results for each database</strong></p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="module-4-enrichment-analysis.html#cb90-1" tabindex="-1"></a><span class="co"># barplots for top 10 KEGG pathways</span></span>
-<span id="cb90-2"><a href="module-4-enrichment-analysis.html#cb90-2" tabindex="-1"></a>res_table <span class="ot">=</span> gostres_filt[gostres_filt<span class="sc">$</span>source<span class="sc">==</span><span class="st">&quot;KEGG&quot;</span>,][<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]</span>
-<span id="cb90-3"><a href="module-4-enrichment-analysis.html#cb90-3" tabindex="-1"></a> </span>
-<span id="cb90-4"><a href="module-4-enrichment-analysis.html#cb90-4" tabindex="-1"></a><span class="co">#modify margins for long terms name</span></span>
-<span id="cb90-5"><a href="module-4-enrichment-analysis.html#cb90-5" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">4</span>, <span class="dv">2</span>))</span>
-<span id="cb90-6"><a href="module-4-enrichment-analysis.html#cb90-6" tabindex="-1"></a></span>
-<span id="cb90-7"><a href="module-4-enrichment-analysis.html#cb90-7" tabindex="-1"></a><span class="fu">barplot</span>(</span>
-<span id="cb90-8"><a href="module-4-enrichment-analysis.html#cb90-8" tabindex="-1"></a>  res_table<span class="sc">$</span>log10,</span>
-<span id="cb90-9"><a href="module-4-enrichment-analysis.html#cb90-9" tabindex="-1"></a>  <span class="at">horiz =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb90-10"><a href="module-4-enrichment-analysis.html#cb90-10" tabindex="-1"></a>  <span class="at">names.arg =</span> res_table<span class="sc">$</span>term_name,</span>
-<span id="cb90-11"><a href="module-4-enrichment-analysis.html#cb90-11" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>,</span>
-<span id="cb90-12"><a href="module-4-enrichment-analysis.html#cb90-12" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;-log10(padj)&quot;</span>,</span>
-<span id="cb90-13"><a href="module-4-enrichment-analysis.html#cb90-13" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">ceiling</span>(<span class="fu">max</span>(res_table<span class="sc">$</span>log10))),</span>
-<span id="cb90-14"><a href="module-4-enrichment-analysis.html#cb90-14" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Top 10 enriched terms&quot;</span>,</span>
-<span id="cb90-15"><a href="module-4-enrichment-analysis.html#cb90-15" tabindex="-1"></a>  <span class="at">las =</span> <span class="dv">1</span>,      <span class="co"># horizontal labels</span></span>
-<span id="cb90-16"><a href="module-4-enrichment-analysis.html#cb90-16" tabindex="-1"></a>  <span class="at">cex.names =</span> <span class="fl">0.8</span>  <span class="co"># text size</span></span>
-<span id="cb90-17"><a href="module-4-enrichment-analysis.html#cb90-17" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="module-4-enrichment-analysis.html#cb80-1" tabindex="-1"></a><span class="co"># barplots for top 10 KEGG pathways</span></span>
+<span id="cb80-2"><a href="module-4-enrichment-analysis.html#cb80-2" tabindex="-1"></a>res_table <span class="ot">=</span> gostres_filt[gostres_filt<span class="sc">$</span>source<span class="sc">==</span><span class="st">&quot;KEGG&quot;</span>,][<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]</span>
+<span id="cb80-3"><a href="module-4-enrichment-analysis.html#cb80-3" tabindex="-1"></a> </span>
+<span id="cb80-4"><a href="module-4-enrichment-analysis.html#cb80-4" tabindex="-1"></a><span class="co">#modify margins for long terms name</span></span>
+<span id="cb80-5"><a href="module-4-enrichment-analysis.html#cb80-5" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">4</span>, <span class="dv">2</span>))</span>
+<span id="cb80-6"><a href="module-4-enrichment-analysis.html#cb80-6" tabindex="-1"></a></span>
+<span id="cb80-7"><a href="module-4-enrichment-analysis.html#cb80-7" tabindex="-1"></a><span class="fu">barplot</span>(</span>
+<span id="cb80-8"><a href="module-4-enrichment-analysis.html#cb80-8" tabindex="-1"></a>  res_table<span class="sc">$</span>log10,</span>
+<span id="cb80-9"><a href="module-4-enrichment-analysis.html#cb80-9" tabindex="-1"></a>  <span class="at">horiz =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb80-10"><a href="module-4-enrichment-analysis.html#cb80-10" tabindex="-1"></a>  <span class="at">names.arg =</span> res_table<span class="sc">$</span>term_name,</span>
+<span id="cb80-11"><a href="module-4-enrichment-analysis.html#cb80-11" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>,</span>
+<span id="cb80-12"><a href="module-4-enrichment-analysis.html#cb80-12" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;-log10(padj)&quot;</span>,</span>
+<span id="cb80-13"><a href="module-4-enrichment-analysis.html#cb80-13" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">ceiling</span>(<span class="fu">max</span>(res_table<span class="sc">$</span>log10))),</span>
+<span id="cb80-14"><a href="module-4-enrichment-analysis.html#cb80-14" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Top 10 enriched terms&quot;</span>,</span>
+<span id="cb80-15"><a href="module-4-enrichment-analysis.html#cb80-15" tabindex="-1"></a>  <span class="at">las =</span> <span class="dv">1</span>,      <span class="co"># horizontal labels</span></span>
+<span id="cb80-16"><a href="module-4-enrichment-analysis.html#cb80-16" tabindex="-1"></a>  <span class="at">cex.names =</span> <span class="fl">0.8</span>  <span class="co"># text size</span></span>
+<span id="cb80-17"><a href="module-4-enrichment-analysis.html#cb80-17" tabindex="-1"></a>)</span></code></pre></div>
 <p><strong>Enrichment analysis with clusterProfiler</strong></p>
 <p>clusterProfiler is a widely used Bioconductor package for statistical analysis and visualization of functional profiles from genomic data.</p>
 <p>It allows users to perform enrichment analysis using Gene Ontology (GO), KEGG, Reactome, and Gene Set Enrichment Analysis (GSEA), while providing powerful visualization tools such as dotplots, enrichment maps, and pathway networks.</p>
 <ul>
 <li>GO Biological Process Enrichment</li>
 </ul>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="module-4-enrichment-analysis.html#cb91-1" tabindex="-1"></a>ego_bp <span class="ot">=</span> <span class="fu">enrichGO</span>(</span>
-<span id="cb91-2"><a href="module-4-enrichment-analysis.html#cb91-2" tabindex="-1"></a>  </span>
-<span id="cb91-3"><a href="module-4-enrichment-analysis.html#cb91-3" tabindex="-1"></a>  <span class="co"># List of differentially expressed genes</span></span>
-<span id="cb91-4"><a href="module-4-enrichment-analysis.html#cb91-4" tabindex="-1"></a>  <span class="at">gene          =</span> <span class="fu">rownames</span>(deg),</span>
-<span id="cb91-5"><a href="module-4-enrichment-analysis.html#cb91-5" tabindex="-1"></a>  </span>
-<span id="cb91-6"><a href="module-4-enrichment-analysis.html#cb91-6" tabindex="-1"></a>  <span class="co"># Annotation database for human genes</span></span>
-<span id="cb91-7"><a href="module-4-enrichment-analysis.html#cb91-7" tabindex="-1"></a>  <span class="at">OrgDb         =</span> org.Hs.eg.db,</span>
-<span id="cb91-8"><a href="module-4-enrichment-analysis.html#cb91-8" tabindex="-1"></a>  </span>
-<span id="cb91-9"><a href="module-4-enrichment-analysis.html#cb91-9" tabindex="-1"></a>  </span>
-<span id="cb91-10"><a href="module-4-enrichment-analysis.html#cb91-10" tabindex="-1"></a>  <span class="co"># Type of gene identifiers used in the gene list</span></span>
-<span id="cb91-11"><a href="module-4-enrichment-analysis.html#cb91-11" tabindex="-1"></a>  <span class="at">keyType       =</span> <span class="st">&quot;ENTREZID&quot;</span>,</span>
-<span id="cb91-12"><a href="module-4-enrichment-analysis.html#cb91-12" tabindex="-1"></a></span>
-<span id="cb91-13"><a href="module-4-enrichment-analysis.html#cb91-13" tabindex="-1"></a>  <span class="at">ont           =</span> <span class="st">&quot;BP&quot;</span>,</span>
-<span id="cb91-14"><a href="module-4-enrichment-analysis.html#cb91-14" tabindex="-1"></a>  </span>
-<span id="cb91-15"><a href="module-4-enrichment-analysis.html#cb91-15" tabindex="-1"></a>  <span class="co">#Method used to adjust p-values for multiple testing</span></span>
-<span id="cb91-16"><a href="module-4-enrichment-analysis.html#cb91-16" tabindex="-1"></a>  <span class="co">#BH = Benjamini-Hochberg False Discovery Rate correction</span></span>
-<span id="cb91-17"><a href="module-4-enrichment-analysis.html#cb91-17" tabindex="-1"></a>  <span class="at">pAdjustMethod =</span> <span class="st">&quot;BH&quot;</span>,</span>
-<span id="cb91-18"><a href="module-4-enrichment-analysis.html#cb91-18" tabindex="-1"></a>  </span>
-<span id="cb91-19"><a href="module-4-enrichment-analysis.html#cb91-19" tabindex="-1"></a>  <span class="co"># Maximum raw p-value threshold</span></span>
-<span id="cb91-20"><a href="module-4-enrichment-analysis.html#cb91-20" tabindex="-1"></a>  <span class="at">pvalueCutoff  =</span> <span class="fl">0.05</span>,</span>
-<span id="cb91-21"><a href="module-4-enrichment-analysis.html#cb91-21" tabindex="-1"></a>  </span>
-<span id="cb91-22"><a href="module-4-enrichment-analysis.html#cb91-22" tabindex="-1"></a>  <span class="co"># Maximum adjusted p-value threshold (FDR/q-value)</span></span>
-<span id="cb91-23"><a href="module-4-enrichment-analysis.html#cb91-23" tabindex="-1"></a>  <span class="at">qvalueCutoff  =</span> <span class="fl">0.05</span>,</span>
-<span id="cb91-24"><a href="module-4-enrichment-analysis.html#cb91-24" tabindex="-1"></a>  </span>
-<span id="cb91-25"><a href="module-4-enrichment-analysis.html#cb91-25" tabindex="-1"></a>  </span>
-<span id="cb91-26"><a href="module-4-enrichment-analysis.html#cb91-26" tabindex="-1"></a>  <span class="co"># Convert gene IDs into readable gene symbols</span></span>
-<span id="cb91-27"><a href="module-4-enrichment-analysis.html#cb91-27" tabindex="-1"></a>  <span class="at">readable      =</span> <span class="cn">TRUE</span></span>
-<span id="cb91-28"><a href="module-4-enrichment-analysis.html#cb91-28" tabindex="-1"></a>)</span>
-<span id="cb91-29"><a href="module-4-enrichment-analysis.html#cb91-29" tabindex="-1"></a></span>
-<span id="cb91-30"><a href="module-4-enrichment-analysis.html#cb91-30" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as.data.frame</span>(ego_bp))</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="module-4-enrichment-analysis.html#cb81-1" tabindex="-1"></a>ego_bp <span class="ot">=</span> <span class="fu">enrichGO</span>(</span>
+<span id="cb81-2"><a href="module-4-enrichment-analysis.html#cb81-2" tabindex="-1"></a>  </span>
+<span id="cb81-3"><a href="module-4-enrichment-analysis.html#cb81-3" tabindex="-1"></a>  <span class="co"># List of differentially expressed genes</span></span>
+<span id="cb81-4"><a href="module-4-enrichment-analysis.html#cb81-4" tabindex="-1"></a>  <span class="at">gene          =</span> <span class="fu">rownames</span>(deg),</span>
+<span id="cb81-5"><a href="module-4-enrichment-analysis.html#cb81-5" tabindex="-1"></a>  </span>
+<span id="cb81-6"><a href="module-4-enrichment-analysis.html#cb81-6" tabindex="-1"></a>  <span class="co"># Annotation database for human genes</span></span>
+<span id="cb81-7"><a href="module-4-enrichment-analysis.html#cb81-7" tabindex="-1"></a>  <span class="at">OrgDb         =</span> org.Hs.eg.db,</span>
+<span id="cb81-8"><a href="module-4-enrichment-analysis.html#cb81-8" tabindex="-1"></a>  </span>
+<span id="cb81-9"><a href="module-4-enrichment-analysis.html#cb81-9" tabindex="-1"></a>  </span>
+<span id="cb81-10"><a href="module-4-enrichment-analysis.html#cb81-10" tabindex="-1"></a>  <span class="co"># Type of gene identifiers used in the gene list</span></span>
+<span id="cb81-11"><a href="module-4-enrichment-analysis.html#cb81-11" tabindex="-1"></a>  <span class="at">keyType       =</span> <span class="st">&quot;ENTREZID&quot;</span>,</span>
+<span id="cb81-12"><a href="module-4-enrichment-analysis.html#cb81-12" tabindex="-1"></a></span>
+<span id="cb81-13"><a href="module-4-enrichment-analysis.html#cb81-13" tabindex="-1"></a>  <span class="at">ont           =</span> <span class="st">&quot;BP&quot;</span>,</span>
+<span id="cb81-14"><a href="module-4-enrichment-analysis.html#cb81-14" tabindex="-1"></a>  </span>
+<span id="cb81-15"><a href="module-4-enrichment-analysis.html#cb81-15" tabindex="-1"></a>  <span class="co">#Method used to adjust p-values for multiple testing</span></span>
+<span id="cb81-16"><a href="module-4-enrichment-analysis.html#cb81-16" tabindex="-1"></a>  <span class="co">#BH = Benjamini-Hochberg False Discovery Rate correction</span></span>
+<span id="cb81-17"><a href="module-4-enrichment-analysis.html#cb81-17" tabindex="-1"></a>  <span class="at">pAdjustMethod =</span> <span class="st">&quot;BH&quot;</span>,</span>
+<span id="cb81-18"><a href="module-4-enrichment-analysis.html#cb81-18" tabindex="-1"></a>  </span>
+<span id="cb81-19"><a href="module-4-enrichment-analysis.html#cb81-19" tabindex="-1"></a>  <span class="co"># Maximum raw p-value threshold</span></span>
+<span id="cb81-20"><a href="module-4-enrichment-analysis.html#cb81-20" tabindex="-1"></a>  <span class="at">pvalueCutoff  =</span> <span class="fl">0.05</span>,</span>
+<span id="cb81-21"><a href="module-4-enrichment-analysis.html#cb81-21" tabindex="-1"></a>  </span>
+<span id="cb81-22"><a href="module-4-enrichment-analysis.html#cb81-22" tabindex="-1"></a>  <span class="co"># Maximum adjusted p-value threshold (FDR/q-value)</span></span>
+<span id="cb81-23"><a href="module-4-enrichment-analysis.html#cb81-23" tabindex="-1"></a>  <span class="at">qvalueCutoff  =</span> <span class="fl">0.05</span>,</span>
+<span id="cb81-24"><a href="module-4-enrichment-analysis.html#cb81-24" tabindex="-1"></a>  </span>
+<span id="cb81-25"><a href="module-4-enrichment-analysis.html#cb81-25" tabindex="-1"></a>  </span>
+<span id="cb81-26"><a href="module-4-enrichment-analysis.html#cb81-26" tabindex="-1"></a>  <span class="co"># Convert gene IDs into readable gene symbols</span></span>
+<span id="cb81-27"><a href="module-4-enrichment-analysis.html#cb81-27" tabindex="-1"></a>  <span class="at">readable      =</span> <span class="cn">TRUE</span></span>
+<span id="cb81-28"><a href="module-4-enrichment-analysis.html#cb81-28" tabindex="-1"></a>)</span>
+<span id="cb81-29"><a href="module-4-enrichment-analysis.html#cb81-29" tabindex="-1"></a></span>
+<span id="cb81-30"><a href="module-4-enrichment-analysis.html#cb81-30" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as.data.frame</span>(ego_bp))</span></code></pre></div>
 <p><strong>Question</strong></p>
 <p>What does “BP” stand for?</p>
 <p>Try changing:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="module-4-enrichment-analysis.html#cb92-1" tabindex="-1"></a>ont <span class="ot">=</span> <span class="st">&quot;CC&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="module-4-enrichment-analysis.html#cb82-1" tabindex="-1"></a>ont <span class="ot">=</span> <span class="st">&quot;CC&quot;</span></span></code></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="module-4-enrichment-analysis.html#cb93-1" tabindex="-1"></a>ont <span class="ot">=</span> <span class="st">&quot;MF&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="module-4-enrichment-analysis.html#cb83-1" tabindex="-1"></a>ont <span class="ot">=</span> <span class="st">&quot;MF&quot;</span></span></code></pre></div>
 <p>What changes?</p>
 <p><strong>Visualize GO Results</strong></p>
 <p><strong>GO Barplot</strong></p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="module-4-enrichment-analysis.html#cb94-1" tabindex="-1"></a><span class="fu">barplot</span>(  ego_bp,  <span class="at">showCategory =</span> <span class="dv">15</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="module-4-enrichment-analysis.html#cb84-1" tabindex="-1"></a><span class="fu">barplot</span>(  ego_bp,  <span class="at">showCategory =</span> <span class="dv">15</span>)</span></code></pre></div>
 <p><strong>GO Dotplot</strong></p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="module-4-enrichment-analysis.html#cb95-1" tabindex="-1"></a><span class="fu">dotplot</span>(  ego_bp,  <span class="at">showCategory =</span> <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="module-4-enrichment-analysis.html#cb85-1" tabindex="-1"></a><span class="fu">dotplot</span>(  ego_bp,  <span class="at">showCategory =</span> <span class="dv">20</span>)</span></code></pre></div>
 <p><strong>Interpretation of Dotplots</strong></p>
 <p>Dot size represents:</p>
 <ul>
@@ -503,94 +494,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>statistical significance</li>
 </ul>
 <p><strong>KEGG Pathway Enrichment</strong></p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="module-4-enrichment-analysis.html#cb96-1" tabindex="-1"></a>ekegg <span class="ot">=</span> <span class="fu">enrichKEGG</span>(</span>
-<span id="cb96-2"><a href="module-4-enrichment-analysis.html#cb96-2" tabindex="-1"></a>  <span class="at">gene =</span> <span class="fu">rownames</span>(deg),</span>
-<span id="cb96-3"><a href="module-4-enrichment-analysis.html#cb96-3" tabindex="-1"></a>  <span class="at">organism =</span> <span class="st">&quot;hsa&quot;</span>,</span>
-<span id="cb96-4"><a href="module-4-enrichment-analysis.html#cb96-4" tabindex="-1"></a>  <span class="at">pvalueCutoff =</span> <span class="fl">0.05</span></span>
-<span id="cb96-5"><a href="module-4-enrichment-analysis.html#cb96-5" tabindex="-1"></a>)</span>
-<span id="cb96-6"><a href="module-4-enrichment-analysis.html#cb96-6" tabindex="-1"></a></span>
-<span id="cb96-7"><a href="module-4-enrichment-analysis.html#cb96-7" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as.data.frame</span>(ekegg))</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="module-4-enrichment-analysis.html#cb86-1" tabindex="-1"></a>ekegg <span class="ot">=</span> <span class="fu">enrichKEGG</span>(</span>
+<span id="cb86-2"><a href="module-4-enrichment-analysis.html#cb86-2" tabindex="-1"></a>  <span class="at">gene =</span> <span class="fu">rownames</span>(deg),</span>
+<span id="cb86-3"><a href="module-4-enrichment-analysis.html#cb86-3" tabindex="-1"></a>  <span class="at">organism =</span> <span class="st">&quot;hsa&quot;</span>,</span>
+<span id="cb86-4"><a href="module-4-enrichment-analysis.html#cb86-4" tabindex="-1"></a>  <span class="at">pvalueCutoff =</span> <span class="fl">0.05</span></span>
+<span id="cb86-5"><a href="module-4-enrichment-analysis.html#cb86-5" tabindex="-1"></a>)</span>
+<span id="cb86-6"><a href="module-4-enrichment-analysis.html#cb86-6" tabindex="-1"></a></span>
+<span id="cb86-7"><a href="module-4-enrichment-analysis.html#cb86-7" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as.data.frame</span>(ekegg))</span></code></pre></div>
 <p><strong>Visualize KEGG Results</strong></p>
 <ul>
 <li>Barplot</li>
 </ul>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="module-4-enrichment-analysis.html#cb97-1" tabindex="-1"></a><span class="fu">barplot</span>(  ekegg,  <span class="at">showCategory =</span> <span class="dv">15</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="module-4-enrichment-analysis.html#cb87-1" tabindex="-1"></a><span class="fu">barplot</span>(  ekegg,  <span class="at">showCategory =</span> <span class="dv">15</span>)</span></code></pre></div>
 <ul>
 <li>Dotplot</li>
 </ul>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="module-4-enrichment-analysis.html#cb98-1" tabindex="-1"></a><span class="fu">dotplot</span>(  ekegg,  <span class="at">showCategory =</span> <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="module-4-enrichment-analysis.html#cb88-1" tabindex="-1"></a><span class="fu">dotplot</span>(  ekegg,  <span class="at">showCategory =</span> <span class="dv">20</span>)</span></code></pre></div>
 <p>Change the code to include only the top10 KEGG pathways.</p>
 <details>
 <summary>
 Show solution
 </summary>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="module-4-enrichment-analysis.html#cb99-1" tabindex="-1"></a><span class="fu">dotplot</span>(  ekegg,  <span class="at">showCategory =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="module-4-enrichment-analysis.html#cb89-1" tabindex="-1"></a><span class="fu">dotplot</span>(  ekegg,  <span class="at">showCategory =</span> <span class="dv">10</span>)</span></code></pre></div>
 </details>
 <ul>
 <li>Pathview</li>
 </ul>
 <p>The <code>pathview</code> package allows us to visualize gene expression changes directly on KEGG pathway diagrams.</p>
 <p>Genes are colored according to their expression levels or fold changes, making it easier to identify activated or repressed biological pathways and interpret RNA-seq results in a biological context.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="module-4-enrichment-analysis.html#cb100-1" tabindex="-1"></a><span class="fu">library</span>(pathview)</span>
-<span id="cb100-2"><a href="module-4-enrichment-analysis.html#cb100-2" tabindex="-1"></a></span>
-<span id="cb100-3"><a href="module-4-enrichment-analysis.html#cb100-3" tabindex="-1"></a><span class="co"># Create named vector of log2 fold changes</span></span>
-<span id="cb100-4"><a href="module-4-enrichment-analysis.html#cb100-4" tabindex="-1"></a>gene_list <span class="ot">&lt;-</span> deg<span class="sc">$</span>log2FoldChange</span>
-<span id="cb100-5"><a href="module-4-enrichment-analysis.html#cb100-5" tabindex="-1"></a></span>
-<span id="cb100-6"><a href="module-4-enrichment-analysis.html#cb100-6" tabindex="-1"></a><span class="co"># Names must be Entrez IDs</span></span>
-<span id="cb100-7"><a href="module-4-enrichment-analysis.html#cb100-7" tabindex="-1"></a><span class="fu">names</span>(gene_list) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(deg)</span>
-<span id="cb100-8"><a href="module-4-enrichment-analysis.html#cb100-8" tabindex="-1"></a></span>
-<span id="cb100-9"><a href="module-4-enrichment-analysis.html#cb100-9" tabindex="-1"></a><span class="co"># Visualize pathway</span></span>
-<span id="cb100-10"><a href="module-4-enrichment-analysis.html#cb100-10" tabindex="-1"></a><span class="fu">pathview</span>(</span>
-<span id="cb100-11"><a href="module-4-enrichment-analysis.html#cb100-11" tabindex="-1"></a>  <span class="at">gene.data =</span> <span class="fu">names</span>(gene_list),</span>
-<span id="cb100-12"><a href="module-4-enrichment-analysis.html#cb100-12" tabindex="-1"></a>  <span class="at">pathway.id =</span> <span class="st">&quot;hsa05205&quot;</span>,</span>
-<span id="cb100-13"><a href="module-4-enrichment-analysis.html#cb100-13" tabindex="-1"></a>  <span class="at">species =</span> <span class="st">&quot;hsa&quot;</span>,</span>
-<span id="cb100-14"><a href="module-4-enrichment-analysis.html#cb100-14" tabindex="-1"></a>  <span class="at">out.suffix =</span> <span class="st">&quot;init&quot;</span></span>
-<span id="cb100-15"><a href="module-4-enrichment-analysis.html#cb100-15" tabindex="-1"></a>)</span>
-<span id="cb100-16"><a href="module-4-enrichment-analysis.html#cb100-16" tabindex="-1"></a></span>
-<span id="cb100-17"><a href="module-4-enrichment-analysis.html#cb100-17" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;hsa05205.init.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="module-4-enrichment-analysis.html#cb90-1" tabindex="-1"></a><span class="fu">library</span>(pathview)</span>
+<span id="cb90-2"><a href="module-4-enrichment-analysis.html#cb90-2" tabindex="-1"></a></span>
+<span id="cb90-3"><a href="module-4-enrichment-analysis.html#cb90-3" tabindex="-1"></a><span class="co"># Create named vector of log2 fold changes</span></span>
+<span id="cb90-4"><a href="module-4-enrichment-analysis.html#cb90-4" tabindex="-1"></a>gene_list <span class="ot">&lt;-</span> deg<span class="sc">$</span>log2FoldChange</span>
+<span id="cb90-5"><a href="module-4-enrichment-analysis.html#cb90-5" tabindex="-1"></a></span>
+<span id="cb90-6"><a href="module-4-enrichment-analysis.html#cb90-6" tabindex="-1"></a><span class="co"># Names must be Entrez IDs</span></span>
+<span id="cb90-7"><a href="module-4-enrichment-analysis.html#cb90-7" tabindex="-1"></a><span class="fu">names</span>(gene_list) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(deg)</span>
+<span id="cb90-8"><a href="module-4-enrichment-analysis.html#cb90-8" tabindex="-1"></a></span>
+<span id="cb90-9"><a href="module-4-enrichment-analysis.html#cb90-9" tabindex="-1"></a><span class="co"># Visualize pathway</span></span>
+<span id="cb90-10"><a href="module-4-enrichment-analysis.html#cb90-10" tabindex="-1"></a><span class="fu">pathview</span>(</span>
+<span id="cb90-11"><a href="module-4-enrichment-analysis.html#cb90-11" tabindex="-1"></a>  <span class="at">gene.data =</span> <span class="fu">names</span>(gene_list),</span>
+<span id="cb90-12"><a href="module-4-enrichment-analysis.html#cb90-12" tabindex="-1"></a>  <span class="at">pathway.id =</span> <span class="st">&quot;hsa05205&quot;</span>,</span>
+<span id="cb90-13"><a href="module-4-enrichment-analysis.html#cb90-13" tabindex="-1"></a>  <span class="at">species =</span> <span class="st">&quot;hsa&quot;</span>,</span>
+<span id="cb90-14"><a href="module-4-enrichment-analysis.html#cb90-14" tabindex="-1"></a>  <span class="at">out.suffix =</span> <span class="st">&quot;init&quot;</span></span>
+<span id="cb90-15"><a href="module-4-enrichment-analysis.html#cb90-15" tabindex="-1"></a>)</span>
+<span id="cb90-16"><a href="module-4-enrichment-analysis.html#cb90-16" tabindex="-1"></a></span>
+<span id="cb90-17"><a href="module-4-enrichment-analysis.html#cb90-17" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;hsa05205.init.png&quot;</span>)</span></code></pre></div>
 <p>What is the difference with this code?</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="module-4-enrichment-analysis.html#cb101-1" tabindex="-1"></a><span class="co"># Visualize pathway</span></span>
-<span id="cb101-2"><a href="module-4-enrichment-analysis.html#cb101-2" tabindex="-1"></a><span class="fu">pathview</span>(</span>
-<span id="cb101-3"><a href="module-4-enrichment-analysis.html#cb101-3" tabindex="-1"></a>  <span class="at">gene.data =</span> gene_list,</span>
-<span id="cb101-4"><a href="module-4-enrichment-analysis.html#cb101-4" tabindex="-1"></a>  <span class="at">pathway.id =</span> <span class="st">&quot;hsa05205&quot;</span>,</span>
-<span id="cb101-5"><a href="module-4-enrichment-analysis.html#cb101-5" tabindex="-1"></a>  <span class="at">species =</span> <span class="st">&quot;hsa&quot;</span>,</span>
-<span id="cb101-6"><a href="module-4-enrichment-analysis.html#cb101-6" tabindex="-1"></a>  <span class="at">out.suffix =</span> <span class="st">&quot;logFC&quot;</span></span>
-<span id="cb101-7"><a href="module-4-enrichment-analysis.html#cb101-7" tabindex="-1"></a></span>
-<span id="cb101-8"><a href="module-4-enrichment-analysis.html#cb101-8" tabindex="-1"></a>)</span>
-<span id="cb101-9"><a href="module-4-enrichment-analysis.html#cb101-9" tabindex="-1"></a></span>
-<span id="cb101-10"><a href="module-4-enrichment-analysis.html#cb101-10" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;hsa05205.logFC.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="module-4-enrichment-analysis.html#cb91-1" tabindex="-1"></a><span class="co"># Visualize pathway</span></span>
+<span id="cb91-2"><a href="module-4-enrichment-analysis.html#cb91-2" tabindex="-1"></a><span class="fu">pathview</span>(</span>
+<span id="cb91-3"><a href="module-4-enrichment-analysis.html#cb91-3" tabindex="-1"></a>  <span class="at">gene.data =</span> gene_list,</span>
+<span id="cb91-4"><a href="module-4-enrichment-analysis.html#cb91-4" tabindex="-1"></a>  <span class="at">pathway.id =</span> <span class="st">&quot;hsa05205&quot;</span>,</span>
+<span id="cb91-5"><a href="module-4-enrichment-analysis.html#cb91-5" tabindex="-1"></a>  <span class="at">species =</span> <span class="st">&quot;hsa&quot;</span>,</span>
+<span id="cb91-6"><a href="module-4-enrichment-analysis.html#cb91-6" tabindex="-1"></a>  <span class="at">out.suffix =</span> <span class="st">&quot;logFC&quot;</span></span>
+<span id="cb91-7"><a href="module-4-enrichment-analysis.html#cb91-7" tabindex="-1"></a></span>
+<span id="cb91-8"><a href="module-4-enrichment-analysis.html#cb91-8" tabindex="-1"></a>)</span>
+<span id="cb91-9"><a href="module-4-enrichment-analysis.html#cb91-9" tabindex="-1"></a></span>
+<span id="cb91-10"><a href="module-4-enrichment-analysis.html#cb91-10" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;hsa05205.logFC.png&quot;</span>)</span></code></pre></div>
 <p>To customize the map, we need to identify the range of expression of the DEGs involved in this pathway:</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="module-4-enrichment-analysis.html#cb102-1" tabindex="-1"></a><span class="fu">library</span>(KEGGREST)</span>
-<span id="cb102-2"><a href="module-4-enrichment-analysis.html#cb102-2" tabindex="-1"></a></span>
-<span id="cb102-3"><a href="module-4-enrichment-analysis.html#cb102-3" tabindex="-1"></a><span class="co"># Download KEGG pathway information</span></span>
-<span id="cb102-4"><a href="module-4-enrichment-analysis.html#cb102-4" tabindex="-1"></a>pathway_info <span class="ot">=</span> <span class="fu">keggGet</span>(<span class="st">&quot;hsa05205&quot;</span>)</span>
-<span id="cb102-5"><a href="module-4-enrichment-analysis.html#cb102-5" tabindex="-1"></a></span>
-<span id="cb102-6"><a href="module-4-enrichment-analysis.html#cb102-6" tabindex="-1"></a><span class="co"># Extract Entrez gene IDs</span></span>
-<span id="cb102-7"><a href="module-4-enrichment-analysis.html#cb102-7" tabindex="-1"></a>pathway_genes <span class="ot">=</span> pathway_info[[<span class="dv">1</span>]]<span class="sc">$</span>GENE</span>
-<span id="cb102-8"><a href="module-4-enrichment-analysis.html#cb102-8" tabindex="-1"></a></span>
-<span id="cb102-9"><a href="module-4-enrichment-analysis.html#cb102-9" tabindex="-1"></a><span class="co"># Keep only Entrez IDs</span></span>
-<span id="cb102-10"><a href="module-4-enrichment-analysis.html#cb102-10" tabindex="-1"></a>pathway_entrez <span class="ot">=</span> pathway_genes[<span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">length</span>(pathway_genes), <span class="dv">2</span>)]</span>
-<span id="cb102-11"><a href="module-4-enrichment-analysis.html#cb102-11" tabindex="-1"></a></span>
-<span id="cb102-12"><a href="module-4-enrichment-analysis.html#cb102-12" tabindex="-1"></a><span class="fu">head</span>(pathway_entrez)</span>
-<span id="cb102-13"><a href="module-4-enrichment-analysis.html#cb102-13" tabindex="-1"></a></span>
-<span id="cb102-14"><a href="module-4-enrichment-analysis.html#cb102-14" tabindex="-1"></a>pathway_fc <span class="ot">=</span> gene_list[<span class="fu">names</span>(gene_list) <span class="sc">%in%</span> pathway_entrez]</span>
-<span id="cb102-15"><a href="module-4-enrichment-analysis.html#cb102-15" tabindex="-1"></a></span>
-<span id="cb102-16"><a href="module-4-enrichment-analysis.html#cb102-16" tabindex="-1"></a><span class="fu">summary</span>(pathway_fc)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="module-4-enrichment-analysis.html#cb92-1" tabindex="-1"></a><span class="fu">library</span>(KEGGREST)</span>
+<span id="cb92-2"><a href="module-4-enrichment-analysis.html#cb92-2" tabindex="-1"></a></span>
+<span id="cb92-3"><a href="module-4-enrichment-analysis.html#cb92-3" tabindex="-1"></a><span class="co"># Download KEGG pathway information</span></span>
+<span id="cb92-4"><a href="module-4-enrichment-analysis.html#cb92-4" tabindex="-1"></a>pathway_info <span class="ot">=</span> <span class="fu">keggGet</span>(<span class="st">&quot;hsa05205&quot;</span>)</span>
+<span id="cb92-5"><a href="module-4-enrichment-analysis.html#cb92-5" tabindex="-1"></a></span>
+<span id="cb92-6"><a href="module-4-enrichment-analysis.html#cb92-6" tabindex="-1"></a><span class="co"># Extract Entrez gene IDs</span></span>
+<span id="cb92-7"><a href="module-4-enrichment-analysis.html#cb92-7" tabindex="-1"></a>pathway_genes <span class="ot">=</span> pathway_info[[<span class="dv">1</span>]]<span class="sc">$</span>GENE</span>
+<span id="cb92-8"><a href="module-4-enrichment-analysis.html#cb92-8" tabindex="-1"></a></span>
+<span id="cb92-9"><a href="module-4-enrichment-analysis.html#cb92-9" tabindex="-1"></a><span class="co"># Keep only Entrez IDs</span></span>
+<span id="cb92-10"><a href="module-4-enrichment-analysis.html#cb92-10" tabindex="-1"></a>pathway_entrez <span class="ot">=</span> pathway_genes[<span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">length</span>(pathway_genes), <span class="dv">2</span>)]</span>
+<span id="cb92-11"><a href="module-4-enrichment-analysis.html#cb92-11" tabindex="-1"></a></span>
+<span id="cb92-12"><a href="module-4-enrichment-analysis.html#cb92-12" tabindex="-1"></a><span class="fu">head</span>(pathway_entrez)</span>
+<span id="cb92-13"><a href="module-4-enrichment-analysis.html#cb92-13" tabindex="-1"></a></span>
+<span id="cb92-14"><a href="module-4-enrichment-analysis.html#cb92-14" tabindex="-1"></a>pathway_fc <span class="ot">=</span> gene_list[<span class="fu">names</span>(gene_list) <span class="sc">%in%</span> pathway_entrez]</span>
+<span id="cb92-15"><a href="module-4-enrichment-analysis.html#cb92-15" tabindex="-1"></a></span>
+<span id="cb92-16"><a href="module-4-enrichment-analysis.html#cb92-16" tabindex="-1"></a><span class="fu">summary</span>(pathway_fc)</span></code></pre></div>
 <p>Redraw the map with an appropriate logFC range:</p>
 <details>
 <summary>
 Show solution
 </summary>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="module-4-enrichment-analysis.html#cb103-1" tabindex="-1"></a><span class="co"># Visualize pathway</span></span>
-<span id="cb103-2"><a href="module-4-enrichment-analysis.html#cb103-2" tabindex="-1"></a><span class="fu">pathview</span>(</span>
-<span id="cb103-3"><a href="module-4-enrichment-analysis.html#cb103-3" tabindex="-1"></a>  <span class="at">gene.data =</span> gene_list,</span>
-<span id="cb103-4"><a href="module-4-enrichment-analysis.html#cb103-4" tabindex="-1"></a>  <span class="at">pathway.id =</span> <span class="st">&quot;hsa05205&quot;</span>,</span>
-<span id="cb103-5"><a href="module-4-enrichment-analysis.html#cb103-5" tabindex="-1"></a>  <span class="at">species =</span> <span class="st">&quot;hsa&quot;</span>,</span>
-<span id="cb103-6"><a href="module-4-enrichment-analysis.html#cb103-6" tabindex="-1"></a>  <span class="at">out.suffix =</span> <span class="st">&quot;logFCx&quot;</span>,</span>
-<span id="cb103-7"><a href="module-4-enrichment-analysis.html#cb103-7" tabindex="-1"></a>  <span class="at">limit =</span> <span class="fu">list</span>(<span class="at">gene =</span> <span class="fl">0.5</span>) <span class="co">#logFC from -0.5 to 0.5</span></span>
-<span id="cb103-8"><a href="module-4-enrichment-analysis.html#cb103-8" tabindex="-1"></a>)</span>
-<span id="cb103-9"><a href="module-4-enrichment-analysis.html#cb103-9" tabindex="-1"></a></span>
-<span id="cb103-10"><a href="module-4-enrichment-analysis.html#cb103-10" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;hsa05205.logFCx.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="module-4-enrichment-analysis.html#cb93-1" tabindex="-1"></a><span class="co"># Visualize pathway</span></span>
+<span id="cb93-2"><a href="module-4-enrichment-analysis.html#cb93-2" tabindex="-1"></a><span class="fu">pathview</span>(</span>
+<span id="cb93-3"><a href="module-4-enrichment-analysis.html#cb93-3" tabindex="-1"></a>  <span class="at">gene.data =</span> gene_list,</span>
+<span id="cb93-4"><a href="module-4-enrichment-analysis.html#cb93-4" tabindex="-1"></a>  <span class="at">pathway.id =</span> <span class="st">&quot;hsa05205&quot;</span>,</span>
+<span id="cb93-5"><a href="module-4-enrichment-analysis.html#cb93-5" tabindex="-1"></a>  <span class="at">species =</span> <span class="st">&quot;hsa&quot;</span>,</span>
+<span id="cb93-6"><a href="module-4-enrichment-analysis.html#cb93-6" tabindex="-1"></a>  <span class="at">out.suffix =</span> <span class="st">&quot;logFCx&quot;</span>,</span>
+<span id="cb93-7"><a href="module-4-enrichment-analysis.html#cb93-7" tabindex="-1"></a>  <span class="at">limit =</span> <span class="fu">list</span>(<span class="at">gene =</span> <span class="fl">0.5</span>) <span class="co">#logFC from -0.5 to 0.5</span></span>
+<span id="cb93-8"><a href="module-4-enrichment-analysis.html#cb93-8" tabindex="-1"></a>)</span>
+<span id="cb93-9"><a href="module-4-enrichment-analysis.html#cb93-9" tabindex="-1"></a></span>
+<span id="cb93-10"><a href="module-4-enrichment-analysis.html#cb93-10" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;hsa05205.logFCx.png&quot;</span>)</span></code></pre></div>
 </details>
 <p>Now the scale color is correct, but from green to red. We usually avoid using these colors in figures.
 Change the scale to: yellow - blue</p>
@@ -598,23 +589,23 @@ Change the scale to: yellow - blue</p>
 <summary>
 Show solution
 </summary>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="module-4-enrichment-analysis.html#cb104-1" tabindex="-1"></a><span class="co"># Visualize pathway</span></span>
-<span id="cb104-2"><a href="module-4-enrichment-analysis.html#cb104-2" tabindex="-1"></a><span class="fu">pathview</span>(</span>
-<span id="cb104-3"><a href="module-4-enrichment-analysis.html#cb104-3" tabindex="-1"></a>  <span class="at">gene.data =</span> gene_list,</span>
-<span id="cb104-4"><a href="module-4-enrichment-analysis.html#cb104-4" tabindex="-1"></a>  <span class="at">pathway.id =</span> <span class="st">&quot;hsa05205&quot;</span>,</span>
-<span id="cb104-5"><a href="module-4-enrichment-analysis.html#cb104-5" tabindex="-1"></a>  <span class="at">species =</span> <span class="st">&quot;hsa&quot;</span>,</span>
-<span id="cb104-6"><a href="module-4-enrichment-analysis.html#cb104-6" tabindex="-1"></a>  <span class="at">limit =</span> <span class="fu">list</span>(<span class="at">gene =</span> <span class="fl">0.5</span>), <span class="co">#logFC from -0.5 to 0.5</span></span>
-<span id="cb104-7"><a href="module-4-enrichment-analysis.html#cb104-7" tabindex="-1"></a>  <span class="at">out.suffix =</span> <span class="st">&quot;logFCx_YB&quot;</span>,</span>
-<span id="cb104-8"><a href="module-4-enrichment-analysis.html#cb104-8" tabindex="-1"></a></span>
-<span id="cb104-9"><a href="module-4-enrichment-analysis.html#cb104-9" tabindex="-1"></a>  <span class="co"># Low values (downregulated genes)</span></span>
-<span id="cb104-10"><a href="module-4-enrichment-analysis.html#cb104-10" tabindex="-1"></a>  <span class="at">low =</span> <span class="fu">list</span>(<span class="at">gene =</span> <span class="st">&quot;yellow&quot;</span>),</span>
-<span id="cb104-11"><a href="module-4-enrichment-analysis.html#cb104-11" tabindex="-1"></a></span>
-<span id="cb104-12"><a href="module-4-enrichment-analysis.html#cb104-12" tabindex="-1"></a>  <span class="co"># High values (upregulated genes)</span></span>
-<span id="cb104-13"><a href="module-4-enrichment-analysis.html#cb104-13" tabindex="-1"></a>  <span class="at">high =</span> <span class="fu">list</span>(<span class="at">gene =</span> <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb104-14"><a href="module-4-enrichment-analysis.html#cb104-14" tabindex="-1"></a></span>
-<span id="cb104-15"><a href="module-4-enrichment-analysis.html#cb104-15" tabindex="-1"></a>)</span>
-<span id="cb104-16"><a href="module-4-enrichment-analysis.html#cb104-16" tabindex="-1"></a></span>
-<span id="cb104-17"><a href="module-4-enrichment-analysis.html#cb104-17" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;hsa05205.logFCx_YB.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="module-4-enrichment-analysis.html#cb94-1" tabindex="-1"></a><span class="co"># Visualize pathway</span></span>
+<span id="cb94-2"><a href="module-4-enrichment-analysis.html#cb94-2" tabindex="-1"></a><span class="fu">pathview</span>(</span>
+<span id="cb94-3"><a href="module-4-enrichment-analysis.html#cb94-3" tabindex="-1"></a>  <span class="at">gene.data =</span> gene_list,</span>
+<span id="cb94-4"><a href="module-4-enrichment-analysis.html#cb94-4" tabindex="-1"></a>  <span class="at">pathway.id =</span> <span class="st">&quot;hsa05205&quot;</span>,</span>
+<span id="cb94-5"><a href="module-4-enrichment-analysis.html#cb94-5" tabindex="-1"></a>  <span class="at">species =</span> <span class="st">&quot;hsa&quot;</span>,</span>
+<span id="cb94-6"><a href="module-4-enrichment-analysis.html#cb94-6" tabindex="-1"></a>  <span class="at">limit =</span> <span class="fu">list</span>(<span class="at">gene =</span> <span class="fl">0.5</span>), <span class="co">#logFC from -0.5 to 0.5</span></span>
+<span id="cb94-7"><a href="module-4-enrichment-analysis.html#cb94-7" tabindex="-1"></a>  <span class="at">out.suffix =</span> <span class="st">&quot;logFCx_YB&quot;</span>,</span>
+<span id="cb94-8"><a href="module-4-enrichment-analysis.html#cb94-8" tabindex="-1"></a></span>
+<span id="cb94-9"><a href="module-4-enrichment-analysis.html#cb94-9" tabindex="-1"></a>  <span class="co"># Low values (downregulated genes)</span></span>
+<span id="cb94-10"><a href="module-4-enrichment-analysis.html#cb94-10" tabindex="-1"></a>  <span class="at">low =</span> <span class="fu">list</span>(<span class="at">gene =</span> <span class="st">&quot;yellow&quot;</span>),</span>
+<span id="cb94-11"><a href="module-4-enrichment-analysis.html#cb94-11" tabindex="-1"></a></span>
+<span id="cb94-12"><a href="module-4-enrichment-analysis.html#cb94-12" tabindex="-1"></a>  <span class="co"># High values (upregulated genes)</span></span>
+<span id="cb94-13"><a href="module-4-enrichment-analysis.html#cb94-13" tabindex="-1"></a>  <span class="at">high =</span> <span class="fu">list</span>(<span class="at">gene =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb94-14"><a href="module-4-enrichment-analysis.html#cb94-14" tabindex="-1"></a></span>
+<span id="cb94-15"><a href="module-4-enrichment-analysis.html#cb94-15" tabindex="-1"></a>)</span>
+<span id="cb94-16"><a href="module-4-enrichment-analysis.html#cb94-16" tabindex="-1"></a></span>
+<span id="cb94-17"><a href="module-4-enrichment-analysis.html#cb94-17" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;hsa05205.logFCx_YB.png&quot;</span>)</span></code></pre></div>
 </details>
 </div>
 <div id="gene-set-enrichment-analysis-gsea" class="section level3 hasAnchor">
@@ -636,10 +627,10 @@ GSEA uses ALL genes ranked by a statistic such as:</p>
 - strong fold-changes
 - low adjusted p-values</p>
 <p>will obtain the highest scores.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="module-4-enrichment-analysis.html#cb105-1" tabindex="-1"></a><span class="co"># Remove genes with missing adjusted p-values</span></span>
-<span id="cb105-2"><a href="module-4-enrichment-analysis.html#cb105-2" tabindex="-1"></a>res_gsea <span class="ot">=</span> <span class="fu">as.data.frame</span>(res)</span>
-<span id="cb105-3"><a href="module-4-enrichment-analysis.html#cb105-3" tabindex="-1"></a></span>
-<span id="cb105-4"><a href="module-4-enrichment-analysis.html#cb105-4" tabindex="-1"></a>res_gsea <span class="ot">=</span> res_gsea[<span class="sc">!</span><span class="fu">is.na</span>(res_gsea<span class="sc">$</span>padj),]</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="module-4-enrichment-analysis.html#cb95-1" tabindex="-1"></a><span class="co"># Remove genes with missing adjusted p-values</span></span>
+<span id="cb95-2"><a href="module-4-enrichment-analysis.html#cb95-2" tabindex="-1"></a>res_gsea <span class="ot">=</span> <span class="fu">as.data.frame</span>(res)</span>
+<span id="cb95-3"><a href="module-4-enrichment-analysis.html#cb95-3" tabindex="-1"></a></span>
+<span id="cb95-4"><a href="module-4-enrichment-analysis.html#cb95-4" tabindex="-1"></a>res_gsea <span class="ot">=</span> res_gsea[<span class="sc">!</span><span class="fu">is.na</span>(res_gsea<span class="sc">$</span>padj),]</span></code></pre></div>
 <p><strong>Create Ranking Score</strong></p>
 <p>We combine:</p>
 <ul>
@@ -647,24 +638,24 @@ GSEA uses ALL genes ranked by a statistic such as:</p>
 <li>fold-change direction</li>
 </ul>
 <p>using:</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="module-4-enrichment-analysis.html#cb106-1" tabindex="-1"></a><span class="sc">-</span><span class="fu">log10</span>(padj) <span class="sc">*</span> <span class="fu">sign</span>(log2FoldChange)</span></code></pre></div>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="module-4-enrichment-analysis.html#cb107-1" tabindex="-1"></a>gene_rank <span class="ot">=</span> <span class="sc">-</span><span class="fu">log10</span>(res_gsea<span class="sc">$</span>padj) <span class="sc">*</span> <span class="fu">sign</span>(res_gsea<span class="sc">$</span>log2FoldChange)</span>
-<span id="cb107-2"><a href="module-4-enrichment-analysis.html#cb107-2" tabindex="-1"></a></span>
-<span id="cb107-3"><a href="module-4-enrichment-analysis.html#cb107-3" tabindex="-1"></a><span class="co"># Add gene names</span></span>
-<span id="cb107-4"><a href="module-4-enrichment-analysis.html#cb107-4" tabindex="-1"></a><span class="fu">names</span>(gene_rank) <span class="ot">=</span> <span class="fu">rownames</span>(res_gsea)</span>
-<span id="cb107-5"><a href="module-4-enrichment-analysis.html#cb107-5" tabindex="-1"></a></span>
-<span id="cb107-6"><a href="module-4-enrichment-analysis.html#cb107-6" tabindex="-1"></a><span class="co"># Sort decreasingly</span></span>
-<span id="cb107-7"><a href="module-4-enrichment-analysis.html#cb107-7" tabindex="-1"></a>gene_rank <span class="ot">=</span> <span class="fu">sort</span>(gene_rank,<span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb107-8"><a href="module-4-enrichment-analysis.html#cb107-8" tabindex="-1"></a></span>
-<span id="cb107-9"><a href="module-4-enrichment-analysis.html#cb107-9" tabindex="-1"></a><span class="fu">head</span>(gene_rank)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="module-4-enrichment-analysis.html#cb96-1" tabindex="-1"></a><span class="sc">-</span><span class="fu">log10</span>(padj) <span class="sc">*</span> <span class="fu">sign</span>(log2FoldChange)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="module-4-enrichment-analysis.html#cb97-1" tabindex="-1"></a>gene_rank <span class="ot">=</span> <span class="sc">-</span><span class="fu">log10</span>(res_gsea<span class="sc">$</span>padj) <span class="sc">*</span> <span class="fu">sign</span>(res_gsea<span class="sc">$</span>log2FoldChange)</span>
+<span id="cb97-2"><a href="module-4-enrichment-analysis.html#cb97-2" tabindex="-1"></a></span>
+<span id="cb97-3"><a href="module-4-enrichment-analysis.html#cb97-3" tabindex="-1"></a><span class="co"># Add gene names</span></span>
+<span id="cb97-4"><a href="module-4-enrichment-analysis.html#cb97-4" tabindex="-1"></a><span class="fu">names</span>(gene_rank) <span class="ot">=</span> <span class="fu">rownames</span>(res_gsea)</span>
+<span id="cb97-5"><a href="module-4-enrichment-analysis.html#cb97-5" tabindex="-1"></a></span>
+<span id="cb97-6"><a href="module-4-enrichment-analysis.html#cb97-6" tabindex="-1"></a><span class="co"># Sort decreasingly</span></span>
+<span id="cb97-7"><a href="module-4-enrichment-analysis.html#cb97-7" tabindex="-1"></a>gene_rank <span class="ot">=</span> <span class="fu">sort</span>(gene_rank,<span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb97-8"><a href="module-4-enrichment-analysis.html#cb97-8" tabindex="-1"></a></span>
+<span id="cb97-9"><a href="module-4-enrichment-analysis.html#cb97-9" tabindex="-1"></a><span class="fu">head</span>(gene_rank)</span></code></pre></div>
 <p><strong>Visualize Ranking Distribution</strong></p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="module-4-enrichment-analysis.html#cb108-1" tabindex="-1"></a><span class="fu">hist</span>(</span>
-<span id="cb108-2"><a href="module-4-enrichment-analysis.html#cb108-2" tabindex="-1"></a>  gene_rank,</span>
-<span id="cb108-3"><a href="module-4-enrichment-analysis.html#cb108-3" tabindex="-1"></a>  <span class="at">breaks =</span> <span class="dv">100</span>,</span>
-<span id="cb108-4"><a href="module-4-enrichment-analysis.html#cb108-4" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>,</span>
-<span id="cb108-5"><a href="module-4-enrichment-analysis.html#cb108-5" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Distribution of GSEA Ranking Scores&quot;</span>,</span>
-<span id="cb108-6"><a href="module-4-enrichment-analysis.html#cb108-6" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Ranking score&quot;</span></span>
-<span id="cb108-7"><a href="module-4-enrichment-analysis.html#cb108-7" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="module-4-enrichment-analysis.html#cb98-1" tabindex="-1"></a><span class="fu">hist</span>(</span>
+<span id="cb98-2"><a href="module-4-enrichment-analysis.html#cb98-2" tabindex="-1"></a>  gene_rank,</span>
+<span id="cb98-3"><a href="module-4-enrichment-analysis.html#cb98-3" tabindex="-1"></a>  <span class="at">breaks =</span> <span class="dv">100</span>,</span>
+<span id="cb98-4"><a href="module-4-enrichment-analysis.html#cb98-4" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>,</span>
+<span id="cb98-5"><a href="module-4-enrichment-analysis.html#cb98-5" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Distribution of GSEA Ranking Scores&quot;</span>,</span>
+<span id="cb98-6"><a href="module-4-enrichment-analysis.html#cb98-6" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Ranking score&quot;</span></span>
+<span id="cb98-7"><a href="module-4-enrichment-analysis.html#cb98-7" tabindex="-1"></a>)</span></code></pre></div>
 <p><strong>Run GSEA with Gene Sets from MSigDB</strong></p>
 <p><a href="https://www.gsea-msigdb.org/gsea/msigdb">MSigDB</a> (Molecular Signatures Database) is a curated collection of annotated gene sets commonly used for pathway and enrichment analysis.</p>
 <p>It contains multiple categories of biological signatures, including Hallmark pathways, Gene Ontology terms, immune signatures, and curated pathways from databases such as KEGG and Reactome.</p>
@@ -676,46 +667,46 @@ GSEA uses ALL genes ranked by a statistic such as:</p>
 <li>apoptosis</li>
 <li>MYC signaling</li>
 </ul>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="module-4-enrichment-analysis.html#cb109-1" tabindex="-1"></a>hallmark_df <span class="ot">=</span> <span class="fu">msigdbr</span>(</span>
-<span id="cb109-2"><a href="module-4-enrichment-analysis.html#cb109-2" tabindex="-1"></a>  <span class="at">species =</span> <span class="st">&quot;Homo sapiens&quot;</span>,</span>
-<span id="cb109-3"><a href="module-4-enrichment-analysis.html#cb109-3" tabindex="-1"></a>  <span class="at">collection =</span> <span class="st">&quot;H&quot;</span></span>
-<span id="cb109-4"><a href="module-4-enrichment-analysis.html#cb109-4" tabindex="-1"></a>)</span>
-<span id="cb109-5"><a href="module-4-enrichment-analysis.html#cb109-5" tabindex="-1"></a></span>
-<span id="cb109-6"><a href="module-4-enrichment-analysis.html#cb109-6" tabindex="-1"></a><span class="fu">head</span>(hallmark_df)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="module-4-enrichment-analysis.html#cb99-1" tabindex="-1"></a>hallmark_df <span class="ot">=</span> <span class="fu">msigdbr</span>(</span>
+<span id="cb99-2"><a href="module-4-enrichment-analysis.html#cb99-2" tabindex="-1"></a>  <span class="at">species =</span> <span class="st">&quot;Homo sapiens&quot;</span>,</span>
+<span id="cb99-3"><a href="module-4-enrichment-analysis.html#cb99-3" tabindex="-1"></a>  <span class="at">collection =</span> <span class="st">&quot;H&quot;</span></span>
+<span id="cb99-4"><a href="module-4-enrichment-analysis.html#cb99-4" tabindex="-1"></a>)</span>
+<span id="cb99-5"><a href="module-4-enrichment-analysis.html#cb99-5" tabindex="-1"></a></span>
+<span id="cb99-6"><a href="module-4-enrichment-analysis.html#cb99-6" tabindex="-1"></a><span class="fu">head</span>(hallmark_df)</span></code></pre></div>
 <p><strong>Create Pathway List</strong></p>
 <p>fgsea requires a list format:</p>
 <ul>
 <li>pathway name</li>
 <li>vector of genes</li>
 </ul>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="module-4-enrichment-analysis.html#cb110-1" tabindex="-1"></a>hallmark_list <span class="ot">=</span> hallmark_df <span class="sc">%&gt;%</span></span>
-<span id="cb110-2"><a href="module-4-enrichment-analysis.html#cb110-2" tabindex="-1"></a>  <span class="fu">split</span>(<span class="at">x =</span> .<span class="sc">$</span>ncbi_gene,</span>
-<span id="cb110-3"><a href="module-4-enrichment-analysis.html#cb110-3" tabindex="-1"></a>        <span class="at">f =</span> .<span class="sc">$</span>gs_name)</span>
-<span id="cb110-4"><a href="module-4-enrichment-analysis.html#cb110-4" tabindex="-1"></a></span>
-<span id="cb110-5"><a href="module-4-enrichment-analysis.html#cb110-5" tabindex="-1"></a><span class="fu">head</span>(hallmark_list)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="module-4-enrichment-analysis.html#cb100-1" tabindex="-1"></a>hallmark_list <span class="ot">=</span> hallmark_df <span class="sc">%&gt;%</span></span>
+<span id="cb100-2"><a href="module-4-enrichment-analysis.html#cb100-2" tabindex="-1"></a>  <span class="fu">split</span>(<span class="at">x =</span> .<span class="sc">$</span>ncbi_gene,</span>
+<span id="cb100-3"><a href="module-4-enrichment-analysis.html#cb100-3" tabindex="-1"></a>        <span class="at">f =</span> .<span class="sc">$</span>gs_name)</span>
+<span id="cb100-4"><a href="module-4-enrichment-analysis.html#cb100-4" tabindex="-1"></a></span>
+<span id="cb100-5"><a href="module-4-enrichment-analysis.html#cb100-5" tabindex="-1"></a><span class="fu">head</span>(hallmark_list)</span></code></pre></div>
 <p><strong>Run fgsea</strong></p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="module-4-enrichment-analysis.html#cb111-1" tabindex="-1"></a>fgsea_res <span class="ot">=</span> <span class="fu">fgsea</span>(</span>
-<span id="cb111-2"><a href="module-4-enrichment-analysis.html#cb111-2" tabindex="-1"></a></span>
-<span id="cb111-3"><a href="module-4-enrichment-analysis.html#cb111-3" tabindex="-1"></a>  <span class="co"># Pathway list</span></span>
-<span id="cb111-4"><a href="module-4-enrichment-analysis.html#cb111-4" tabindex="-1"></a>  <span class="at">pathways =</span> hallmark_list,</span>
-<span id="cb111-5"><a href="module-4-enrichment-analysis.html#cb111-5" tabindex="-1"></a></span>
-<span id="cb111-6"><a href="module-4-enrichment-analysis.html#cb111-6" tabindex="-1"></a>  <span class="co"># Ranked gene list</span></span>
-<span id="cb111-7"><a href="module-4-enrichment-analysis.html#cb111-7" tabindex="-1"></a>  <span class="at">stats =</span> gene_rank,</span>
-<span id="cb111-8"><a href="module-4-enrichment-analysis.html#cb111-8" tabindex="-1"></a></span>
-<span id="cb111-9"><a href="module-4-enrichment-analysis.html#cb111-9" tabindex="-1"></a>  <span class="co"># Minimum pathway size</span></span>
-<span id="cb111-10"><a href="module-4-enrichment-analysis.html#cb111-10" tabindex="-1"></a>  <span class="at">minSize =</span> <span class="dv">15</span>,</span>
-<span id="cb111-11"><a href="module-4-enrichment-analysis.html#cb111-11" tabindex="-1"></a></span>
-<span id="cb111-12"><a href="module-4-enrichment-analysis.html#cb111-12" tabindex="-1"></a>  <span class="co"># Maximum pathway size</span></span>
-<span id="cb111-13"><a href="module-4-enrichment-analysis.html#cb111-13" tabindex="-1"></a>  <span class="at">maxSize =</span> <span class="dv">500</span>,</span>
-<span id="cb111-14"><a href="module-4-enrichment-analysis.html#cb111-14" tabindex="-1"></a></span>
-<span id="cb111-15"><a href="module-4-enrichment-analysis.html#cb111-15" tabindex="-1"></a>  <span class="co"># Number of permutations</span></span>
-<span id="cb111-16"><a href="module-4-enrichment-analysis.html#cb111-16" tabindex="-1"></a>  <span class="at">nperm =</span> <span class="dv">1000</span></span>
-<span id="cb111-17"><a href="module-4-enrichment-analysis.html#cb111-17" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="module-4-enrichment-analysis.html#cb101-1" tabindex="-1"></a>fgsea_res <span class="ot">=</span> <span class="fu">fgsea</span>(</span>
+<span id="cb101-2"><a href="module-4-enrichment-analysis.html#cb101-2" tabindex="-1"></a></span>
+<span id="cb101-3"><a href="module-4-enrichment-analysis.html#cb101-3" tabindex="-1"></a>  <span class="co"># Pathway list</span></span>
+<span id="cb101-4"><a href="module-4-enrichment-analysis.html#cb101-4" tabindex="-1"></a>  <span class="at">pathways =</span> hallmark_list,</span>
+<span id="cb101-5"><a href="module-4-enrichment-analysis.html#cb101-5" tabindex="-1"></a></span>
+<span id="cb101-6"><a href="module-4-enrichment-analysis.html#cb101-6" tabindex="-1"></a>  <span class="co"># Ranked gene list</span></span>
+<span id="cb101-7"><a href="module-4-enrichment-analysis.html#cb101-7" tabindex="-1"></a>  <span class="at">stats =</span> gene_rank,</span>
+<span id="cb101-8"><a href="module-4-enrichment-analysis.html#cb101-8" tabindex="-1"></a></span>
+<span id="cb101-9"><a href="module-4-enrichment-analysis.html#cb101-9" tabindex="-1"></a>  <span class="co"># Minimum pathway size</span></span>
+<span id="cb101-10"><a href="module-4-enrichment-analysis.html#cb101-10" tabindex="-1"></a>  <span class="at">minSize =</span> <span class="dv">15</span>,</span>
+<span id="cb101-11"><a href="module-4-enrichment-analysis.html#cb101-11" tabindex="-1"></a></span>
+<span id="cb101-12"><a href="module-4-enrichment-analysis.html#cb101-12" tabindex="-1"></a>  <span class="co"># Maximum pathway size</span></span>
+<span id="cb101-13"><a href="module-4-enrichment-analysis.html#cb101-13" tabindex="-1"></a>  <span class="at">maxSize =</span> <span class="dv">500</span>,</span>
+<span id="cb101-14"><a href="module-4-enrichment-analysis.html#cb101-14" tabindex="-1"></a></span>
+<span id="cb101-15"><a href="module-4-enrichment-analysis.html#cb101-15" tabindex="-1"></a>  <span class="co"># Number of permutations</span></span>
+<span id="cb101-16"><a href="module-4-enrichment-analysis.html#cb101-16" tabindex="-1"></a>  <span class="at">nperm =</span> <span class="dv">1000</span></span>
+<span id="cb101-17"><a href="module-4-enrichment-analysis.html#cb101-17" tabindex="-1"></a>)</span></code></pre></div>
 <p><strong>Explore Results</strong></p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="module-4-enrichment-analysis.html#cb112-1" tabindex="-1"></a><span class="fu">head</span>(fgsea_res)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="module-4-enrichment-analysis.html#cb102-1" tabindex="-1"></a><span class="fu">head</span>(fgsea_res)</span></code></pre></div>
 <p><strong>Sort Results</strong></p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="module-4-enrichment-analysis.html#cb113-1" tabindex="-1"></a>fgsea_res <span class="ot">&lt;-</span> fgsea_res <span class="sc">%&gt;%</span><span class="fu">arrange</span>(padj)</span>
-<span id="cb113-2"><a href="module-4-enrichment-analysis.html#cb113-2" tabindex="-1"></a><span class="fu">head</span>(fgsea_res)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="module-4-enrichment-analysis.html#cb103-1" tabindex="-1"></a>fgsea_res <span class="ot">&lt;-</span> fgsea_res <span class="sc">%&gt;%</span><span class="fu">arrange</span>(padj)</span>
+<span id="cb103-2"><a href="module-4-enrichment-analysis.html#cb103-2" tabindex="-1"></a><span class="fu">head</span>(fgsea_res)</span></code></pre></div>
 <p><strong>Question</strong></p>
 <p>What does the NES (Normalized Enrichment Score) represent?</p>
 <p><strong>Interpretation</strong></p>
@@ -728,47 +719,47 @@ pathway enriched among downregulated genes</p></li>
 stronger enrichment signal</p></li>
 </ul>
 <p><strong>Visualize Top Pathways</strong></p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="module-4-enrichment-analysis.html#cb114-1" tabindex="-1"></a>topPathwaysUp <span class="ot">&lt;-</span> fgsea_res <span class="sc">%&gt;%</span></span>
-<span id="cb114-2"><a href="module-4-enrichment-analysis.html#cb114-2" tabindex="-1"></a>  <span class="fu">filter</span>(NES <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb114-3"><a href="module-4-enrichment-analysis.html#cb114-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(NES)) <span class="sc">%&gt;%</span></span>
-<span id="cb114-4"><a href="module-4-enrichment-analysis.html#cb114-4" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
-<span id="cb114-5"><a href="module-4-enrichment-analysis.html#cb114-5" tabindex="-1"></a></span>
-<span id="cb114-6"><a href="module-4-enrichment-analysis.html#cb114-6" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
-<span id="cb114-7"><a href="module-4-enrichment-analysis.html#cb114-7" tabindex="-1"></a>  topPathwaysUp,</span>
-<span id="cb114-8"><a href="module-4-enrichment-analysis.html#cb114-8" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(pathway, NES),</span>
-<span id="cb114-9"><a href="module-4-enrichment-analysis.html#cb114-9" tabindex="-1"></a>      <span class="at">y =</span> NES)</span>
-<span id="cb114-10"><a href="module-4-enrichment-analysis.html#cb114-10" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb114-11"><a href="module-4-enrichment-analysis.html#cb114-11" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb114-12"><a href="module-4-enrichment-analysis.html#cb114-12" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb114-13"><a href="module-4-enrichment-analysis.html#cb114-13" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb114-14"><a href="module-4-enrichment-analysis.html#cb114-14" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Pathway&quot;</span>) <span class="sc">+</span></span>
-<span id="cb114-15"><a href="module-4-enrichment-analysis.html#cb114-15" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Normalized Enrichment Score&quot;</span>) <span class="sc">+</span></span>
-<span id="cb114-16"><a href="module-4-enrichment-analysis.html#cb114-16" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Top Positively Enriched Pathways&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="module-4-enrichment-analysis.html#cb104-1" tabindex="-1"></a>topPathwaysUp <span class="ot">&lt;-</span> fgsea_res <span class="sc">%&gt;%</span></span>
+<span id="cb104-2"><a href="module-4-enrichment-analysis.html#cb104-2" tabindex="-1"></a>  <span class="fu">filter</span>(NES <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb104-3"><a href="module-4-enrichment-analysis.html#cb104-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(NES)) <span class="sc">%&gt;%</span></span>
+<span id="cb104-4"><a href="module-4-enrichment-analysis.html#cb104-4" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb104-5"><a href="module-4-enrichment-analysis.html#cb104-5" tabindex="-1"></a></span>
+<span id="cb104-6"><a href="module-4-enrichment-analysis.html#cb104-6" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb104-7"><a href="module-4-enrichment-analysis.html#cb104-7" tabindex="-1"></a>  topPathwaysUp,</span>
+<span id="cb104-8"><a href="module-4-enrichment-analysis.html#cb104-8" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(pathway, NES),</span>
+<span id="cb104-9"><a href="module-4-enrichment-analysis.html#cb104-9" tabindex="-1"></a>      <span class="at">y =</span> NES)</span>
+<span id="cb104-10"><a href="module-4-enrichment-analysis.html#cb104-10" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb104-11"><a href="module-4-enrichment-analysis.html#cb104-11" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb104-12"><a href="module-4-enrichment-analysis.html#cb104-12" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb104-13"><a href="module-4-enrichment-analysis.html#cb104-13" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb104-14"><a href="module-4-enrichment-analysis.html#cb104-14" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Pathway&quot;</span>) <span class="sc">+</span></span>
+<span id="cb104-15"><a href="module-4-enrichment-analysis.html#cb104-15" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Normalized Enrichment Score&quot;</span>) <span class="sc">+</span></span>
+<span id="cb104-16"><a href="module-4-enrichment-analysis.html#cb104-16" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Top Positively Enriched Pathways&quot;</span>)</span></code></pre></div>
 <p><strong>Visualize Downregulated Pathways</strong></p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="module-4-enrichment-analysis.html#cb115-1" tabindex="-1"></a>topPathwaysDown <span class="ot">&lt;-</span> fgsea_res <span class="sc">%&gt;%</span></span>
-<span id="cb115-2"><a href="module-4-enrichment-analysis.html#cb115-2" tabindex="-1"></a>  <span class="fu">filter</span>(NES <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb115-3"><a href="module-4-enrichment-analysis.html#cb115-3" tabindex="-1"></a>  <span class="fu">arrange</span>(NES) <span class="sc">%&gt;%</span></span>
-<span id="cb115-4"><a href="module-4-enrichment-analysis.html#cb115-4" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
-<span id="cb115-5"><a href="module-4-enrichment-analysis.html#cb115-5" tabindex="-1"></a></span>
-<span id="cb115-6"><a href="module-4-enrichment-analysis.html#cb115-6" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
-<span id="cb115-7"><a href="module-4-enrichment-analysis.html#cb115-7" tabindex="-1"></a>  topPathwaysDown,</span>
-<span id="cb115-8"><a href="module-4-enrichment-analysis.html#cb115-8" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(pathway, NES),</span>
-<span id="cb115-9"><a href="module-4-enrichment-analysis.html#cb115-9" tabindex="-1"></a>      <span class="at">y =</span> NES)</span>
-<span id="cb115-10"><a href="module-4-enrichment-analysis.html#cb115-10" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb115-11"><a href="module-4-enrichment-analysis.html#cb115-11" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;tomato&quot;</span>) <span class="sc">+</span></span>
-<span id="cb115-12"><a href="module-4-enrichment-analysis.html#cb115-12" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb115-13"><a href="module-4-enrichment-analysis.html#cb115-13" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb115-14"><a href="module-4-enrichment-analysis.html#cb115-14" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Pathway&quot;</span>) <span class="sc">+</span></span>
-<span id="cb115-15"><a href="module-4-enrichment-analysis.html#cb115-15" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Normalized Enrichment Score&quot;</span>) <span class="sc">+</span></span>
-<span id="cb115-16"><a href="module-4-enrichment-analysis.html#cb115-16" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Top Negatively Enriched Pathways&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="module-4-enrichment-analysis.html#cb105-1" tabindex="-1"></a>topPathwaysDown <span class="ot">&lt;-</span> fgsea_res <span class="sc">%&gt;%</span></span>
+<span id="cb105-2"><a href="module-4-enrichment-analysis.html#cb105-2" tabindex="-1"></a>  <span class="fu">filter</span>(NES <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb105-3"><a href="module-4-enrichment-analysis.html#cb105-3" tabindex="-1"></a>  <span class="fu">arrange</span>(NES) <span class="sc">%&gt;%</span></span>
+<span id="cb105-4"><a href="module-4-enrichment-analysis.html#cb105-4" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb105-5"><a href="module-4-enrichment-analysis.html#cb105-5" tabindex="-1"></a></span>
+<span id="cb105-6"><a href="module-4-enrichment-analysis.html#cb105-6" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb105-7"><a href="module-4-enrichment-analysis.html#cb105-7" tabindex="-1"></a>  topPathwaysDown,</span>
+<span id="cb105-8"><a href="module-4-enrichment-analysis.html#cb105-8" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(pathway, NES),</span>
+<span id="cb105-9"><a href="module-4-enrichment-analysis.html#cb105-9" tabindex="-1"></a>      <span class="at">y =</span> NES)</span>
+<span id="cb105-10"><a href="module-4-enrichment-analysis.html#cb105-10" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb105-11"><a href="module-4-enrichment-analysis.html#cb105-11" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;tomato&quot;</span>) <span class="sc">+</span></span>
+<span id="cb105-12"><a href="module-4-enrichment-analysis.html#cb105-12" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb105-13"><a href="module-4-enrichment-analysis.html#cb105-13" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb105-14"><a href="module-4-enrichment-analysis.html#cb105-14" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Pathway&quot;</span>) <span class="sc">+</span></span>
+<span id="cb105-15"><a href="module-4-enrichment-analysis.html#cb105-15" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Normalized Enrichment Score&quot;</span>) <span class="sc">+</span></span>
+<span id="cb105-16"><a href="module-4-enrichment-analysis.html#cb105-16" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Top Negatively Enriched Pathways&quot;</span>)</span></code></pre></div>
 <p><strong>Enrichment Plot for One Pathway</strong></p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="module-4-enrichment-analysis.html#cb116-1" tabindex="-1"></a><span class="fu">plotEnrichment</span>(</span>
-<span id="cb116-2"><a href="module-4-enrichment-analysis.html#cb116-2" tabindex="-1"></a>  hallmark_list[[<span class="st">&quot;HALLMARK_INTERFERON_GAMMA_RESPONSE&quot;</span>]],</span>
-<span id="cb116-3"><a href="module-4-enrichment-analysis.html#cb116-3" tabindex="-1"></a>  gene_rank</span>
-<span id="cb116-4"><a href="module-4-enrichment-analysis.html#cb116-4" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb116-5"><a href="module-4-enrichment-analysis.html#cb116-5" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb116-6"><a href="module-4-enrichment-analysis.html#cb116-6" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;GSEA Enrichment Plot: Apoptosis&quot;</span></span>
-<span id="cb116-7"><a href="module-4-enrichment-analysis.html#cb116-7" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="module-4-enrichment-analysis.html#cb106-1" tabindex="-1"></a><span class="fu">plotEnrichment</span>(</span>
+<span id="cb106-2"><a href="module-4-enrichment-analysis.html#cb106-2" tabindex="-1"></a>  hallmark_list[[<span class="st">&quot;HALLMARK_INTERFERON_GAMMA_RESPONSE&quot;</span>]],</span>
+<span id="cb106-3"><a href="module-4-enrichment-analysis.html#cb106-3" tabindex="-1"></a>  gene_rank</span>
+<span id="cb106-4"><a href="module-4-enrichment-analysis.html#cb106-4" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb106-5"><a href="module-4-enrichment-analysis.html#cb106-5" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb106-6"><a href="module-4-enrichment-analysis.html#cb106-6" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;GSEA Enrichment Plot: Apoptosis&quot;</span></span>
+<span id="cb106-7"><a href="module-4-enrichment-analysis.html#cb106-7" tabindex="-1"></a>  )</span></code></pre></div>
 <p><strong>Interpretation of Enrichment Plot</strong></p>
 <p>The curve shows where pathway genes appear
 in the ranked gene list.</p>
@@ -779,29 +770,29 @@ pathway activated</p></li>
 pathway repressed</p></li>
 </ul>
 <p><strong>Visualize Multiple Pathways</strong></p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="module-4-enrichment-analysis.html#cb117-1" tabindex="-1"></a>top_pathways <span class="ot">&lt;-</span> fgsea_res<span class="sc">$</span>pathway[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb117-2"><a href="module-4-enrichment-analysis.html#cb117-2" tabindex="-1"></a></span>
-<span id="cb117-3"><a href="module-4-enrichment-analysis.html#cb117-3" tabindex="-1"></a><span class="fu">plotGseaTable</span>(</span>
-<span id="cb117-4"><a href="module-4-enrichment-analysis.html#cb117-4" tabindex="-1"></a>  <span class="at">pathways =</span> hallmark_list[top_pathways],</span>
-<span id="cb117-5"><a href="module-4-enrichment-analysis.html#cb117-5" tabindex="-1"></a>  <span class="at">stats =</span> gene_rank,</span>
-<span id="cb117-6"><a href="module-4-enrichment-analysis.html#cb117-6" tabindex="-1"></a>  <span class="at">fgseaRes =</span> fgsea_res,</span>
-<span id="cb117-7"><a href="module-4-enrichment-analysis.html#cb117-7" tabindex="-1"></a>  <span class="at">gseaParam =</span> <span class="dv">1</span></span>
-<span id="cb117-8"><a href="module-4-enrichment-analysis.html#cb117-8" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="module-4-enrichment-analysis.html#cb107-1" tabindex="-1"></a>top_pathways <span class="ot">&lt;-</span> fgsea_res<span class="sc">$</span>pathway[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb107-2"><a href="module-4-enrichment-analysis.html#cb107-2" tabindex="-1"></a></span>
+<span id="cb107-3"><a href="module-4-enrichment-analysis.html#cb107-3" tabindex="-1"></a><span class="fu">plotGseaTable</span>(</span>
+<span id="cb107-4"><a href="module-4-enrichment-analysis.html#cb107-4" tabindex="-1"></a>  <span class="at">pathways =</span> hallmark_list[top_pathways],</span>
+<span id="cb107-5"><a href="module-4-enrichment-analysis.html#cb107-5" tabindex="-1"></a>  <span class="at">stats =</span> gene_rank,</span>
+<span id="cb107-6"><a href="module-4-enrichment-analysis.html#cb107-6" tabindex="-1"></a>  <span class="at">fgseaRes =</span> fgsea_res,</span>
+<span id="cb107-7"><a href="module-4-enrichment-analysis.html#cb107-7" tabindex="-1"></a>  <span class="at">gseaParam =</span> <span class="dv">1</span></span>
+<span id="cb107-8"><a href="module-4-enrichment-analysis.html#cb107-8" tabindex="-1"></a>)</span></code></pre></div>
 <p><strong>Volcano-style NES Plot</strong></p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="module-4-enrichment-analysis.html#cb118-1" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
-<span id="cb118-2"><a href="module-4-enrichment-analysis.html#cb118-2" tabindex="-1"></a>  fgsea_res,</span>
-<span id="cb118-3"><a href="module-4-enrichment-analysis.html#cb118-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> NES,</span>
-<span id="cb118-4"><a href="module-4-enrichment-analysis.html#cb118-4" tabindex="-1"></a>      <span class="at">y =</span> <span class="sc">-</span><span class="fu">log10</span>(padj))</span>
-<span id="cb118-5"><a href="module-4-enrichment-analysis.html#cb118-5" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb118-6"><a href="module-4-enrichment-analysis.html#cb118-6" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> padj <span class="sc">&lt;</span> <span class="fl">0.05</span>),</span>
-<span id="cb118-7"><a href="module-4-enrichment-analysis.html#cb118-7" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb118-8"><a href="module-4-enrichment-analysis.html#cb118-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb118-9"><a href="module-4-enrichment-analysis.html#cb118-9" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb118-10"><a href="module-4-enrichment-analysis.html#cb118-10" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;grey70&quot;</span>, <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb118-11"><a href="module-4-enrichment-analysis.html#cb118-11" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb118-12"><a href="module-4-enrichment-analysis.html#cb118-12" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Normalized Enrichment Score&quot;</span>) <span class="sc">+</span></span>
-<span id="cb118-13"><a href="module-4-enrichment-analysis.html#cb118-13" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;-log10 adjusted p-value&quot;</span>) <span class="sc">+</span></span>
-<span id="cb118-14"><a href="module-4-enrichment-analysis.html#cb118-14" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;fgsea Pathway Enrichment&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="module-4-enrichment-analysis.html#cb108-1" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb108-2"><a href="module-4-enrichment-analysis.html#cb108-2" tabindex="-1"></a>  fgsea_res,</span>
+<span id="cb108-3"><a href="module-4-enrichment-analysis.html#cb108-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> NES,</span>
+<span id="cb108-4"><a href="module-4-enrichment-analysis.html#cb108-4" tabindex="-1"></a>      <span class="at">y =</span> <span class="sc">-</span><span class="fu">log10</span>(padj))</span>
+<span id="cb108-5"><a href="module-4-enrichment-analysis.html#cb108-5" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb108-6"><a href="module-4-enrichment-analysis.html#cb108-6" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> padj <span class="sc">&lt;</span> <span class="fl">0.05</span>),</span>
+<span id="cb108-7"><a href="module-4-enrichment-analysis.html#cb108-7" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb108-8"><a href="module-4-enrichment-analysis.html#cb108-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb108-9"><a href="module-4-enrichment-analysis.html#cb108-9" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb108-10"><a href="module-4-enrichment-analysis.html#cb108-10" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;grey70&quot;</span>, <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb108-11"><a href="module-4-enrichment-analysis.html#cb108-11" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb108-12"><a href="module-4-enrichment-analysis.html#cb108-12" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Normalized Enrichment Score&quot;</span>) <span class="sc">+</span></span>
+<span id="cb108-13"><a href="module-4-enrichment-analysis.html#cb108-13" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;-log10 adjusted p-value&quot;</span>) <span class="sc">+</span></span>
+<span id="cb108-14"><a href="module-4-enrichment-analysis.html#cb108-14" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;fgsea Pathway Enrichment&quot;</span>)</span></code></pre></div>
 <p><strong>Biological Interpretation Questions</strong></p>
 <ol style="list-style-type: decimal">
 <li>Which pathways are activated?</li>
