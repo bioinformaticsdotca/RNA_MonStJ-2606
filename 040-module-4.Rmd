@@ -71,11 +71,11 @@ class(raw_counts) = "integer"
 #head(raw_counts)
 
 # create a simple one column dataframe to start
-metaData <- data.frame("Condition" = c("UHR", "UHR", "UHR", "HBR", "HBR", "HBR"))
+metaData <- data.frame("Condition" = c("shRNA", "shRNA", "shRNA", "CTRL", "CTRL", "CTRL"))
 
 # convert the "Condition" column to a factor data type
 # the arbitrary order of these factors will determine the direction of log2 fold-changes for the genes (i.e. up or down regulated)
-metaData$Condition = factor(metaData$Condition, levels = c("HBR", "UHR"))
+metaData$Condition = factor(metaData$Condition, levels = c("CTRL", "shRNA"))
 
 # set the row names of the metaData dataframe to be the names of our sample replicates from the read counts matrix
 rownames(metaData) = colnames(raw_counts)
