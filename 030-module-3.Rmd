@@ -240,7 +240,7 @@ ggVennDiagram(lst4Venn)
 Let's create some visualizations and save the results into a csv file.
 
 ```{r}
-# Let's create a heatmap with the DEGs in the intersection between the three approaches
+# Let's create a heatmap with the DEGs in the intersection between the three approaches based on normalized counts
 
 library(pheatmap)
 ### Generate a HeatMap  using the metadata data for the sample annotation
@@ -261,6 +261,23 @@ resDefault[mostSignificantDEG,]
 
 # What are the raw counts for this gene?
 raw_counts[rownames(resDefault[mostSignificantDEG,]),]
+
+#Z-score normalization is used to highlight relative expression patterns across samples, rather than absolute expression levels, making it easier to compare gene behavior.
+
+# Compute Z-score per gene (row-wise scaling)
+rld_mat_z <- t(scale(t(rld_mat[GenesInCommon, ])))
+
+# Generate heatmap
+pheatmap(rld_mat_z,
+    cluster_rows = TRUE, 
+    cluster_cols = FALSE,
+    show_rownames = FALSE,
+    annotation_col = metaData, 
+    border_color = NA, 
+    fontsize = 10
+)
+
+
 
 #Create a volcano plot
 threshold_DE <- resDefault$padj < 0.01
