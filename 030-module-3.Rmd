@@ -19,7 +19,9 @@ By the end of this module, you should be able to:
 * perform a DGE analysis with DESeq2
 
 
-## Module 3 - Practicle Exercise: Differential Gene Expression (DGE) analysis Lab
+## Module 3 - Practical Exercise: Differential Gene Expression (DGE) analysis Lab
+
+For the next two modules, we will use the data set (GSE114360) [https://ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE114360] which is an RNA transcriptome sequencing analysis of MKN45 (human gastric cancer cell line) cells transfected with tcons_00001221 shRNA or control shRNA.
 
 First step is to load the required R packages and read the data. For the data, we are using the raw counts table provided at the NCBI.
 
@@ -48,11 +50,11 @@ raw_counts = raw_counts[, colnames(raw_counts) != "GeneID"]
 class(raw_counts) = "integer"
 
 # create a simple one column dataframe with the group ID
-metaData <- data.frame("Condition" = c("UHR", "UHR", "UHR", "HBR", "HBR", "HBR"))
+metaData <- data.frame("Condition" = c("shRNA", "shRNA", "shRNA", "CTRL", "CTRL", "CTRL"))
 
 # convert the "Condition" column to a factor data type
 # the alphabetical order of these factors will determine the direction of log2 fold-changes for the genes (i.e. up or down regulated)
-metaData$Condition = factor(metaData$Condition, levels = c("HBR", "UHR"))
+metaData$Condition = factor(metaData$Condition, levels = c("CTRL", "shRNA"))
 
 # set the row names of the metaData dataframe to be the names of our sample replicates from the read counts matrix
 rownames(metaData) = colnames(raw_counts)
@@ -105,7 +107,7 @@ The easiest way to perform DESeq2's default DEG analysis is using the function D
 However, we are going to explore some of these steps individually so you can see what is happening.
 
 
-```{r, message=FALSE, warn=FALSE}
+```{r, message=FALSE, warning=FALSE}
 # Get the scaling factors
 ddsSF <- estimateSizeFactors(dds)
 sizeFactors(ddsSF)
@@ -131,14 +133,14 @@ Based on the correlation values between samples, would you conclude that the ass
 
 ### DGE Analysis
 
-```{r, message=FALSE, warn=FALSE}
+```{r, message=FALSE, warning=FALSE}
 ## Run DGE analysis with default values
 ddsDefault <- DESeq(dds)
 
 resultsNames(ddsDefault)
 
 #Extract the results for the contrast (coefficient) we are interested
-resDefault <- results(ddsDefault,c("Condition","HBR","UHR"))
+resDefault <- results(ddsDefault,c("Condition","CTRL","shRNA"))
 resDefault
 
 # Let's look at the dispersion of the mean of the normalized counts. What we are looking for here
@@ -154,13 +156,13 @@ plotMA(resDefault)
 Interpret the MA plot. 
 
 
-```{r, message=FALSE, warn=FALSE}
+```{r, message=FALSE, warning=FALSE}
 
 # Let's try alternative approaches for estimating dispersion
 ddsLoc <- DESeq(dds, fitType="local")
-resLoc <- results(ddsLoc,c("Condition","HBR","UHR"))
+resLoc <-  results(ddsLoc,c("Condition","CTRL","shRNA"))
 ddsMean <- DESeq(dds, fitType="mean")
-resMean <- results(ddsMean,c("Condition","HBR","UHR"))
+resMean <- results(ddsMean,c("Condition","CTRL","shRNA"))
 
 #Let's visualize the effect of applying different dispersion estimators 
 par(mfrow=c(1,2))
@@ -183,13 +185,13 @@ plotMA(resMean, xlim=xlim, ylim=ylim, main="mean")
 
 Another argument that can be changed in the DESeq function controls how the scaling factors are calculated. The scaling factor calculation method is set with the argument `sfType`. Look at the help for this function (by typing `?DESeq` in the R console) and try one of the alternative approaches, and generate the corresponding MA-plot which should look like one of the plots below. Compare these MA-plots with the MA-plot obtained with the default values. Which method would you expect to deem more genes as differentially expressed?
 
-```{r, message=FALSE, warn=FALSE}
+```{r, message=FALSE, warning=FALSE}
  ddsPos <- DESeq(dds, sfType="poscounts")
- resPos <- results(ddsPos,c("Condition","HBR","UHR"))
+ resPos <- results(ddsPos,c("Condition","CTRL","shRNA"))
  plotMA(resPos, xlim=xlim, ylim=ylim, main="poscounts")
 
  ddsIt <- DESeq(dds, sfType="iterate")
- resIt <- results(ddsIt,c("Condition","HBR","UHR"))
+ resIt <- results(ddsIt,c("Condition","CTRL","shRNA"))
  plotMA(resIt, xlim=xlim, ylim=ylim, main="iterate")
 ```
 
@@ -305,7 +307,7 @@ write.csv(as.data.frame(resOrdered),  file="DGE_analysis_results.csv")
 
 ```
 * Can you locate in the volcano plot the gene with the lowest adjusted p-value?
-* How many of the top 10 most significant genes are down in the HBR condition?
+* How many of the top 10 most significant genes are down in the CTRL condition?
 
 
 ### Exercise
