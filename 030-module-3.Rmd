@@ -253,15 +253,6 @@ pheatmap(rld_mat[GenesInCommon,],
     fontsize = 10
     )
 
-#Plot the counts for the most significant DEG
-mostSignificantDEG <- which.min(resDefault$padj)
-plotCounts(ddsDefault, gene=mostSignificantDEG, intgroup="Condition")
-#Which gene is this one?
-resDefault[mostSignificantDEG,]
-
-# What are the raw counts for this gene?
-raw_counts[rownames(resDefault[mostSignificantDEG,]),]
-
 #Z-score normalization is used to highlight relative expression patterns across samples, rather than absolute expression levels, making it easier to compare gene behavior.
 
 # Compute Z-score per gene (row-wise scaling)
@@ -276,6 +267,18 @@ pheatmap(rld_mat_z,
     border_color = NA, 
     fontsize = 10
 )
+
+
+
+#Plot the counts for the most significant DEG
+mostSignificantDEG <- which.min(resDefault$padj)
+plotCounts(ddsDefault, gene=mostSignificantDEG, intgroup="Condition")
+#Which gene is this one?
+resDefault[mostSignificantDEG,]
+
+# What are the raw counts for this gene?
+raw_counts[rownames(resDefault[mostSignificantDEG,]),]
+
 
 
 
