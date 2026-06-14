@@ -27,22 +27,28 @@ Examples:
 
 ### Required packages
 
-```{r setupbis, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
+
+# base R packages
 library(data.table)
+library(dplyr)
 library(ggplot2)
 library(gprofiler2)
-library(clusterProfiler)
+library(msigdbr)
+
+# bioconductor packages
 library(org.Hs.eg.db)
 library(enrichplot)
-library(dplyr)
-library(pathview)
-library(KEGGREST)
 library(fgsea)
-library(msigdbr)
+library(KEGGREST)
+library(pathview)
+library(clusterProfiler)
+
 ```
 
+### Get DESeq2 Differentially Enriched Genes from database
 
-```{r , message=FALSE, warning=FALSE,echo=FALSE}
+```{r, message=FALSE}
 library(DESeq2)
 url <- "https://www.ncbi.nlm.nih.gov/geo/download/?type=rnaseq_counts&acc=GSE114360&format=file&file=GSE114360_raw_counts_GRCh38.p13_NCBI.tsv.gz"
 
@@ -106,7 +112,7 @@ gProfiler is a popular web tool and R package used to identify biological pathwa
 It compares our differentially expressed genes (DEGs) against known biological annotations from databases such as GO, KEGG, Reactome, and WikiPathways to help interpret the biological meaning of RNA-seq results.
 
 
-```{r , message=FALSE, warning=FALSE}
+```{r , message=FALSE}
 
 gost.res = gost(
 
@@ -139,7 +145,7 @@ gost.res = gost(
 
 
 
-```{r , message=FALSE, warning=FALSE}
+```{r , message=FALSE, warning=FALSE, results='hide'}
 
 # Extract Results
 gostres = gost.res$result
@@ -147,7 +153,22 @@ head(gostres)
 
 ```
 
+```{r, echo=FALSE, warning=FALSE}
 
+library(DT)
+
+datatable(
+  head(gostres), 
+  options = list(
+    scrollX = TRUE,
+    scrollY = "400px",
+    scrollCollapse = TRUE,
+    autoWidth = TRUE
+  ),
+  class = "display nowrap"
+)
+
+```
 
 **Filter Enrichment Results**
 
@@ -234,7 +255,7 @@ It allows users to perform enrichment analysis using Gene Ontology (GO), KEGG, R
 
 - GO Biological Process Enrichment
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, results='hide'}
 ego_bp = enrichGO(
   
   # List of differentially expressed genes
@@ -266,6 +287,20 @@ ego_bp = enrichGO(
 
 head(as.data.frame(ego_bp))
 ```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+datatable(
+  head(as.data.frame(ego_bp)), 
+  options = list(
+    scrollX = TRUE,
+    scrollY = "400px",
+    scrollCollapse = TRUE,
+    autoWidth = TRUE
+  ),
+  class = "display nowrap"
+)
+```
+
 
 
 **Question**
@@ -316,7 +351,7 @@ Dot color represents:
 
 **KEGG Pathway Enrichment**
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, results='hide'}
 ekegg = enrichKEGG(
   gene = rownames(deg),
   organism = "hsa",
@@ -325,6 +360,20 @@ ekegg = enrichKEGG(
 
 head(as.data.frame(ekegg))
 ```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+datatable(
+  head(as.data.frame(ekegg)), 
+  options = list(
+    scrollX = TRUE,
+    scrollY = "400px",
+    scrollCollapse = TRUE,
+    autoWidth = TRUE
+  ),
+  class = "display nowrap"
+)
+```
+
 
 
 **Visualize KEGG Results**
@@ -570,7 +619,7 @@ Hallmark pathways summarize major biological processes such as:
 - apoptosis
 - MYC signaling
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, results='hide'}
 hallmark_df = msigdbr(
   species = "Homo sapiens",
   collection = "H"
@@ -578,6 +627,22 @@ hallmark_df = msigdbr(
 
 head(hallmark_df)
 ```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+datatable(
+  head(hallmark_df), 
+  options = list(
+    scrollX = TRUE,
+    scrollY = "400px",
+    scrollCollapse = TRUE,
+    autoWidth = TRUE
+  ),
+  class = "display nowrap"
+)
+
+```
+
 
 
 
@@ -619,19 +684,28 @@ fgsea_res = fgsea(
 ```
 
 
-**Explore Results**
 
-```{r}
+
+**Sort and Explore Results**
+
+```{r, warning=FALSE, message=FALSE, results='hide'}
+fgsea_res <- fgsea_res %>%arrange(padj)
 head(fgsea_res)
 ```
 
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
 
+datatable(
+  head(fgsea_res), 
+  options = list(
+    scrollX = TRUE,
+    scrollY = "400px",
+    scrollCollapse = TRUE,
+    autoWidth = TRUE
+  ),
+  class = "display nowrap"
+)
 
-**Sort Results**
-
-```{r}
-fgsea_res <- fgsea_res %>%arrange(padj)
-head(fgsea_res)
 ```
 
 
