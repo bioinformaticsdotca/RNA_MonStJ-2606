@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 3: RNA Expression and Differential Expression | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL</title>
   <meta name="description" content="Workshop website for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop" />
-  <meta name="generator" content="bookdown 0.46.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 3: RNA Expression and Differential Expression | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL" />
   <meta property="og:type" content="book" />
@@ -688,8 +688,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb120-7"><a href="module-3-rna-expression-and-differential-expression.html#cb120-7" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;log2 fold change&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb120-8"><a href="module-3-rna-expression-and-differential-expression.html#cb120-8" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;-log10 adjusted p-value&quot;</span>) <span class="sc">+</span></span>
 <span id="cb120-9"><a href="module-3-rna-expression-and-differential-expression.html#cb120-9" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: Removed 4597 rows containing missing values or values outside the scale
-## range (`geom_point()`).</code></pre>
+<pre><code>## Warning: Removed 4597 rows containing missing
+## values or values outside the scale range
+## (`geom_point()`).</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-14-4.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="module-3-rna-expression-and-differential-expression.html#cb122-1" tabindex="-1"></a><span class="co">#Order the genes by the adjusted pvalue</span></span>
 <span id="cb122-2"><a href="module-3-rna-expression-and-differential-expression.html#cb122-2" tabindex="-1"></a>resOrdered <span class="ot">&lt;-</span> resDefault[<span class="fu">order</span>(resDefault<span class="sc">$</span>padj),]</span>
