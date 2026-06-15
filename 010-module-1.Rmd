@@ -243,7 +243,7 @@ Based on UCSC annotations or several other possible annotation sources collected
 * Open the following in your browser: [http://genome.ucsc.edu/](http://genome.ucsc.edu/)
 * Select 'Tools' and then 'Table Browser' at the top of the page.
 * To select the dataset, select 'Human - Dec. 2013 (GRCh38/hg38) (hg38)' from the drop down menu under Genome.
-* Select 'Genes and Gene Predictions' and 'GENCODE v29' for Group and Track from the corresponding drop down menus. To limit your selection to only chromosome 22, select the 'position' option beside 'region', enter 'chr22' in the 'position' box.
+* Select 'Genes and Gene Predictions' and 'GENCODE v49' for Group and Track from the corresponding drop down menus. To limit your selection to only chromosome 22, select the 'position' option beside 'region', enter 'chr22' in the 'position' box.
 * Select 'GTF - gene transfer format' for output format and enter 'UCSC_Genes.gtf' for output filename.
 * Hit the 'get output' button and save the file. 
 
