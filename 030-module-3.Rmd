@@ -203,17 +203,17 @@ Let's first see how methodological choices change the results.
 
 # Summary of the results with default values
 summary(resDefault)
-#How many adjusted p-values were less than 0.1?
+#How many adjusted p-values were less than 0.01?
 sum(resDefault$padj < 0.01, na.rm=TRUE)
 
 # Summary of the results using the mean dispersion estimator approach
 summary(resMean)
-#How many adjusted p-values were less than 0.1?
+#How many adjusted p-values were less than 0.01?
 sum(resMean$padj < 0.01, na.rm=TRUE)
 
 # Summary of the results using the iterative method to calculate the scaling factors
 summary(resIt)
-#How many adjusted p-values were less than 0.1?
+#How many adjusted p-values were less than 0.01?
 sum(resIt$padj < 0.01, na.rm=TRUE)
 
 ```
