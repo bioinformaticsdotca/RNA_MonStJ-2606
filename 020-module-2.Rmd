@@ -74,13 +74,14 @@ HBR_Rep3_ERCC-Mix2_Build37-ErccTranscripts-chr22
 Loop for the mapping:
 
 ```bash
+STAR_INDEX=${RNA_REFS_DIR}/star_index
 for S in ${SAMPLES[@]}
 do
   echo "Aligning $S"
 
   STAR \
     --runThreadN 8 \
-    --genomeDir $RNA_REFS_DIR \
+    --genomeDir $STAR_INDEX \
     --readFilesIn \
       $RNA_DATA_TRIM_DIR/${S}.read1.fastq.gz \
       $RNA_DATA_TRIM_DIR/${S}.read2.fastq.gz \
