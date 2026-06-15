@@ -80,7 +80,7 @@ do
 
   STAR \
     --runThreadN 8 \
-    --genomeDir $STAR_INDEX \
+    --genomeDir $RNA_REFS_DIR \
     --readFilesIn \
       $RNA_DATA_TRIM_DIR/${S}.read1.fastq.gz \
       $RNA_DATA_TRIM_DIR/${S}.read2.fastq.gz \
