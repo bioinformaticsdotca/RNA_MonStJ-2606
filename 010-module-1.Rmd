@@ -291,22 +291,27 @@ A more detailed discussion of commonly used version of the human reference genom
 ### Dataset
 
 
-We will be using the dataset `GSE114360` go to [NCBI GEO](https://www.ncbi.nlm.nih.gov/geo/) and search for this accession number. This data is also in the [NCBI SRA](https://www.ncbi.nlm.nih.gov/sra) under accession number `SRX4074292'. Read the SRA entry for this data.
+We will be using the dataset `GSE47774` go to [NCBI GEO](https://www.ncbi.nlm.nih.gov/geo/) and search for this accession number. 
 
 What sequencing platform was used? Are the data single-end or paired-end? How many replicates?
 
 For this exercise, we use a subset of the data (**first 1,000,000 reads per pair**).
 
----
+Get the data.
 
-The files are named based on their SRR id's:
+```bash
+echo $RNA_DATA_DIR
+mkdir -p $RNA_DATA_DIR
+cd $RNA_DATA_DIR
+wget http://genomedata.org/rnaseq-tutorial/HBR_UHR_ERCC_ds_5pc.tar
+```
 
-- SRR7155055 = transfected sample 1
-- SRR7155056 = transfected sample 2
-- SRR7155057 = transfected sample 3
-- SRR7155058 = control sample 1
-- SRR7155059 = control sample 2
-- SRR7155060 = control sample 3
+Unpack the tar file
+
+```bash
+tar -xvf HBR_UHR_ERCC_ds_5pc.tar
+ls
+```
 
 
 ### Pipeline
@@ -327,7 +332,7 @@ cd $RNA_DATA_DIR
 Create FastQC reports for all the files and save the reports in the directory `$RNA_HOME/qc/raw_fastqc/`. The output directory has to be created before hand.
 
 ```bash
-mkdir $RNA_HOME/qc/raw_fastqc/
+mkdir -p $RNA_HOME/qc/raw_fastqc/
 fastqc *.fastq.gz -o $RNA_HOME/qc/raw_fastqc/
 ```
 
@@ -378,11 +383,8 @@ mkdir -p $RNA_DATA_TRIM_DIR
 Download necessary Illumina adapter sequence files.
 
 ```bash
-echo $RNA_REFS_DIR
-mkdir -p $RNA_REFS_DIR
 cd $RNA_REFS_DIR
 wget http://genomedata.org/rnaseq-tutorial/illumina_multiplex.fa
-
 ```
 
 Use fastp to remove illumina adapter sequences (if any), trim the first 13 bases of each read, and perform default read quality filtering to remove reads that are too short, have too many low quality bases or have too many N's.
