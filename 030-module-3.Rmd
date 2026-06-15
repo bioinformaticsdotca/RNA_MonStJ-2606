@@ -127,7 +127,7 @@ rld_cor <- cor(rld_mat)
 rld_cor
 
 ```
-Based on the PCA plot, would you expect to find differentially expressed genes (DEGs) between the groups HBR vs UHR? Why?
+Based on the PCA plot, would you expect to find differentially expressed genes (DEGs) between the groups shRNA vs Control? Why?
 
 Based on the correlation values between samples, would you conclude that the assumption about the expression levels of most genes remained the same across groups is correct for these data? Why?
 
