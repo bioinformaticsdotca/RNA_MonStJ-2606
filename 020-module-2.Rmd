@@ -234,6 +234,15 @@ What percentage of reads successfully aligned to the reference genome?
 - What could explain a low alignment rate?
 
 
+<details>
+<summary>Show solution</summary>
+![alignment stats](img/mqc_star_alignment_plot_1_pc.png)
+</details>
+
+
+
+
+
 **Question 5**
 How many reads are uniquely mapped vs multi-mapped?
 

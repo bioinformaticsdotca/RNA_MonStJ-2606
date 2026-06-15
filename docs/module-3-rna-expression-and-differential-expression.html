@@ -268,7 +268,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="module-3-rna-expression-and-differential-expression.html"><a href="module-3-rna-expression-and-differential-expression.html#lecture-3"><i class="fa fa-check"></i>Lecture</a></li>
 <li class="chapter" data-level="" data-path="module-3-rna-expression-and-differential-expression.html"><a href="module-3-rna-expression-and-differential-expression.html#module-3---key-concepts"><i class="fa fa-check"></i>Module 3 - Key concepts</a></li>
 <li class="chapter" data-level="" data-path="module-3-rna-expression-and-differential-expression.html"><a href="module-3-rna-expression-and-differential-expression.html#module-3---learning-objectives"><i class="fa fa-check"></i>Module 3 - Learning objectives</a></li>
-<li class="chapter" data-level="" data-path="module-3-rna-expression-and-differential-expression.html"><a href="module-3-rna-expression-and-differential-expression.html#module-3---practicle-exercise-differential-gene-expression-dge-analysis-lab"><i class="fa fa-check"></i>Module 3 - Practicle Exercise: Differential Gene Expression (DGE) analysis Lab</a>
+<li class="chapter" data-level="" data-path="module-3-rna-expression-and-differential-expression.html"><a href="module-3-rna-expression-and-differential-expression.html#module-3---practical-exercise-differential-gene-expression-dge-analysis-lab"><i class="fa fa-check"></i>Module 3 - Practical Exercise: Differential Gene Expression (DGE) analysis Lab</a>
 <ul>
 <li class="chapter" data-level="" data-path="module-3-rna-expression-and-differential-expression.html"><a href="module-3-rna-expression-and-differential-expression.html#dge-analysis"><i class="fa fa-check"></i>DGE Analysis</a></li>
 <li class="chapter" data-level="" data-path="module-3-rna-expression-and-differential-expression.html"><a href="module-3-rna-expression-and-differential-expression.html#exercise"><i class="fa fa-check"></i>Exercise</a></li>
@@ -347,8 +347,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>perform a DGE analysis with DESeq2</li>
 </ul>
 </div>
-<div id="module-3---practicle-exercise-differential-gene-expression-dge-analysis-lab" class="section level2 hasAnchor">
-<h2>Module 3 - Practicle Exercise: Differential Gene Expression (DGE) analysis Lab<a href="module-3-rna-expression-and-differential-expression.html#module-3---practicle-exercise-differential-gene-expression-dge-analysis-lab" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="module-3---practical-exercise-differential-gene-expression-dge-analysis-lab" class="section level2 hasAnchor">
+<h2>Module 3 - Practical Exercise: Differential Gene Expression (DGE) analysis Lab<a href="module-3-rna-expression-and-differential-expression.html#module-3---practical-exercise-differential-gene-expression-dge-analysis-lab" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For the next two modules, we will use the data set (GSE114360) [<a href="https://ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE114360" class="uri">https://ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE114360</a>] which is an RNA transcriptome sequencing analysis of MKN45 (human gastric cancer cell line) cells transfected with tcons_00001221 shRNA or control shRNA.</p>
 <p>First step is to load the required R packages and read the data. For the data, we are using the raw counts table provided at the NCBI.</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="module-3-rna-expression-and-differential-expression.html#cb68-1" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
 <span id="cb68-2"><a href="module-3-rna-expression-and-differential-expression.html#cb68-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -374,11 +375,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb70-8"><a href="module-3-rna-expression-and-differential-expression.html#cb70-8" tabindex="-1"></a><span class="fu">class</span>(raw_counts) <span class="ot">=</span> <span class="st">&quot;integer&quot;</span></span>
 <span id="cb70-9"><a href="module-3-rna-expression-and-differential-expression.html#cb70-9" tabindex="-1"></a></span>
 <span id="cb70-10"><a href="module-3-rna-expression-and-differential-expression.html#cb70-10" tabindex="-1"></a><span class="co"># create a simple one column dataframe with the group ID</span></span>
-<span id="cb70-11"><a href="module-3-rna-expression-and-differential-expression.html#cb70-11" tabindex="-1"></a>metaData <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;Condition&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;UHR&quot;</span>, <span class="st">&quot;UHR&quot;</span>, <span class="st">&quot;UHR&quot;</span>, <span class="st">&quot;HBR&quot;</span>, <span class="st">&quot;HBR&quot;</span>, <span class="st">&quot;HBR&quot;</span>))</span>
+<span id="cb70-11"><a href="module-3-rna-expression-and-differential-expression.html#cb70-11" tabindex="-1"></a>metaData <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;Condition&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;shRNA&quot;</span>, <span class="st">&quot;shRNA&quot;</span>, <span class="st">&quot;shRNA&quot;</span>, <span class="st">&quot;CTRL&quot;</span>, <span class="st">&quot;CTRL&quot;</span>, <span class="st">&quot;CTRL&quot;</span>))</span>
 <span id="cb70-12"><a href="module-3-rna-expression-and-differential-expression.html#cb70-12" tabindex="-1"></a></span>
 <span id="cb70-13"><a href="module-3-rna-expression-and-differential-expression.html#cb70-13" tabindex="-1"></a><span class="co"># convert the &quot;Condition&quot; column to a factor data type</span></span>
 <span id="cb70-14"><a href="module-3-rna-expression-and-differential-expression.html#cb70-14" tabindex="-1"></a><span class="co"># the alphabetical order of these factors will determine the direction of log2 fold-changes for the genes (i.e. up or down regulated)</span></span>
-<span id="cb70-15"><a href="module-3-rna-expression-and-differential-expression.html#cb70-15" tabindex="-1"></a>metaData<span class="sc">$</span>Condition <span class="ot">=</span> <span class="fu">factor</span>(metaData<span class="sc">$</span>Condition, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;HBR&quot;</span>, <span class="st">&quot;UHR&quot;</span>))</span>
+<span id="cb70-15"><a href="module-3-rna-expression-and-differential-expression.html#cb70-15" tabindex="-1"></a>metaData<span class="sc">$</span>Condition <span class="ot">=</span> <span class="fu">factor</span>(metaData<span class="sc">$</span>Condition, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;CTRL&quot;</span>, <span class="st">&quot;shRNA&quot;</span>))</span>
 <span id="cb70-16"><a href="module-3-rna-expression-and-differential-expression.html#cb70-16" tabindex="-1"></a></span>
 <span id="cb70-17"><a href="module-3-rna-expression-and-differential-expression.html#cb70-17" tabindex="-1"></a><span class="co"># set the row names of the metaData dataframe to be the names of our sample replicates from the read counts matrix</span></span>
 <span id="cb70-18"><a href="module-3-rna-expression-and-differential-expression.html#cb70-18" tabindex="-1"></a><span class="fu">rownames</span>(metaData) <span class="ot">=</span> <span class="fu">colnames</span>(raw_counts)</span>
@@ -490,12 +491,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb89-2"><a href="module-3-rna-expression-and-differential-expression.html#cb89-2" tabindex="-1"></a>ddsDefault <span class="ot">&lt;-</span> <span class="fu">DESeq</span>(dds)</span>
 <span id="cb89-3"><a href="module-3-rna-expression-and-differential-expression.html#cb89-3" tabindex="-1"></a></span>
 <span id="cb89-4"><a href="module-3-rna-expression-and-differential-expression.html#cb89-4" tabindex="-1"></a><span class="fu">resultsNames</span>(ddsDefault)</span></code></pre></div>
-<pre><code>## [1] &quot;Intercept&quot;            &quot;Condition_UHR_vs_HBR&quot;</code></pre>
+<pre><code>## [1] &quot;Intercept&quot;               &quot;Condition_shRNA_vs_CTRL&quot;</code></pre>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="module-3-rna-expression-and-differential-expression.html#cb91-1" tabindex="-1"></a><span class="co">#Extract the results for the contrast (coefficient) we are interested</span></span>
-<span id="cb91-2"><a href="module-3-rna-expression-and-differential-expression.html#cb91-2" tabindex="-1"></a>resDefault <span class="ot">&lt;-</span> <span class="fu">results</span>(ddsDefault,<span class="fu">c</span>(<span class="st">&quot;Condition&quot;</span>,<span class="st">&quot;HBR&quot;</span>,<span class="st">&quot;UHR&quot;</span>))</span>
+<span id="cb91-2"><a href="module-3-rna-expression-and-differential-expression.html#cb91-2" tabindex="-1"></a>resDefault <span class="ot">&lt;-</span> <span class="fu">results</span>(ddsDefault,<span class="fu">c</span>(<span class="st">&quot;Condition&quot;</span>,<span class="st">&quot;CTRL&quot;</span>,<span class="st">&quot;shRNA&quot;</span>))</span>
 <span id="cb91-3"><a href="module-3-rna-expression-and-differential-expression.html#cb91-3" tabindex="-1"></a>resDefault</span></code></pre></div>
-<pre><code>## log2 fold change (MLE): Condition HBR vs UHR 
-## Wald test p-value: Condition HBR vs UHR 
+<pre><code>## log2 fold change (MLE): Condition CTRL vs shRNA 
+## Wald test p-value: Condition CTRL vs shRNA 
 ## DataFrame with 15808 rows and 6 columns
 ##             baseMean log2FoldChange     lfcSE        stat      pvalue
 ##            &lt;numeric&gt;      &lt;numeric&gt; &lt;numeric&gt;   &lt;numeric&gt;   &lt;numeric&gt;
@@ -534,9 +535,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Interpret the MA plot.</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="module-3-rna-expression-and-differential-expression.html#cb95-1" tabindex="-1"></a><span class="co"># Let&#39;s try alternative approaches for estimating dispersion</span></span>
 <span id="cb95-2"><a href="module-3-rna-expression-and-differential-expression.html#cb95-2" tabindex="-1"></a>ddsLoc <span class="ot">&lt;-</span> <span class="fu">DESeq</span>(dds, <span class="at">fitType=</span><span class="st">&quot;local&quot;</span>)</span>
-<span id="cb95-3"><a href="module-3-rna-expression-and-differential-expression.html#cb95-3" tabindex="-1"></a>resLoc <span class="ot">&lt;-</span> <span class="fu">results</span>(ddsLoc,<span class="fu">c</span>(<span class="st">&quot;Condition&quot;</span>,<span class="st">&quot;HBR&quot;</span>,<span class="st">&quot;UHR&quot;</span>))</span>
+<span id="cb95-3"><a href="module-3-rna-expression-and-differential-expression.html#cb95-3" tabindex="-1"></a>resLoc <span class="ot">&lt;-</span>  <span class="fu">results</span>(ddsLoc,<span class="fu">c</span>(<span class="st">&quot;Condition&quot;</span>,<span class="st">&quot;CTRL&quot;</span>,<span class="st">&quot;shRNA&quot;</span>))</span>
 <span id="cb95-4"><a href="module-3-rna-expression-and-differential-expression.html#cb95-4" tabindex="-1"></a>ddsMean <span class="ot">&lt;-</span> <span class="fu">DESeq</span>(dds, <span class="at">fitType=</span><span class="st">&quot;mean&quot;</span>)</span>
-<span id="cb95-5"><a href="module-3-rna-expression-and-differential-expression.html#cb95-5" tabindex="-1"></a>resMean <span class="ot">&lt;-</span> <span class="fu">results</span>(ddsMean,<span class="fu">c</span>(<span class="st">&quot;Condition&quot;</span>,<span class="st">&quot;HBR&quot;</span>,<span class="st">&quot;UHR&quot;</span>))</span>
+<span id="cb95-5"><a href="module-3-rna-expression-and-differential-expression.html#cb95-5" tabindex="-1"></a>resMean <span class="ot">&lt;-</span> <span class="fu">results</span>(ddsMean,<span class="fu">c</span>(<span class="st">&quot;Condition&quot;</span>,<span class="st">&quot;CTRL&quot;</span>,<span class="st">&quot;shRNA&quot;</span>))</span>
 <span id="cb95-6"><a href="module-3-rna-expression-and-differential-expression.html#cb95-6" tabindex="-1"></a></span>
 <span id="cb95-7"><a href="module-3-rna-expression-and-differential-expression.html#cb95-7" tabindex="-1"></a><span class="co">#Let&#39;s visualize the effect of applying different dispersion estimators </span></span>
 <span id="cb95-8"><a href="module-3-rna-expression-and-differential-expression.html#cb95-8" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
@@ -560,11 +561,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>Exercise<a href="module-3-rna-expression-and-differential-expression.html#exercise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Another argument that can be changed in the DESeq function controls how the scaling factors are calculated. The scaling factor calculation method is set with the argument <code>sfType</code>. Look at the help for this function (by typing <code>?DESeq</code> in the R console) and try one of the alternative approaches, and generate the corresponding MA-plot which should look like one of the plots below. Compare these MA-plots with the MA-plot obtained with the default values. Which method would you expect to deem more genes as differentially expressed?</p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="module-3-rna-expression-and-differential-expression.html#cb98-1" tabindex="-1"></a> ddsPos <span class="ot">&lt;-</span> <span class="fu">DESeq</span>(dds, <span class="at">sfType=</span><span class="st">&quot;poscounts&quot;</span>)</span>
-<span id="cb98-2"><a href="module-3-rna-expression-and-differential-expression.html#cb98-2" tabindex="-1"></a> resPos <span class="ot">&lt;-</span> <span class="fu">results</span>(ddsPos,<span class="fu">c</span>(<span class="st">&quot;Condition&quot;</span>,<span class="st">&quot;HBR&quot;</span>,<span class="st">&quot;UHR&quot;</span>))</span>
+<span id="cb98-2"><a href="module-3-rna-expression-and-differential-expression.html#cb98-2" tabindex="-1"></a> resPos <span class="ot">&lt;-</span> <span class="fu">results</span>(ddsPos,<span class="fu">c</span>(<span class="st">&quot;Condition&quot;</span>,<span class="st">&quot;CTRL&quot;</span>,<span class="st">&quot;shRNA&quot;</span>))</span>
 <span id="cb98-3"><a href="module-3-rna-expression-and-differential-expression.html#cb98-3" tabindex="-1"></a> <span class="fu">plotMA</span>(resPos, <span class="at">xlim=</span>xlim, <span class="at">ylim=</span>ylim, <span class="at">main=</span><span class="st">&quot;poscounts&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="module-3-rna-expression-and-differential-expression.html#cb99-1" tabindex="-1"></a> ddsIt <span class="ot">&lt;-</span> <span class="fu">DESeq</span>(dds, <span class="at">sfType=</span><span class="st">&quot;iterate&quot;</span>)</span>
-<span id="cb99-2"><a href="module-3-rna-expression-and-differential-expression.html#cb99-2" tabindex="-1"></a> resIt <span class="ot">&lt;-</span> <span class="fu">results</span>(ddsIt,<span class="fu">c</span>(<span class="st">&quot;Condition&quot;</span>,<span class="st">&quot;HBR&quot;</span>,<span class="st">&quot;UHR&quot;</span>))</span>
+<span id="cb99-2"><a href="module-3-rna-expression-and-differential-expression.html#cb99-2" tabindex="-1"></a> resIt <span class="ot">&lt;-</span> <span class="fu">results</span>(ddsIt,<span class="fu">c</span>(<span class="st">&quot;Condition&quot;</span>,<span class="st">&quot;CTRL&quot;</span>,<span class="st">&quot;shRNA&quot;</span>))</span>
 <span id="cb99-3"><a href="module-3-rna-expression-and-differential-expression.html#cb99-3" tabindex="-1"></a> <span class="fu">plotMA</span>(resIt, <span class="at">xlim=</span>xlim, <span class="at">ylim=</span>ylim, <span class="at">main=</span><span class="st">&quot;iterate&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-11-2.png" alt="" width="672" /></p>
 </div>
@@ -668,8 +669,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="_main_files/figure-html/unnamed-chunk-14-3.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="module-3-rna-expression-and-differential-expression.html#cb116-1" tabindex="-1"></a><span class="co">#Which gene is this one?</span></span>
 <span id="cb116-2"><a href="module-3-rna-expression-and-differential-expression.html#cb116-2" tabindex="-1"></a>resDefault[mostSignificantDEG,]</span></code></pre></div>
-<pre><code>## log2 fold change (MLE): Condition HBR vs UHR 
-## Wald test p-value: Condition HBR vs UHR 
+<pre><code>## log2 fold change (MLE): Condition CTRL vs shRNA 
+## Wald test p-value: Condition CTRL vs shRNA 
 ## DataFrame with 1 row and 6 columns
 ##       baseMean log2FoldChange     lfcSE      stat       pvalue         padj
 ##      &lt;numeric&gt;      &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;    &lt;numeric&gt;    &lt;numeric&gt;
@@ -694,8 +695,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb122-2"><a href="module-3-rna-expression-and-differential-expression.html#cb122-2" tabindex="-1"></a>resOrdered <span class="ot">&lt;-</span> resDefault[<span class="fu">order</span>(resDefault<span class="sc">$</span>padj),]</span>
 <span id="cb122-3"><a href="module-3-rna-expression-and-differential-expression.html#cb122-3" tabindex="-1"></a></span>
 <span id="cb122-4"><a href="module-3-rna-expression-and-differential-expression.html#cb122-4" tabindex="-1"></a>resOrdered[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span></code></pre></div>
-<pre><code>## log2 fold change (MLE): Condition HBR vs UHR 
-## Wald test p-value: Condition HBR vs UHR 
+<pre><code>## log2 fold change (MLE): Condition CTRL vs shRNA 
+## Wald test p-value: Condition CTRL vs shRNA 
 ## DataFrame with 10 rows and 6 columns
 ##        baseMean log2FoldChange     lfcSE      stat       pvalue         padj
 ##       &lt;numeric&gt;      &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;    &lt;numeric&gt;    &lt;numeric&gt;
@@ -711,17 +712,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6659   2370.681       0.552974 0.0521150   10.6107  2.65876e-26  2.98073e-23</code></pre>
 <div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="module-3-rna-expression-and-differential-expression.html#cb124-1" tabindex="-1"></a><span class="co">#What are the columns?</span></span>
 <span id="cb124-2"><a href="module-3-rna-expression-and-differential-expression.html#cb124-2" tabindex="-1"></a><span class="fu">mcols</span>(resOrdered)<span class="sc">$</span>description</span></code></pre></div>
-<pre><code>## [1] &quot;mean of normalized counts for all samples&quot;   
-## [2] &quot;log2 fold change (MLE): Condition HBR vs UHR&quot;
-## [3] &quot;standard error: Condition HBR vs UHR&quot;        
-## [4] &quot;Wald statistic: Condition HBR vs UHR&quot;        
-## [5] &quot;Wald test p-value: Condition HBR vs UHR&quot;     
+<pre><code>## [1] &quot;mean of normalized counts for all samples&quot;      
+## [2] &quot;log2 fold change (MLE): Condition CTRL vs shRNA&quot;
+## [3] &quot;standard error: Condition CTRL vs shRNA&quot;        
+## [4] &quot;Wald statistic: Condition CTRL vs shRNA&quot;        
+## [5] &quot;Wald test p-value: Condition CTRL vs shRNA&quot;     
 ## [6] &quot;BH adjusted p-values&quot;</code></pre>
 <div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="module-3-rna-expression-and-differential-expression.html#cb126-1" tabindex="-1"></a><span class="co">#Let&#39;s save the complete results</span></span>
 <span id="cb126-2"><a href="module-3-rna-expression-and-differential-expression.html#cb126-2" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="fu">as.data.frame</span>(resOrdered),  <span class="at">file=</span><span class="st">&quot;DGE_analysis_results.csv&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Can you locate in the volcano plot the gene with the lowest adjusted p-value?</li>
-<li>How many of the top 10 most significant genes are down in the HBR condition?</li>
+<li>How many of the top 10 most significant genes are down in the CTRL condition?</li>
 </ul>
 </div>
 <div id="exercise-1" class="section level3 hasAnchor">
