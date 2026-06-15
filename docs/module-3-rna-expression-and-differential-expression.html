@@ -483,7 +483,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## GSM3140458  0.9997608  0.9997637  0.9997358  1.0000000  0.9998883  0.9998151
 ## GSM3140459  0.9997614  0.9997413  0.9997497  0.9998883  1.0000000  0.9997967
 ## GSM3140460  0.9996248  0.9996578  0.9996662  0.9998151  0.9997967  1.0000000</code></pre>
-<p>Based on the PCA plot, would you expect to find differentially expressed genes (DEGs) between the groups HBR vs UHR? Why?</p>
+<p>Based on the PCA plot, would you expect to find differentially expressed genes (DEGs) between the groups shRNA vs Control? Why?</p>
 <p>Based on the correlation values between samples, would you conclude that the assumption about the expression levels of most genes remained the same across groups is correct for these data? Why?</p>
 <div id="dge-analysis" class="section level3 hasAnchor">
 <h3>DGE Analysis<a href="module-3-rna-expression-and-differential-expression.html#dge-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -584,7 +584,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## (mean count &lt; 93)
 ## [1] see &#39;cooksCutoff&#39; argument of ?results
 ## [2] see &#39;independentFiltering&#39; argument of ?results</code></pre>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="module-3-rna-expression-and-differential-expression.html#cb102-1" tabindex="-1"></a><span class="co">#How many adjusted p-values were less than 0.1?</span></span>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="module-3-rna-expression-and-differential-expression.html#cb102-1" tabindex="-1"></a><span class="co">#How many adjusted p-values were less than 0.01?</span></span>
 <span id="cb102-2"><a href="module-3-rna-expression-and-differential-expression.html#cb102-2" tabindex="-1"></a><span class="fu">sum</span>(resDefault<span class="sc">$</span>padj <span class="sc">&lt;</span> <span class="fl">0.01</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 426</code></pre>
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="module-3-rna-expression-and-differential-expression.html#cb104-1" tabindex="-1"></a><span class="co"># Summary of the results using the mean dispersion estimator approach</span></span>
@@ -599,7 +599,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## (mean count &lt; 12)
 ## [1] see &#39;cooksCutoff&#39; argument of ?results
 ## [2] see &#39;independentFiltering&#39; argument of ?results</code></pre>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="module-3-rna-expression-and-differential-expression.html#cb106-1" tabindex="-1"></a><span class="co">#How many adjusted p-values were less than 0.1?</span></span>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="module-3-rna-expression-and-differential-expression.html#cb106-1" tabindex="-1"></a><span class="co">#How many adjusted p-values were less than 0.01?</span></span>
 <span id="cb106-2"><a href="module-3-rna-expression-and-differential-expression.html#cb106-2" tabindex="-1"></a><span class="fu">sum</span>(resMean<span class="sc">$</span>padj <span class="sc">&lt;</span> <span class="fl">0.01</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 169</code></pre>
 <div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="module-3-rna-expression-and-differential-expression.html#cb108-1" tabindex="-1"></a><span class="co"># Summary of the results using the iterative method to calculate the scaling factors</span></span>
@@ -614,7 +614,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## (mean count &lt; 80)
 ## [1] see &#39;cooksCutoff&#39; argument of ?results
 ## [2] see &#39;independentFiltering&#39; argument of ?results</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="module-3-rna-expression-and-differential-expression.html#cb110-1" tabindex="-1"></a><span class="co">#How many adjusted p-values were less than 0.1?</span></span>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="module-3-rna-expression-and-differential-expression.html#cb110-1" tabindex="-1"></a><span class="co">#How many adjusted p-values were less than 0.01?</span></span>
 <span id="cb110-2"><a href="module-3-rna-expression-and-differential-expression.html#cb110-2" tabindex="-1"></a><span class="fu">sum</span>(resIt<span class="sc">$</span>padj <span class="sc">&lt;</span> <span class="fl">0.01</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 421</code></pre>
 <ul>
