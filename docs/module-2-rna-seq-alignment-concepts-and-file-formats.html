@@ -388,21 +388,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb60-7"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb60-7" tabindex="-1"></a>HBR_Rep3_ERCC-Mix2_Build37-ErccTranscripts-chr22</span>
 <span id="cb60-8"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb60-8" tabindex="-1"></a><span class="va">)</span></span></code></pre></div>
 <p>Loop for the mapping:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb61-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-1" tabindex="-1"></a><span class="cf">for</span> S <span class="kw">in</span> <span class="va">${SAMPLES</span><span class="op">[@]</span><span class="va">}</span></span>
-<span id="cb61-2"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-2" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb61-3"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-3" tabindex="-1"></a>  <span class="bu">echo</span> <span class="st">&quot;Aligning </span><span class="va">$S</span><span class="st">&quot;</span></span>
-<span id="cb61-4"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-4" tabindex="-1"></a></span>
-<span id="cb61-5"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-5" tabindex="-1"></a>  <span class="ex">STAR</span> <span class="dt">\</span></span>
-<span id="cb61-6"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-6" tabindex="-1"></a>    <span class="at">--runThreadN</span> 8 <span class="dt">\</span></span>
-<span id="cb61-7"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-7" tabindex="-1"></a>    <span class="at">--genomeDir</span> <span class="va">$STAR_INDEX</span> <span class="dt">\</span></span>
-<span id="cb61-8"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-8" tabindex="-1"></a>    <span class="at">--readFilesIn</span> <span class="dt">\</span></span>
-<span id="cb61-9"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-9" tabindex="-1"></a>      <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">${S}</span>.read1.fastq.gz <span class="dt">\</span></span>
-<span id="cb61-10"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-10" tabindex="-1"></a>      <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">${S}</span>.read2.fastq.gz <span class="dt">\</span></span>
-<span id="cb61-11"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-11" tabindex="-1"></a>    <span class="at">--readFilesCommand</span> zcat <span class="dt">\</span></span>
-<span id="cb61-12"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-12" tabindex="-1"></a>    <span class="at">--outFileNamePrefix</span> <span class="va">$RNA_ALIGN_DIR</span>/<span class="va">${S}</span>. <span class="dt">\</span></span>
-<span id="cb61-13"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-13" tabindex="-1"></a>    <span class="at">--outSAMtype</span> BAM SortedByCoordinate <span class="dt">\</span></span>
-<span id="cb61-14"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-14" tabindex="-1"></a>    <span class="op">&gt;</span> <span class="va">$RNA_ALIGN_DIR</span>/<span class="va">${S}</span>.STAR.log <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span></span>
-<span id="cb61-15"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-15" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb61-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-1" tabindex="-1"></a><span class="va">STAR_INDEX</span><span class="op">=</span><span class="va">${RNA_REFS_DIR}</span>/star_index</span>
+<span id="cb61-2"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-2" tabindex="-1"></a><span class="cf">for</span> S <span class="kw">in</span> <span class="va">${SAMPLES</span><span class="op">[@]</span><span class="va">}</span></span>
+<span id="cb61-3"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-3" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb61-4"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-4" tabindex="-1"></a>  <span class="bu">echo</span> <span class="st">&quot;Aligning </span><span class="va">$S</span><span class="st">&quot;</span></span>
+<span id="cb61-5"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-5" tabindex="-1"></a></span>
+<span id="cb61-6"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-6" tabindex="-1"></a>  <span class="ex">STAR</span> <span class="dt">\</span></span>
+<span id="cb61-7"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-7" tabindex="-1"></a>    <span class="at">--runThreadN</span> 8 <span class="dt">\</span></span>
+<span id="cb61-8"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-8" tabindex="-1"></a>    <span class="at">--genomeDir</span> <span class="va">$STAR_INDEX</span> <span class="dt">\</span></span>
+<span id="cb61-9"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-9" tabindex="-1"></a>    <span class="at">--readFilesIn</span> <span class="dt">\</span></span>
+<span id="cb61-10"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-10" tabindex="-1"></a>      <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">${S}</span>.read1.fastq.gz <span class="dt">\</span></span>
+<span id="cb61-11"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-11" tabindex="-1"></a>      <span class="va">$RNA_DATA_TRIM_DIR</span>/<span class="va">${S}</span>.read2.fastq.gz <span class="dt">\</span></span>
+<span id="cb61-12"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-12" tabindex="-1"></a>    <span class="at">--readFilesCommand</span> zcat <span class="dt">\</span></span>
+<span id="cb61-13"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-13" tabindex="-1"></a>    <span class="at">--outFileNamePrefix</span> <span class="va">$RNA_ALIGN_DIR</span>/<span class="va">${S}</span>. <span class="dt">\</span></span>
+<span id="cb61-14"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-14" tabindex="-1"></a>    <span class="at">--outSAMtype</span> BAM SortedByCoordinate <span class="dt">\</span></span>
+<span id="cb61-15"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-15" tabindex="-1"></a>    <span class="op">&gt;</span> <span class="va">$RNA_ALIGN_DIR</span>/<span class="va">${S}</span>.STAR.log <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span></span>
+<span id="cb61-16"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb61-16" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
 <p><strong>Argument description</strong></p>
 <ul>
 <li><p><code>--runThreadN 8</code><br />
