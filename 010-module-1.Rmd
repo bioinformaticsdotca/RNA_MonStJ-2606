@@ -343,9 +343,12 @@ cd $RNA_HOME/qc/raw_fastqc/
 multiqc .
 ```
 
-The resulting html reports can be viewed by navigating to:
+The resulting html reports can be viewed by navigating to the following address:
+(If you are not using the UHN cluster, your address will be different)
 
-* http://**YOUR_PUBLIC_IPv4_ADDRESS**/rnaseq/qc/raw_fastqc
+* http://**##.uhn-hpc.ca**/rnaseq/qc/raw_fastqc
+
+
 
 Look at one FASTQC report and at the multiqc report. What's the read length? How is the quality of the data?
 

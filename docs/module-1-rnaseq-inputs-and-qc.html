@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 1: RNAseq inputs and QC | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL</title>
   <meta name="description" content="Workshop website for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop" />
-  <meta name="generator" content="bookdown 0.46.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 1: RNAseq inputs and QC | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL" />
   <meta property="og:type" content="book" />
@@ -565,9 +565,10 @@ Your annotations must correspond to the same reference genome build as your refe
 <p>Go to the directory with the FASTQC reports and create a multiqc report</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb53-1"><a href="module-1-rnaseq-inputs-and-qc.html#cb53-1" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_HOME</span>/qc/raw_fastqc/</span>
 <span id="cb53-2"><a href="module-1-rnaseq-inputs-and-qc.html#cb53-2" tabindex="-1"></a><span class="ex">multiqc</span> .</span></code></pre></div>
-<p>The resulting html reports can be viewed by navigating to:</p>
+<p>The resulting html reports can be viewed by navigating to the following address:
+(If you are not using the UHN cluster, your address will be different)</p>
 <ul>
-<li><a href="http://" class="uri">http://</a><strong>YOUR_PUBLIC_IPv4_ADDRESS</strong>/rnaseq/qc/raw_fastqc</li>
+<li><a href="http://" class="uri">http://</a><strong>##.uhn-hpc.ca</strong>/rnaseq/qc/raw_fastqc</li>
 </ul>
 <p>Look at one FASTQC report and at the multiqc report. What’s the read length? How is the quality of the data?</p>
 </div>
