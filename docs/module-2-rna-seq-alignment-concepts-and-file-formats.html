@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 2: RNA-seq alignment concepts and file formats | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL</title>
   <meta name="description" content="Workshop website for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop" />
-  <meta name="generator" content="bookdown 0.46.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 2: RNA-seq alignment concepts and file formats | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL" />
   <meta property="og:type" content="book" />
@@ -504,8 +504,8 @@ Notice the number of total reads, reads aligned and various metrics regarding ho
 To help alignment QC, multiQC can be used to aggregate the alignemnt statistics.</p>
 <p>Run the following command at the root of your project, so multiqc can screen for fastQC, fastp and star statistics.</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb63-1" tabindex="-1"></a><span class="ex">multiqc</span> ./</span></code></pre></div>
-<p>Go through the generated html by browsing through the following directory in a web browser:</p>
-<p><a href="http://YOUR_PUBLIC_IPv4_ADDRESS/workspace/rnaseq" class="uri">http://YOUR_PUBLIC_IPv4_ADDRESS/workspace/rnaseq</a></p>
+<p>Go through the generated html by browsing through the following directory in a web browser, <strong>replacing ## with your student number:</strong></p>
+<p><a href="http://##.uhn-hpc.ca/rnaseq" class="uri">http://##.uhn-hpc.ca/rnaseq</a></p>
 <p><strong>Question 4</strong>
 What percentage of reads successfully aligned to the reference genome?</p>
 <ul>
@@ -543,10 +543,10 @@ How many reads are uniquely mapped vs multi-mapped?</p>
 <p>Make sure you select the appropriate reference genome build in IGV (top left corner of IGV): in this case hg38.</p>
 <p>AWS links to bam files:</p>
 <ul>
-<li><p>HBR Rep1 star alignment: <a href="http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/HBR.bam" class="uri">http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/HBR.bam</a></p></li>
-<li><p>HBR Rep1 Bam index: <a href="http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/HBR.bai" class="uri">http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/HBR.bai</a></p></li>
-<li><p>UHR Rep1 star alignment: <a href="http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/UHR.bam" class="uri">http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/UHR.bam</a></p></li>
-<li><p>UHR Rep1 Bam index: <a href="http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/UHR.bai" class="uri">http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/UHR.bai</a></p></li>
+<li><p>HBR Rep1 star alignment: <a href="http://##.uhn-hpc.ca/rnaseq/alignment/HBR.bam" class="uri">http://##.uhn-hpc.ca/rnaseq/alignment/HBR.bam</a></p></li>
+<li><p>HBR Rep1 Bam index: <a href="http://##.uhn-hpc.ca/rnaseq/alignment/HBR.bai" class="uri">http://##.uhn-hpc.ca/rnaseq/alignment/HBR.bai</a></p></li>
+<li><p>UHR Rep1 star alignment: <a href="http://##.uhn-hpc.ca/rnaseq/alignment/UHR.bam" class="uri">http://##.uhn-hpc.ca/rnaseq/alignment/UHR.bam</a></p></li>
+<li><p>UHR Rep1 Bam index: <a href="http://##.uhn-hpc.ca/rnaseq/alignment/UHR.bai" class="uri">http://##.uhn-hpc.ca/rnaseq/alignment/UHR.bai</a></p></li>
 </ul>
 <p>You may wish to customize the track names as you load them in to keep them straight. Do this by right-clicking on the alignment track and choosing ‘Rename Track’.</p>
 <p>Go to an example gene locus on chr22:</p>

@@ -223,9 +223,9 @@ Run the following command at the root of your project, so multiqc can screen for
 multiqc ./
 ```
 
-Go through the generated html by browsing through the following directory in a web browser:
+Go through the generated html by browsing through the following directory in a web browser, **replacing ## with your student number:**
 
-http://YOUR_PUBLIC_IPv4_ADDRESS/workspace/rnaseq
+http://##.uhn-hpc.ca/rnaseq
 
 
 **Question 4**
@@ -276,11 +276,11 @@ Make sure you select the appropriate reference genome build in IGV (top left cor
 
 AWS links to bam files: 
 
-* HBR Rep1 star alignment: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/HBR.bam
-* HBR Rep1 Bam index: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/HBR.bai
+* HBR Rep1 star alignment: http://##.uhn-hpc.ca/rnaseq/alignment/HBR.bam
+* HBR Rep1 Bam index: http://##.uhn-hpc.ca/rnaseq/alignment/HBR.bai
 
-* UHR Rep1 star alignment: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/UHR.bam
-* UHR Rep1 Bam index: http://YOUR_PUBLIC_IPv4_ADDRESS/rnaseq/alignment/UHR.bai
+* UHR Rep1 star alignment: http://##.uhn-hpc.ca/rnaseq/alignment/UHR.bam
+* UHR Rep1 Bam index: http://##.uhn-hpc.ca/rnaseq/alignment/UHR.bai
 
 You may wish to customize the track names as you load them in to keep them straight. Do this by right-clicking on the alignment track and choosing ‘Rename Track’.
 
