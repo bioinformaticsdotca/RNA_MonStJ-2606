@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Module 2: RNA-seq alignment concepts and file formats | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL</title>
   <meta name="description" content="Workshop website for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canadian Bioinformatics Workshop" />
-  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46.4 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Module 2: RNA-seq alignment concepts and file formats | (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL" />
   <meta property="og:type" content="book" />
@@ -364,13 +364,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="star-alignment" class="section level3 hasAnchor">
 <h3>STAR alignment<a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#star-alignment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Prepare genome for alignment</strong></p>
-<p>If not done previously, prepare the genome for PE150:</p>
+<p>If not done previously, prepare the genome for PE100:</p>
 <div class="sourceCode" id="cb58"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb58-1"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb58-1" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RNA_REFS_DIR</span></span>
 <span id="cb58-2"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb58-2" tabindex="-1"></a><span class="ex">STAR</span> <span class="at">--runMode</span> genomeGenerate <span class="dt">\</span></span>
 <span id="cb58-3"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb58-3" tabindex="-1"></a>     <span class="at">--genomeDir</span> ./star_index <span class="dt">\</span></span>
 <span id="cb58-4"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb58-4" tabindex="-1"></a>     <span class="at">--genomeFastaFiles</span> chr22_with_ERCC92.fa <span class="dt">\</span></span>
 <span id="cb58-5"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb58-5" tabindex="-1"></a>     <span class="at">--sjdbGTFfile</span> chr22_with_ERCC92.gtf <span class="dt">\</span></span>
-<span id="cb58-6"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb58-6" tabindex="-1"></a>     <span class="at">--sjdbOverhang</span> 149</span></code></pre></div>
+<span id="cb58-6"><a href="module-2-rna-seq-alignment-concepts-and-file-formats.html#cb58-6" tabindex="-1"></a>     <span class="at">--sjdbOverhang</span> 99</span></code></pre></div>
 <p><strong>STAR Alignment</strong></p>
 <p>Perform alignments with STAR to the genome.</p>
 <p>First, begin by making the appropriate output directory for our alignment results.</p>

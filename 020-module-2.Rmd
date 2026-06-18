@@ -34,7 +34,7 @@
 
 **Prepare genome for alignment**
 
-If not done previously, prepare the genome for PE150:
+If not done previously, prepare the genome for PE100:
 
 ```bash
 cd $RNA_REFS_DIR
@@ -42,7 +42,7 @@ STAR --runMode genomeGenerate \
      --genomeDir ./star_index \
      --genomeFastaFiles chr22_with_ERCC92.fa \
      --sjdbGTFfile chr22_with_ERCC92.gtf \
-     --sjdbOverhang 149
+     --sjdbOverhang 99
 ```
 
 **STAR Alignment**
