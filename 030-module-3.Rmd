@@ -314,6 +314,171 @@ write.csv(as.data.frame(resOrdered),  file="DGE_analysis_results.csv")
 
 Save only the results for the genes in the intersection of the three methods in a csv file named "GenesInCommon_results.csv".
 
+## Extra Practice Exercise
+
+In this exercise you are going to do a DGE analysis on the NCBI GEO data set [GSE114917](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE114917). There are two conditions and four replicates per condition. Go and look at the GEO page: what organism is this data from? What are the conditions? What's the sequencing platform? How many biological replicates do we have?
+
+``` {r, warning=FALSE, message = FALSE}
+library(data.table)
+library(ggplot2)
+library(DESeq2)
+
+rm(list = ls()) #Let's clean all the variables in the workspace
+
+#Indicate where the data is available
+url <- "https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE114917&format=file&file=GSE114917%5Fcount%5Ftable%2Etxt%2Egz"
+
+#Get the data
+raw_counts <- fread(url)
+# convert the data.table to matrix format
+raw_counts = as.matrix(raw_counts)
+# check what type of object is the variable raw_counts
+class(raw_counts)
+
+# see the raw data
+head(raw_counts)
+
+# set first column to be the row names for the matrix 
+# NOTE THAT THIS IS DIFFERENT FROM THE FIRST ANALYSIS, WHY?
+rownames(raw_counts) = raw_counts[, 1]
+
+# now that the gene IDs are the row names, remove the redundant column that contains them
+# NOTE THAT THIS IS DIFFERENT FROM THE FIRST ANALYSIS, WHY?
+raw_counts = raw_counts[, -1]
+
+# convert the count values from strings (with spaces) to integers, because originally the gene column contained characters, the entire matrix was set to character
+class(raw_counts) = "integer"
+
+# create a simple one column dataframe with the group ID
+# NOTE THAT THIS IS DIFFERENT FROM THE FIRST ANALYSIS, WHY?
+metaData <- data.frame("Condition" = c(rep("LP",4),rep("HP",4)))
+
+# convert the "Condition" column to a factor data type
+# the alphabetical order of these factors will determine the direction of log2 fold-changes for the genes (i.e. up or down regulated)
+# NOTE THAT THIS IS DIFFERENT FROM THE FIRST ANALYSIS, WHY?
+metaData$Condition = factor(metaData$Condition, levels = c("LP", "HP"))
+
+# set the row names of the metaData dataframe to be the names of our sample replicates from the read counts matrix
+rownames(metaData) = colnames(raw_counts)
+
+# check the data
+str(raw_counts)
+head(raw_counts)
+summary(raw_counts)
+dim(raw_counts)
+
+# check that names of htseq count columns match the names of the meta data rows
+# use the "all" function which tests whether an entire logical vector is TRUE
+all(rownames(metaData) == colnames(raw_counts))
+
+```
+* How many genes are in the count table? How many samples?
+* Looking at the output of the summary function, what percentage of genes would you roughly expect to filter out due to low expression?
+
+```{r}
+# Now let's create a DESeqDataSet
+dds <- DESeqDataSetFromMatrix(raw_counts, colData= metaData, design = ~Condition)
+
+# Let's check our dds object
+dds
+
+# Let's filter low expressed genes. 
+# NOTE THAT THIS IS DIFFERENT FROM THE FIRST ANALYSIS, WHY?
+smallestGroupSize <- 4
+#Here we are counting the columns per row with at least 10 reads. If there are at least 4 columns, the row for that gene will be TRUE and we will keep it
+keep <- rowSums(counts(dds) >= 10) >= smallestGroupSize
+dds <- dds[keep,]
+
+dim(dds)
+```
+
+* How many genes were removed? 
+
+```{r, message=FALSE, warning=FALSE}
+# Get the scaling factors
+ddsSF <- estimateSizeFactors(dds)
+sizeFactors(ddsSF)
+# Normalize the data using the scaling factors
+normalized_counts <- counts(ddsSF, normalized=TRUE)
+
+#### QUALITY CONTROL
+### Transform counts for data visualization
+rld <- rlog(ddsSF, blind=TRUE)
+plotPCA(rld, intgroup="Condition")
+
+### Extract the rlog matrix from the object
+rld_mat <- assay(rld) 
+### Compute pairwise correlation values
+rld_cor <- cor(rld_mat)
+
+rld_cor
+
+```
+
+* After looking at the PCA plot, do you have any concerns about the data?
+
+Now, let's do a default DGE analysis, generate some visualizations and get the genes with an adjusted p-value < 0.01.
+
+```{r, message=FALSE, warning=FALSE}
+## Run DGE analysis with default values
+ddsDefault <- DESeq(dds)
+
+resultsNames(ddsDefault)
+
+#Extract the results for the contrast (coefficient) we are interested
+resDefault <- results(ddsDefault,c("Condition","LP","HP"))
+resDefault
+
+# Let's look at the dispersion of the mean of the normalized counts. What we are looking for here
+# is that the blue dots are closer to the red line than the black dots, and we expect the 
+# dispersion to decrease as the mean of normalized counts increases for each gene.
+plotDispEsts(ddsDefault)
+
+#Points will be colored blue if the adjusted p value is less than 0.1.
+plotMA(resDefault)
+
+# Summary of the results with default values
+summary(resDefault)
+#How many adjusted p-values were less than 0.01?
+sum(resDefault$padj < 0.01, na.rm=TRUE)
+
+#Let's get the DEGs
+resDefault_Sig <- subset(resDefault, padj < 0.01)
+head(resDefault_Sig)
+
+# Compute Z-score per gene (row-wise scaling)
+rld_mat_z <- t(scale(t(rld_mat[row.names(resDefault_Sig), ])))
+
+library(pheatmap)
+# Generate heatmap
+pheatmap(rld_mat_z,
+    cluster_rows = TRUE, 
+    cluster_cols = FALSE,
+    show_rownames = FALSE,
+    annotation_col = metaData, 
+    border_color = NA, 
+    fontsize = 10
+)
+
+#Create a volcano plot
+threshold_DE <- resDefault$padj < 0.01
+
+ggplot(resDefault) +
+    geom_point(aes(x = log2FoldChange, y = -log10(padj), colour = threshold_DE)) +
+    ggtitle("Volcano Plot") +
+    xlab("log2 fold change") + 
+    ylab("-log10 adjusted p-value") +
+    theme(legend.position = "none")
+
+```
+
+
+* After looking at the heatmap, do you have any concerns about the data?
+* Save the results for the DEGs into a file
+* Plot the counts for the most significant DEG
+* [OPTIONAL] Explore other normalization and dispersion estimate approaches and see how they change the results.
+
+
 ## DESeq2 resources
 
 The [DESeq2 bioconductor vignette](https://bioconductor.org/packages//release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html) is a great resource to dive deeper into DESeq2's functionality.
