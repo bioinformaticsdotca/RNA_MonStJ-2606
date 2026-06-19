@@ -844,6 +844,41 @@ ggplot(
 5. Which biological processes dominate the dataset?
 
 
+<details>
+<summary> Show answer</summary>
+
+```{r, message=FALSE, warning=FALSE}
+
+#Which pathways are activated?
+  
+activated <- fgsea_res[fgsea_res$NES > 0 & fgsea_res$padj < 0.05, ]
+dim(activated)
+activated 
+#Which pathways are repressed?
+
+repressed <- fgsea_res[fgsea_res$NES < 0 & fgsea_res$padj < 0.05, ]
+dim(repressed)
+repressed
+  
+#Are immune pathways enriched? Yes
+immune <- fgsea_res[grep("immune|interferon|cytokine|inflammatory", fgsea_res$pathway, ignore.case = TRUE), ]
+immune_sig <- immune[immune$padj < 0.05, ]
+
+
+#  Are proliferation pathways activated? No
+prolif <- fgsea_res[grep("cell cycle|mitosis|E2F|G2M|proliferation", fgsea_res$pathway, ignore.case = TRUE), ]
+prolif_sig <- prolif[prolif$padj < 0.05, ]
+prolif_sig
+
+#  Which biological processes dominate the dataset?
+top <- fgsea_res[fgsea_res$padj < 0.05, ]
+top <- top[order(-abs(top$NES)), ]
+head(top, 20)
+```
+
+</details>
+
+
 ### Mini Challenge
 
 Try modifying one parameter in the analysis:
