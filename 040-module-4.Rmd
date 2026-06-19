@@ -183,11 +183,11 @@ We remove:
 # filter results to reduce to less specialized or general terms with at least 2 genes from our list
 gostres_filt = gostres[gostres$term_size > 15 & gostres$term_size < 2000 & gostres$intersection_size > 2,]
 
-#trasnform score with log10, higher is better
+#transform score with log10, higher is better
 gostres_filt$log10=-1 * log10(gostres_filt$p_value)
 
 #order results by decreasing score value
-gostres_filt=gostres_filt[order(gostres_filt$log10,decreasing=F),]
+gostres_filt=gostres_filt[order(gostres_filt$log10,decreasing=T),]
 ```
 
 
