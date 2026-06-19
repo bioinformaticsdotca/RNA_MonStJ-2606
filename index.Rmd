@@ -26,7 +26,22 @@ Welcome to the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL Canad
 
 ## Class Photo
 
-Coming soon! 
+### St. John's
+<iframe 
+  src="https://drive.google.com/file/d/1VH4T9ZUXoweJ2OaQ_le15F3cyUuXC_ee/view?usp=drive_link" 
+  width="500" 
+  height="400" 
+  style="border:0;">
+</iframe>
+
+### Montréal
+<iframe 
+  src="https://drive.google.com/file/d/11R9xRtPsfYs7a1YZeKcPXswbT2jbFxPe/view?usp=drive_link" 
+  width="500" 
+  height="400" 
+  style="border:0;">
+</iframe>
+
 
 ## Schedule
 
