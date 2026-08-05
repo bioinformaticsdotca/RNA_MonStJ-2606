@@ -2,6 +2,8 @@
 
 ## Lecture
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ujpURBrB_Ik?si=vBc_gnRQYoOH6ISf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 <iframe src="https://docs.google.com/presentation/d/1A6x8O0ae_uh1w9_zeNX3pyom4OJqcTR8/preview" width="640" height="480" allow="autoplay"></iframe>  
 
 ## Module 4 - Practical Exercise

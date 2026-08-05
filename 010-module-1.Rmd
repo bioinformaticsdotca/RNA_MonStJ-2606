@@ -1,6 +1,9 @@
 # Module 1: RNAseq inputs and QC
 
 ## Lecture
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/USOMfsmnwhw?si=5TQYe8XHtWZ_vfCq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 <iframe src="https://docs.google.com/presentation/d/112p-Bx30at8G6N9tmTcbpKJY6Zhk1DH_/preview" width="640" height="480" allow="autoplay"></iframe> 
 
 

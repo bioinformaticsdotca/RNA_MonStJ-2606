@@ -51,7 +51,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
 <script src="libs/datatables-binding-0.34.0/datatables.js"></script>
@@ -71,7 +71,7 @@
   "@type": "LearningResource",
   "name": "(2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL",
   "description": "The complete set of tutorials, slides, and practical exercises for the (2026) RNA-seq Analysis: Montréal, QC and St. John’s, NL 2026 Canadian Bioinformatics Workshop, hosted on GitHub Pages.",
-  "url": "https://bioinformaticsdotca.github.io/RNA_MontStJ-2606",
+  "url": "https://bioinformaticsdotca.github.io/RNA_MonStJ-2606",
   "learningResourceType": ["tutorial", "slides", "exercise"],
   "inLanguage": "en",
   "license": "https://creativecommons.org/licenses/by/4.0/",
@@ -332,6 +332,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Module 3: RNA Expression and Differential Expression<a href="module-3-rna-expression-and-differential-expression.html#module-3-rna-expression-and-differential-expression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="lecture-3" class="section level2 hasAnchor">
 <h2>Lecture<a href="module-3-rna-expression-and-differential-expression.html#lecture-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZCGKRFedYXY?si=afmmnYkcZHcnkmpK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
 <iframe src="https://docs.google.com/presentation/d/1ufYUvnTMj4Wm8UEbHSdI1JZsfS1ao0uZ/preview" width="640" height="480" allow="autoplay">
 </iframe>
 </div>
@@ -505,30 +507,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## DataFrame with 15808 rows and 6 columns
 ##             baseMean log2FoldChange     lfcSE        stat      pvalue
 ##            &lt;numeric&gt;      &lt;numeric&gt; &lt;numeric&gt;   &lt;numeric&gt;   &lt;numeric&gt;
-## 653635      286.4972    0.016579643  0.102096  0.16239321    0.870996
-## 100996442    14.9271   -0.299137702  0.425997 -0.70220669    0.482550
-## 729737       64.5801   -0.074783582  0.204438 -0.36580158    0.714513
-## 102723897   175.8036    0.000938732  0.126387  0.00742742    0.994074
-## 112268260    19.6028   -0.151077144  0.369308 -0.40908128    0.682480
+## 653635      286.4972    0.016579878  0.102092  0.16240212    0.870989
+## 100996442    14.9271   -0.299139561  0.425980 -0.70223830    0.482531
+## 729737       64.5801   -0.074783319  0.204430 -0.36581464    0.714503
+## 102723897   175.8036    0.000938435  0.126382  0.00742536    0.994075
+## 112268260    19.6028   -0.151078481  0.369294 -0.40910086    0.682466
 ## ...              ...            ...       ...         ...         ...
-## 4541       7347.3741      -0.137380 0.0385029    -3.56804 0.000359659
+## 4541       7347.3741      -0.137380 0.0385010    -3.56822 0.000359414
 ## 4556       1156.8423      -0.328717 0.1219864    -2.69470 0.007045128
-## 4519      12059.7646      -0.134310 0.0417613    -3.21614 0.001299269
-## 4576         63.3893      -0.336712 0.2107232    -1.59789 0.110068112
-## 4571       1409.7675      -0.107690 0.0624244    -1.72512 0.084504960
+## 4519      12059.7646      -0.134310 0.0417595    -3.21628 0.001298645
+## 4576         63.3893      -0.336712 0.2107150    -1.59795 0.110054267
+## 4571       1409.7675      -0.107690 0.0624218    -1.72520 0.084491942
 ##                 padj
 ##            &lt;numeric&gt;
-## 653635      0.967465
+## 653635      0.967463
 ## 100996442         NA
 ## 729737            NA
-## 102723897   0.999632
+## 102723897   0.999627
 ## 112268260         NA
 ## ...              ...
-## 4541      0.00960032
+## 4541      0.00959379
 ## 4556      0.08384600
-## 4519      0.02468831
+## 4519      0.02467646
 ## 4576              NA
-## 4571      0.38496066</code></pre>
+## 4571      0.38490496</code></pre>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="module-3-rna-expression-and-differential-expression.html#cb98-1" tabindex="-1"></a><span class="co"># Let&#39;s look at the dispersion of the mean of the normalized counts. What we are looking for here</span></span>
 <span id="cb98-2"><a href="module-3-rna-expression-and-differential-expression.html#cb98-2" tabindex="-1"></a><span class="co"># is that the blue dots are closer to the red line than the black dots, and we expect the </span></span>
 <span id="cb98-3"><a href="module-3-rna-expression-and-differential-expression.html#cb98-3" tabindex="-1"></a><span class="co"># dispersion to decrease as the mean of normalized counts increases for each gene.</span></span>
@@ -597,11 +599,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## 
 ## out of 15808 with nonzero total read count
 ## adjusted p-value &lt; 0.1
-## LFC &gt; 0 (up)       : 225, 1.4%
-## LFC &lt; 0 (down)     : 184, 1.2%
+## LFC &gt; 0 (up)       : 223, 1.4%
+## LFC &lt; 0 (down)     : 182, 1.2%
 ## outliers [1]       : 0, 0%
-## low counts [2]     : 613, 3.9%
-## (mean count &lt; 12)
+## low counts [2]     : 307, 1.9%
+## (mean count &lt; 10)
 ## [1] see &#39;cooksCutoff&#39; argument of ?results
 ## [2] see &#39;independentFiltering&#39; argument of ?results</code></pre>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="module-3-rna-expression-and-differential-expression.html#cb111-1" tabindex="-1"></a><span class="co">#How many adjusted p-values were less than 0.01?</span></span>
@@ -679,7 +681,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## DataFrame with 1 row and 6 columns
 ##       baseMean log2FoldChange     lfcSE      stat       pvalue         padj
 ##      &lt;numeric&gt;      &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;    &lt;numeric&gt;    &lt;numeric&gt;
-## 9636   1627.18       -1.54932 0.0623498  -24.8489 2.65879e-136 2.98077e-132</code></pre>
+## 9636   1627.18       -1.54932 0.0623475  -24.8498 2.59935e-136 2.91414e-132</code></pre>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="module-3-rna-expression-and-differential-expression.html#cb123-1" tabindex="-1"></a><span class="co"># What are the raw counts for this gene?</span></span>
 <span id="cb123-2"><a href="module-3-rna-expression-and-differential-expression.html#cb123-2" tabindex="-1"></a>raw_counts[<span class="fu">rownames</span>(resDefault[mostSignificantDEG,]),]</span></code></pre></div>
 <pre><code>## GSM3140455 GSM3140456 GSM3140457 GSM3140458 GSM3140459 GSM3140460 
@@ -693,9 +695,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb125-7"><a href="module-3-rna-expression-and-differential-expression.html#cb125-7" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;log2 fold change&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb125-8"><a href="module-3-rna-expression-and-differential-expression.html#cb125-8" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;-log10 adjusted p-value&quot;</span>) <span class="sc">+</span></span>
 <span id="cb125-9"><a href="module-3-rna-expression-and-differential-expression.html#cb125-9" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: Removed 4597 rows containing missing
-## values or values outside the scale range
-## (`geom_point()`).</code></pre>
+<pre><code>## Warning: Removed 4597 rows containing missing values or values
+## outside the scale range (`geom_point()`).</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-14-4.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="module-3-rna-expression-and-differential-expression.html#cb127-1" tabindex="-1"></a><span class="co">#Order the genes by the adjusted pvalue</span></span>
 <span id="cb127-2"><a href="module-3-rna-expression-and-differential-expression.html#cb127-2" tabindex="-1"></a>resOrdered <span class="ot">&lt;-</span> resDefault[<span class="fu">order</span>(resDefault<span class="sc">$</span>padj),]</span>
@@ -706,16 +707,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## DataFrame with 10 rows and 6 columns
 ##        baseMean log2FoldChange     lfcSE      stat       pvalue         padj
 ##       &lt;numeric&gt;      &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;    &lt;numeric&gt;    &lt;numeric&gt;
-## 9636   1627.182      -1.549323 0.0623498  -24.8489 2.65879e-136 2.98077e-132
-## 8638    301.312      -2.125520 0.1168735  -18.1865  6.60173e-74  3.70060e-70
-## 3433    196.996      -2.049771 0.1444795  -14.1873  1.09833e-45  4.10448e-42
-## 6526   9657.618       0.505505 0.0376472   13.4274  4.17649e-41  1.17057e-37
-## 29968  1523.671      -0.727025 0.0550152  -13.2150  7.19004e-40  1.61215e-36
-## 960    8935.942       0.475459 0.0373922   12.7154  4.85325e-37  9.06830e-34
-## 16     4286.422      -0.456685 0.0406734  -11.2281  2.96829e-29  4.75393e-26
-## 55601   306.091      -1.166797 0.1057326  -11.0354  2.58029e-28  3.61596e-25
-## 7803   6158.634      -0.496378 0.0465429  -10.6650  1.48458e-26  1.84929e-23
-## 6659   2370.681       0.552974 0.0521150   10.6107  2.65876e-26  2.98073e-23</code></pre>
+## 9636   1627.182      -1.549323 0.0623475  -24.8498 2.59935e-136 2.91414e-132
+## 8638    301.312      -2.125520 0.1168699  -18.1871  6.53533e-74  3.66338e-70
+## 3433    196.996      -2.049771 0.1444748  -14.1877  1.09109e-45  4.07741e-42
+## 6526   9657.618       0.505505 0.0376453   13.4281  4.13890e-41  1.16003e-37
+## 29968  1523.671      -0.727025 0.0550128  -13.2156  7.13498e-40  1.59981e-36
+## 960    8935.942       0.475459 0.0373903   12.7161  4.81339e-37  8.99382e-34
+## 16     4286.422      -0.456685 0.0406714  -11.2286  2.94974e-29  4.72421e-26
+## 55601   306.091      -1.166797 0.1057287  -11.0358  2.56843e-28  3.59934e-25
+## 7803   6158.634      -0.496378 0.0465410  -10.6654  1.47751e-26  1.84048e-23
+## 6659   2370.681       0.552975 0.0521128   10.6111  2.64565e-26  2.96604e-23</code></pre>
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="module-3-rna-expression-and-differential-expression.html#cb129-1" tabindex="-1"></a><span class="co">#What are the columns?</span></span>
 <span id="cb129-2"><a href="module-3-rna-expression-and-differential-expression.html#cb129-2" tabindex="-1"></a><span class="fu">mcols</span>(resOrdered)<span class="sc">$</span>description</span></code></pre></div>
 <pre><code>## [1] &quot;mean of normalized counts for all samples&quot;      
